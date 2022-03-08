@@ -17,20 +17,29 @@ function App() {
         <div className="App">
             <Router>
                 <Header/>
-                <LandingPage/>
-                <CommunityRegisterLogin/>
-                <Link to={"/first"}>The first link</Link>|{" "}|
-                <Link to={"/next"}>The next link</Link>
-                <Link to={"/community"}><a ><img className="community-register-login" src={communityLogo}/></a></Link>
-                <Footer/>
+
+
+                {/*<LandingPage/>*/}
+                {/*<CommunityRegisterLogin/>*/}
+                <Link to={"/community"}><a><img className="community-register-login"
+                                                src={communityLogo}/></a></Link>
 
                 <Routes>
-                    <Route exact path={"/first"} element={<SomeLink/>}>
+
+                    <Route exact path={"/"} element={<LandingPage/>}>
+                        <Route exact path={"/first"} element={<SomeLink/>}/>
+                        <Route exact path={"/next"} element={<NextLink/>}/>
+                        <Route exact path={"/community"} element={<DisplayCommunityBlob/>}/>
+
+
+                        {/*<Link to={"/first"}>The first link</Link>|{" "}|*/}
+                        {/*<Link to={"/next"}>The next link</Link>*/}
+
                     </Route>
-                    <Route exact path={"/next"} element={<NextLink/>}>
-                    </Route>
-                    <Route exact path={"/community"} element={<DisplayCommunityBlob/>}/>
+
+
                 </Routes>
+                <Footer/>
             </Router>
 
 
@@ -46,7 +55,7 @@ function NextLink() {
     return <h2>You clicked the second link</h2>;
 }
 
-function DisplayCommunityBlob(){
+function DisplayCommunityBlob() {
     return <h2>Community hub accessed</h2>;
 }
 

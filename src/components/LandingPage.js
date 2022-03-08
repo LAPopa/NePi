@@ -1,6 +1,7 @@
 import '../App.css';
 import CommunityBlob from '../assets/communityRoutes.png';
 import UtilitiesBlob from '../assets/utilitiesBlob.png';
+import {CommunityLoginModal} from "./CommunityLoginModal";
 
 export default function LandingPage() {
     return (
@@ -23,7 +24,7 @@ export default function LandingPage() {
                             <button
                                 className="flex mx-auto mt-6 text-white bg-green-500 border-0 py-2 px-5 focus:outline-none hover:bg-green-600 rounded"
                                 id="communityButtonLogin"
-                                onClick={() => document.getElementById("communityButtonLogin").textContent = "Button was clicked"}>Login
+                                onClick={() => CommunityLoginModal}>Login
                             </button>
                         </div>
                         <div className="sm:w-1/2 mb-10 px-4">

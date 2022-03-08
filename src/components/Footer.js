@@ -11,7 +11,7 @@ export default function Footer() {
 
                     <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
 
-                        <img src={NePiLogo} height="200" width="200"/>
+                        <img src={NePiLogo} height="50" width="50"/>
                         <span className="ml-3 text-xl">NePi</span>
 
 

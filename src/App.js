@@ -9,12 +9,14 @@ import {Routes} from "react-router";
 import CommunityRegisterLogin from './components/generalUsers';
 import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
+import Header from './components/Header';
 
 function App() {
     return (
 
         <div className="App">
             <Router>
+                <Header/>
                 <LandingPage/>
                 <CommunityRegisterLogin/>
                 <Link to={"/first"}>The first link</Link>|{" "}|

@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Header from './components/Header';
 import {CommunityRegistrationSelector} from "./components/CommunityRegistrationSelector";
 import {OwnerRegistration} from "./components/OwnerRegistration";
+import {RenterRegistration} from "./components/RenterRegistration";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                     </Route>
                     <Route exact path={"/community-register"} element={<CommunityRegistrationSelector/>}/>
                     <Route exact path={"/registration/owners"} element={<OwnerRegistration/>}/>
+                    <Route exact path={"/registration/tenants"} element={<RenterRegistration/>}/>
 
 
                 </Routes>

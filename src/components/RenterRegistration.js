@@ -4,7 +4,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 
 
-export function OwnerRegistration() {
+export function RenterRegistration() {
     let navigate = useNavigate();
 
     return (
@@ -43,19 +43,18 @@ export function OwnerRegistration() {
                                 Personal info
                             </h2>
                             <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
-
-                                <div className=" relative ">
-                                    <input type="text" id="user-info-first-name"
-                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                           placeholder="First Name"/>
+                                <div>
+                                    <div className=" relative ">
+                                        <input type="text" id="user-info-first-name"
+                                               className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                               placeholder="First Name"/>
+                                    </div>
+                                    <div className=" relative ">
+                                        <input type="text" id="user-info-last-name"
+                                               className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                               placeholder="Last Name"/>
+                                    </div>
                                 </div>
-
-                                <div className=" relative ">
-                                    <input type="text" id="user-info-last-name"
-                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                           placeholder="Last Name"/>
-                                </div>
-
                                 <div>
                                     <div className=" relative ">
                                         <input type="text" id="user-info-phone"
@@ -66,25 +65,21 @@ export function OwnerRegistration() {
                             </div>
                         </div>
                         <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
-                            <h2 className="max-w-sm mx-auto md:w-1/3 text-lg">
-                                Property information
-                            </h2>
+                            <div className="h-full">
+                                <h2 className="max-w-sm mx-auto md:w-1/3 text-lg">
+                                    Renting Contract ID
+                                </h2>
+                                <h3 className="text-sm">Please enter the ID that the landlord has
+                                    given you after signing the contract.</h3>
+                            </div>
+
                             <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
-                                <div className=" relative ">
-                                    <input type="text" id="user-info-street"
-                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                           placeholder="Street"/>
-                                </div>
-                                <div className=" relative ">
-                                    <input type="text" id="user-info-number"
-                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                           placeholder="Number"/>
-                                </div>
                                 <div>
                                     <div className=" relative ">
                                         <input type="text" id="user-info-apartment"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                               placeholder="Apartment"/>
+                                               placeholder="ID"/>
+
                                     </div>
                                 </div>
                             </div>

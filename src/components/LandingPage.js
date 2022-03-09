@@ -3,8 +3,10 @@ import {CommunityBlobLoginModal} from "./CommunityBlobLoginModal";
 import React from "react";
 import {UtilitiesBlobLoginModal} from "./UtilitiesBlobLoginModal";
 import {CommunityRegistrationSelector} from "./CommunityRegistrationSelector";
+import {useNavigate} from "react-router-dom";
 
 export default function LandingPage() {
+    let navigate = useNavigate();
     return (
         <div>
             <section className="text-gray-600 body-font">
@@ -21,12 +23,15 @@ export default function LandingPage() {
                             </div>
                             <p className="leading-relaxed text-base">some amazing placeholder text</p>
                             <div className="container px-5 py-24 mx-auto">
-                                {/*<button*/}
-                                {/*    className="flex mx-auto mt-6 text-white bg-green-500 font-bold uppercase border-0 py-2 px-5 focus:outline-none hover:bg-green-600 rounded"*/}
-                                {/*    id="communityButtonRegister"*/}
-                                {/*    onClick={() => document.getElementById("communityButtonRegister").textContent = "Button was clicked"}>Register*/}
-                                {/*</button>*/}
-                                <CommunityRegistrationSelector/>
+
+                                <button
+                                    className="rounded-lg h-20 overflow-hidden bg-green-500 text-white active:bg-green-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:bg-green-600 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                    type="button"
+                                    onClick={() => navigate("/community-register")}
+
+                                >Register
+
+                                </button>
 
                             </div>
                         </div>

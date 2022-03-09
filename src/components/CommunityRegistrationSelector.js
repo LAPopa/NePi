@@ -3,31 +3,26 @@ import LandlordImg from '../assets/landlord.png';
 import TenantImg from '../assets/tenant.png';
 import CommunityBlob from "../assets/communityRoutes.png";
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 
 export function CommunityRegistrationSelector() {
-    const [showRegistration, setShowRegistration] = React.useState(false);
+    let navigate = useNavigate();
     return (
         <div>
-            <button
-                className="rounded-lg h-20 overflow-hidden bg-green-500 text-white active:bg-green-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:bg-green-600 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button"
-                onClick={() => setShowRegistration(true)}
-            >Register
 
-            </button>
-            {showRegistration? (
             <section className="text-gray-600 body-font">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-wrap -mx-4 -mb-10 text-center">
                         <div className="sm:w-1/2 mb-10 px-4">
                             <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">I own property </h2>
                             <div className="rounded-lg h-64 overflow-hidden">
-                                <img alt="content" className="object-cover object-center h-full w-full"
+                                <img alt="content" className="object-fill object-center h-full w-full"
                                      src={LandlordImg}/>
                             </div>
 
-                            <p className="leading-relaxed text-base">I have a house/ apartment or lend others property.</p>
+                            <p className="leading-relaxed text-base">I have a house/ apartment or lend others
+                                property.</p>
                             <button
                                 className="flex mx-auto mt-6 text-white bg-green-500 border-0 py-2 px-5 focus:outline-none hover:bg-green-600 rounded">Register
                             </button>
@@ -35,7 +30,7 @@ export function CommunityRegistrationSelector() {
                         <div className="sm:w-1/2 mb-10 px-4">
                             <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">I pay rent</h2>
                             <div className="rounded-lg h-64 overflow-hidden">
-                                <img alt="content" className="object-cover object-center h-full w-full"
+                                <img alt="content" className="object-fill object-center h-full w-full"
                                      src={TenantImg}/>
                             </div>
 
@@ -45,18 +40,16 @@ export function CommunityRegistrationSelector() {
                                 className="flex mx-auto mt-6 text-white bg-green-500 border-0 py-2 px-5 focus:outline-none hover:bg-green-600 rounded">Register
                             </button>
                         </div>
-                    </div>
-                    <button
-                        className="flex mx-auto mt-6 text-white bg-red-700 border-0 py-2 px-5 focus:outline-none hover:bg-red-800 rounded"
+                        <button
+                            className="flex mx-auto mt-6 text-white bg-blue-700 border-0 py-2 px-5 focus:outline-none hover:bg-blue-800 rounded"
                         type="button"
-                        onClick={() => setShowRegistration(false)}
-                    >
-                        Cancel
-                    </button>
+                        onClick={() => navigate("/")}>Back
+                        </button>
+                    </div>
+
                 </div>
 
             </section>
-            ) : null}
         </div>
     )
 }

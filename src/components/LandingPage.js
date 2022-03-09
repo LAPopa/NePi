@@ -2,6 +2,7 @@ import '../App.css';
 import {CommunityBlobLoginModal} from "./CommunityBlobLoginModal";
 import React from "react";
 import {UtilitiesBlobLoginModal} from "./UtilitiesBlobLoginModal";
+import {CommunityRegistrationSelector} from "./CommunityRegistrationSelector";
 
 export default function LandingPage() {
     return (
@@ -20,11 +21,13 @@ export default function LandingPage() {
                             </div>
                             <p className="leading-relaxed text-base">some amazing placeholder text</p>
                             <div className="container px-5 py-24 mx-auto">
-                                <button
-                                    className="flex mx-auto mt-6 text-white bg-green-500 font-bold uppercase border-0 py-2 px-5 focus:outline-none hover:bg-green-600 rounded"
-                                    id="communityButtonRegister"
-                                    onClick={() => document.getElementById("communityButtonRegister").textContent = "Button was clicked"}>Register
-                                </button>
+                                {/*<button*/}
+                                {/*    className="flex mx-auto mt-6 text-white bg-green-500 font-bold uppercase border-0 py-2 px-5 focus:outline-none hover:bg-green-600 rounded"*/}
+                                {/*    id="communityButtonRegister"*/}
+                                {/*    onClick={() => document.getElementById("communityButtonRegister").textContent = "Button was clicked"}>Register*/}
+                                {/*</button>*/}
+                                <CommunityRegistrationSelector/>
+
                             </div>
                         </div>
                         <div className="sm:w-1/2 mb-10 px-4">

@@ -37,17 +37,16 @@ export default function LandingPage() {
                         </div>
                         <div className="sm:w-1/2 mb-10 px-4">
                             <div className="rounded-lg h-fit overflow-hidden">
-                                <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">I ensure things
-                                    run smoothly for the community</h2>
+                                <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">I am an operator</h2>
                                 <UtilitiesBlobLoginModal/>
 
                             </div>
                             <p className="leading-relaxed text-base">another amazing placeholder text.</p>
                             <div className="container px-5 py-24 mx-auto">
                                 <button
-                                    className="flex mx-auto mt-6 text-white bg-green-500 font-bold uppercase border-0 py-2 px-5 focus:outline-none hover:bg-green-600 rounded"
+                                    className="rounded-lg h-20 overflow-hidden bg-green-500 text-white active:bg-green-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:bg-green-600 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                     id="utilitiesButtonRegister"
-                                    onClick={() => document.getElementById("utilitiesButtonRegister").textContent = "Button was clicked"}>Register
+                                    onClick={() => navigate("/registration/utilities")}>Register
                                 </button>
                             </div>
                         </div>

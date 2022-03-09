@@ -4,7 +4,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 
 
-export function RenterRegistration() {
+export function UtilitiesRegistration() {
     let navigate = useNavigate();
 
     return (
@@ -31,7 +31,7 @@ export function RenterRegistration() {
                             </h2>
                             <div className="max-w-sm mx-auto md:w-2/3">
                                 <div className=" relative ">
-                                    <input type="text" id="user-info-email"
+                                    <input type="text" id="user-utilities-info-email"
                                            className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                            placeholder="Email"/>
                                 </div>
@@ -45,19 +45,19 @@ export function RenterRegistration() {
                             <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
                                 <div>
                                     <div className=" relative ">
-                                        <input type="text" id="user-info-first-name"
+                                        <input type="text" id="user-utilities-info-first-name"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                placeholder="First Name"/>
                                     </div>
                                     <div className=" relative ">
-                                        <input type="text" id="user-info-last-name"
+                                        <input type="text" id="user-utilities-info-last-name"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                placeholder="Last Name"/>
                                     </div>
                                 </div>
                                 <div>
                                     <div className=" relative ">
-                                        <input type="text" id="user-info-phone"
+                                        <input type="text" id="user-utilities-info-phone"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                placeholder="Phone number"/>
                                     </div>
@@ -67,16 +67,33 @@ export function RenterRegistration() {
                         <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
                             <div className="h-full">
                                 <h2 className="max-w-sm mx-auto md:w-1/3 text-lg">
-                                    Renting Contract ID
+                                    Company Name
                                 </h2>
-                                <h3 className="text-sm">Please enter the ID that the landlord has
-                                    given you after signing the contract.</h3>
                             </div>
 
                             <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
                                 <div>
                                     <div className=" relative ">
-                                        <input type="text" id="user-info-ID"
+                                        <input type="text" id="user-utilities-info-company-name"
+                                               className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                               placeholder="Company Name"/>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
+                            <div className="h-full">
+                                <h2 className="max-w-sm mx-auto md:w-1/3 text-lg">
+                                    Professional Contract ID
+                                </h2>
+                                <h3 className="text-sm">Please enter the company ID provided in the company contract.</h3>
+                            </div>
+
+                            <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
+                                <div>
+                                    <div className=" relative ">
+                                        <input type="text" id="user-utilities-company-ID"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                placeholder="ID"/>
 
@@ -105,7 +122,7 @@ export function RenterRegistration() {
                             <div className="max-w-sm mx-auto md:w-1/4">
                                 <button
                                     className="py-2 px-4  bg-red-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
-                                    onClick={() => navigate("/community-register")}>
+                                    onClick={() => navigate("/")}>
                                     Back
                                 </button>
                             </div>

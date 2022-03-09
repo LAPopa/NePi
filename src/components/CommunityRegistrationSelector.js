@@ -36,7 +36,6 @@ export function CommunityRegistrationSelector() {
                             </div>
 
                             <p className="leading-relaxed text-base">I currently rent the space I live in.</p>
-                            <br/>
                             <button
                                 className="flex mx-auto mt-6 text-white bg-green-500 border-0 py-2 px-5 focus:outline-none hover:bg-green-600 rounded"
                             onClick={() => navigate("/registration/tenants")}>Register

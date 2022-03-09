@@ -2,7 +2,6 @@ import '../App.css';
 import UtilitiesBlob from '../assets/utilitiesBlob.png';
 import {LoginForm} from "./LoginForm";
 import React from "react";
-import CommunityBlob from "../assets/communityRoutes.png";
 
 export function UtilitiesBlobLoginModal() {
     const [showModal, setShowModal] = React.useState(false);

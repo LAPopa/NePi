@@ -1,13 +1,9 @@
 import '../App.css';
-import CommunityBlob from '../assets/communityRoutes.png';
-import UtilitiesBlob from '../assets/utilitiesBlob.png';
-import {LoginModal} from "./LoginModal";
 import {CommunityBlobLoginModal} from "./CommunityBlobLoginModal";
 import React from "react";
 import {UtilitiesBlobLoginModal} from "./UtilitiesBlobLoginModal";
 
 export default function LandingPage() {
-    const [showModal, setShowModal] = React.useState(false);
     return (
         <div>
             <section className="text-gray-600 body-font">

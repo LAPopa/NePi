@@ -3,7 +3,7 @@ import {LoginForm} from "./LoginForm";
 import React from "react";
 
 
-export function CommunityLoginModal() {
+export function LoginModal() {
     const [showModal, setShowModal] = React.useState(false);
     return (
         <div>

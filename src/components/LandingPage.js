@@ -2,7 +2,9 @@ import '../App.css';
 import CommunityBlob from '../assets/communityRoutes.png';
 import UtilitiesBlob from '../assets/utilitiesBlob.png';
 import {LoginModal} from "./LoginModal";
+import {CommunityBlobLoginModal} from "./CommunityBlobLoginModal";
 import React from "react";
+import {UtilitiesBlobLoginModal} from "./UtilitiesBlobLoginModal";
 
 export default function LandingPage() {
     const [showModal, setShowModal] = React.useState(false);
@@ -12,11 +14,13 @@ export default function LandingPage() {
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-wrap -mx-4 -mb-10 text-center">
                         <div className="sm:w-1/2 mb-10 px-4">
-                            <div className="rounded-lg h-64 overflow-hidden">
+                            <div className="rounded-lg h-fit overflow-hidden">
                                 <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">I live / own
                                     property here</h2>
-                                <img alt="content" className="object-fill object-center h-full w-full"
-                                     src={CommunityBlob}/>
+
+
+                                <CommunityBlobLoginModal/>
+
                             </div>
                             <p className="leading-relaxed text-base">some amazing placeholder text</p>
                             <div className="container px-5 py-24 mx-auto">
@@ -25,16 +29,14 @@ export default function LandingPage() {
                                     id="communityButtonRegister"
                                     onClick={() => document.getElementById("communityButtonRegister").textContent = "Button was clicked"}>Register
                                 </button>
-                                <br/>
-                                <LoginModal/>
                             </div>
                         </div>
                         <div className="sm:w-1/2 mb-10 px-4">
-                            <div className="rounded-lg h-64 overflow-hidden">
+                            <div className="rounded-lg h-fit overflow-hidden">
                                 <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">I ensure things
                                     run smoothly for the community</h2>
-                                <img alt="content" className="object-fill object-center h-full w-full"
-                                     src={UtilitiesBlob}/>
+                                <UtilitiesBlobLoginModal/>
+
                             </div>
                             <p className="leading-relaxed text-base">another amazing placeholder text.</p>
                             <div className="container px-5 py-24 mx-auto">
@@ -43,8 +45,6 @@ export default function LandingPage() {
                                     id="utilitiesButtonRegister"
                                     onClick={() => document.getElementById("utilitiesButtonRegister").textContent = "Button was clicked"}>Register
                                 </button>
-                                <br/>
-                                <LoginModal/>
                             </div>
                         </div>
                     </div>

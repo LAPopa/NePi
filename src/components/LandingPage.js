@@ -21,7 +21,7 @@ export default function LandingPage() {
                                 <CommunityBlobLoginModal/>
 
                             </div>
-                            <p className="leading-relaxed text-base">some amazing placeholder text</p>
+                            <p className="leading-relaxed text-base">&uarr; log in here !</p>
                             <div className="container px-5 py-24 mx-auto">
 
                                 <button
@@ -41,7 +41,7 @@ export default function LandingPage() {
                                 <UtilitiesBlobLoginModal/>
 
                             </div>
-                            <p className="leading-relaxed text-base">another amazing placeholder text.</p>
+                            <p className="leading-relaxed text-base">&uarr; log in here !</p>
                             <div className="container px-5 py-24 mx-auto">
                                 <button
                                     className="rounded-lg h-20 overflow-hidden bg-green-500 text-white active:bg-green-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:bg-green-600 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"

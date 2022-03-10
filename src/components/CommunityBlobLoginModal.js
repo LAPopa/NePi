@@ -2,6 +2,7 @@ import '../App.css';
 import CommunityBlob from '../assets/communityRoutes.png';
 import {LoginForm} from "./LoginForm";
 import React from "react";
+import {ReactComponent as CommunityBlobNew} from "../assets/CommunityLoginBlob1.svg";
 
 export function CommunityBlobLoginModal() {
     const [showModal, setShowModal] = React.useState(false);
@@ -9,11 +10,12 @@ export function CommunityBlobLoginModal() {
     return (
         <div>
             <button
-                className="rounded-lg h-96 overflow-hidden text-white active:bg-green-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:bg-green-600 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 rounded-full"
+                className=" h-96 overflow-hidden text-white active:bg-green-700 font-bold uppercase text-sm px-6 py-3 hover:bg-green-600  mr-1 mb-1 ease-linear transition-all duration-150 rounded-full"
                 type="button"
                 onClick={() => setShowModal(true)}
-            ><img alt="content" className="object-fill object-center h-full w-full"
-                  src={CommunityBlob}/>
+            ><CommunityBlobNew/>
+                {/*<img alt="content" className="object-fill object-center h-full w-full"*/}
+                {/*  src={CommunityBlob}/>*/}
 
             </button>
             {showModal ? (

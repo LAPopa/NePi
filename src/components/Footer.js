@@ -1,5 +1,7 @@
 import '../App.css';
 import NePiLogo from '../assets/NePiplaceholder.png';
+import React from "react";
+import {ReactComponent as NePiLogoNew} from "../assets/NePiLogoSmall.svg";
 
 
 export default function Footer() {
@@ -13,7 +15,9 @@ export default function Footer() {
 
                     <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
 
-                        <img src={NePiLogo} height="50" width="50"/>
+                        {/*<img src={NePiLogo} height="50" width="50"/>*/}
+                        <NePiLogoNew/>
+
                         <span className="ml-3 text-xl">NePi</span>
 
 

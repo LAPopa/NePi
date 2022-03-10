@@ -42,7 +42,7 @@ export function CommunityRegistrationSelector() {
                             </button>
                         </div>
                         <button
-                            className="flex mx-auto mt-6 text-white bg-blue-700 border-0 py-2 px-5 focus:outline-none hover:bg-blue-800 rounded"
+                            className="flex mx-auto mt-6 text-white bg-red-600  hover:bg-pink-700 border-0 py-2 px-5 focus:outline-none  rounded"
                         type="button"
                         onClick={() => navigate("/")}>Back
                         </button>

@@ -1,9 +1,9 @@
-import '../App.css';
+import '../../App.css';
 import React from "react";
 import axios from 'axios';
 
 
-const TEST_GET_API_URL = 'http://localhost:8080/test-get-all';
+const TEST_GET_API_URL = 'http://localhost:8080/testing-route';
 
 class TestingComponentService {
 

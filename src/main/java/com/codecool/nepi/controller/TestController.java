@@ -16,12 +16,12 @@ public class TestController {
 
     TestService testService = TestService.getInstance();
 
-    @GetMapping("/test-get-all")
+    @GetMapping("/testing-route")
     public List<TestModel> getAllElements() {
         return testService.getAllStoredElements();
     }
 
-    @PostMapping("/test-post-new")
+    @PostMapping("/testing-route")
     public  void addNewElement (@RequestBody TestModel newElement) {
         testService.addNewElement(newElement);
     }

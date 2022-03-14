@@ -16,11 +16,13 @@ public class TestService {
 
     public TestService(){
         this.testModels = new ArrayList<>();
+        populateList();
     }
 
     public static TestService getInstance(){
         if(instance == null) {
             instance = new TestService();
+
         }
         return instance;
     }
@@ -31,5 +33,12 @@ public class TestService {
 
     public void addNewElement(TestModel testModel) {
         testModels.add(testModel);
+    }
+
+    public void populateList(){
+        this.testModels.add(new TestModel(1,"First entry", 13));
+        this.testModels.add(new TestModel(2,"Second entry", 56));
+        this.testModels.add(new TestModel(3,"A cat", 9));
+        this.testModels.add(new TestModel(4,"Meow", 999));
     }
 }

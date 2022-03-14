@@ -11,7 +11,8 @@ import {CommunityRegistrationSelector} from "./components/CommunityRegistrationS
 import {OwnerRegistration} from "./components/OwnerRegistration";
 import {RenterRegistration} from "./components/RenterRegistration";
 import {UtilitiesRegistration} from "./components/UtilitiesRegistration";
-import TestComponent from "./components/TestComponent";
+import TestComponent from "./components/testingStuff/TestComponent";
+import TestFormService from "./components/testingStuff/TestFormService";
 
 function App() {
     return (
@@ -21,18 +22,15 @@ function App() {
                 <Header/>
 
 
-
-
                 <Routes>
 
-                    <Route exact path={"/"} element={<LandingPage/>}>
+                    <Route path={"/"} element={<LandingPage/>}>
                     </Route>
-                    <Route exact path={"/community-register"} element={<CommunityRegistrationSelector/>}/>
-                    <Route exact path={"/registration/owners"} element={<OwnerRegistration/>}/>
-                    <Route exact path={"/registration/tenants"} element={<RenterRegistration/>}/>
-                    <Route exact path={"/registration/utilities"} element={<UtilitiesRegistration/>}/>
-                    <Route exact path={"/test-get-all"} element = {<TestComponent/>}/>
-
+                    <Route path={"/community-register"} element={<CommunityRegistrationSelector/>}/>
+                    <Route path={"/registration/owners"} element={<OwnerRegistration/>}/>
+                    <Route path={"/registration/tenants"} element={<RenterRegistration/>}/>
+                    <Route path={"/registration/utilities"} element={<UtilitiesRegistration/>}/>
+                    <Route path={"/testing-route"} element={<><TestComponent/><TestFormService/></>}/>
 
                 </Routes>
                 <Footer/>
@@ -42,7 +40,6 @@ function App() {
         </div>
     );
 }
-
 
 
 export default App;

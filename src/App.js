@@ -11,6 +11,7 @@ import {CommunityRegistrationSelector} from "./components/CommunityRegistrationS
 import {OwnerRegistration} from "./components/OwnerRegistration";
 import {RenterRegistration} from "./components/RenterRegistration";
 import {UtilitiesRegistration} from "./components/UtilitiesRegistration";
+import TestComponent from "./components/TestComponent";
 
 function App() {
     return (
@@ -30,6 +31,7 @@ function App() {
                     <Route exact path={"/registration/owners"} element={<OwnerRegistration/>}/>
                     <Route exact path={"/registration/tenants"} element={<RenterRegistration/>}/>
                     <Route exact path={"/registration/utilities"} element={<UtilitiesRegistration/>}/>
+                    <Route exact path={"/test-get-all"} element = {<TestComponent/>}/>
 
 
                 </Routes>

@@ -13,11 +13,21 @@ import java.util.List;
 @Getter
 public class UserAccountsService {
 
-    private List<User> registeredUsers;
+    private List<User> registeredUsersAll;
+    private List<Admin> registeredAdmins;
+    private List<Operator> registeredOperators;
+    private List<Overseer> registeredOverseers;
+    private List<Owner> registeredOwners;
+    private List<Renter> registeredRenters;
     private static UserAccountsService instance = null;
 
     public UserAccountsService() {
-        this.registeredUsers = new ArrayList<>();
+        this.registeredUsersAll = new ArrayList<>();
+        this.registeredAdmins = new ArrayList<>();
+        this.registeredOperators = new ArrayList<>();
+        this.registeredOverseers = new ArrayList<>();
+        this. registeredOwners = new ArrayList<>();
+        this.registeredRenters = new ArrayList<>();
         populateList();
     }
 
@@ -36,14 +46,36 @@ public class UserAccountsService {
         Operator operator = new Operator("Joe","McLane","0789123123","yep@mail.com","123","CD4545");
         Overseer overseer = new Overseer("Jack","Reaper","0799616616","evil@haha.com","123");
         Owner owner = new Owner("Richie", "Rich","0789123456","richguy@money.com","123",
-                new PropertyObject("First Street",5,1,true));
+                new PropertyObject("First Street","5","1",true));
         Renter renter = new Renter("Some","Guy","0123456789","irent@here.com","123","XY123");
-        this.registeredUsers.add(admin);
-        this.registeredUsers.add(operator);
-        this.registeredUsers.add(overseer);
-        this.registeredUsers.add(owner);
-        this.registeredUsers.add(renter);
+        this.registeredUsersAll.add(admin);
+        this.registeredUsersAll.add(operator);
+        this.registeredUsersAll.add(overseer);
+        this.registeredUsersAll.add(owner);
+        this.registeredUsersAll.add(renter);
 
+        this.registeredAdmins.add(admin);
+        this.registeredOperators.add(operator);
+        this.registeredOverseers.add(overseer);
+        this.registeredOwners.add(owner);
+        this.registeredRenters.add(renter);
+
+    }
+
+    public void addNewAdmin(Admin admin){
+        this.registeredUsersAll.add(admin);
+    }
+    public void addNewOperator(Operator operator){
+        this.registeredUsersAll.add(operator);
+    }
+    public void addNewOverseer(Overseer overseer){
+        this.registeredUsersAll.add(overseer);
+    }
+    public void addNewOwner(Owner owner){
+        this.registeredUsersAll.add(owner);
+    }
+    public void addNewRenter(Renter renter){
+        this.registeredUsersAll.add(renter);
     }
 
 }

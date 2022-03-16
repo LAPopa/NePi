@@ -1,4 +1,4 @@
-package com.codecool.nepi.model;
+package com.codecool.nepi.model.loginmodel;
 
 
 import lombok.AllArgsConstructor;

@@ -11,8 +11,8 @@ import lombok.Setter;
 public class PropertyObject {
 
     private String streetName;
-    private int streetNumber;
-    private int apartmentNumber;
+    private String streetNumber;
+    private String apartmentNumber;
     private boolean accountCreated = false;
 
 

@@ -14,6 +14,7 @@ import {UtilitiesRegistration} from "./components/UtilitiesRegistration";
 import TestComponent from "./components/testingStuff/TestComponent";
 import TestFormService from "./components/testingStuff/TestFormService";
 import LoginSuccessTest from "./components/LoginSuccessTest";
+import UserRegistrationSuccessTest from "./components/UserRegistrationSuccessTest";
 
 function App() {
     return (
@@ -33,6 +34,7 @@ function App() {
                     <Route path={"/registration/utilities"} element={<UtilitiesRegistration/>}/>
                     <Route path={"/testing-route"} element={<><TestComponent/><TestFormService/></>}/>
                     <Route path={"/login-successful"} element={<LoginSuccessTest/>}/>
+                    <Route path={"/registration-successful"} element={<UserRegistrationSuccessTest/>}/>
 
                 </Routes>
                 <Footer/>

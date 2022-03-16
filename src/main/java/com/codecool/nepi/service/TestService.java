@@ -35,7 +35,7 @@ public class TestService {
         testModels.add(testModel);
     }
 
-    public void populateList(){
+    private void populateList(){
         this.testModels.add(new TestModel(1,"First entry", 13));
         this.testModels.add(new TestModel(2,"Second entry", 56));
         this.testModels.add(new TestModel(3,"A cat", 9));

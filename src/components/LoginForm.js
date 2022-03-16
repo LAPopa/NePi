@@ -2,13 +2,39 @@ import '../App.css';
 
 
 export function LoginForm() {
+
+    const LOGIN_FORM_URL = 'http://localhost:8080/';
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+
+        fetch(LOGIN_FORM_URL, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                email: formData.get('email'),
+                password: formData.get('password'),
+            }),
+        })
+            .then((response) => response.json())
+            .then(() => {
+                alert("Success!");
+            })
+    }
+
+
     return (
         <div className="block p-6 rounded-lg bg-white max-w-sm">
-            <form>
+            <form id="login-form" method="POST" onSubmit={onSubmit} action="/">
                 <div className="form-group mb-6">
                     <label htmlFor="exampleInputEmail2" className="form-label inline-block mb-2 text-gray-700">Email
                         address</label>
-                    <input type="email" className="form-control
+                    <input name="email" type="email" className="form-control
         block
         w-full
         px-3
@@ -28,7 +54,7 @@ export function LoginForm() {
                 <div className="form-group mb-6">
                     <label htmlFor="exampleInputPassword2"
                            className="form-label inline-block mb-2 text-gray-700">Password</label>
-                    <input type="password" className="form-control block
+                    <input name="password" type="password" className="form-control block
         w-full
         px-3
         py-1.5

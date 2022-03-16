@@ -1,4 +1,4 @@
-package com.codecool.nepi.model.users;
+package com.codecool.nepi.model.useraccounts;
 
 import com.codecool.nepi.model.propertymodels.PropertyObject;
 import com.codecool.nepi.model.types.UserType;
@@ -15,8 +15,8 @@ public class Owner extends User {
     private List<PropertyObject> currentProperties = new ArrayList<>();
 
 
-    public Owner(String userName, String firstName, String lastName, String phoneNumber, String email, PropertyObject registrationProperty) {
-        super(userName, firstName, lastName, phoneNumber, email);
+    public Owner(String firstName, String lastName, String phoneNumber, String email,String password, PropertyObject registrationProperty) {
+        super(firstName, lastName, phoneNumber, email, password);
         this.registrationProperty = registrationProperty;
         this.currentProperties.add(registrationProperty);
         setUserType(UserType.OWNER);

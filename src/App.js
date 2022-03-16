@@ -13,6 +13,7 @@ import {RenterRegistration} from "./components/RenterRegistration";
 import {UtilitiesRegistration} from "./components/UtilitiesRegistration";
 import TestComponent from "./components/testingStuff/TestComponent";
 import TestFormService from "./components/testingStuff/TestFormService";
+import LoginSuccessTest from "./components/LoginSuccessTest";
 
 function App() {
     return (
@@ -31,6 +32,7 @@ function App() {
                     <Route path={"/registration/tenants"} element={<RenterRegistration/>}/>
                     <Route path={"/registration/utilities"} element={<UtilitiesRegistration/>}/>
                     <Route path={"/testing-route"} element={<><TestComponent/><TestFormService/></>}/>
+                    <Route path={"/login-successful"} element={<LoginSuccessTest/>}/>
 
                 </Routes>
                 <Footer/>

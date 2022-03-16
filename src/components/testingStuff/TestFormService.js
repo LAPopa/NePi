@@ -25,14 +25,14 @@ function TestFormService() {
             }),
         })
             .then((response) => response.json())
-            .then((data) => {
+            .then(() => {
                 alert("Success!");
             })
     }
 
     return (
         <div>
-            <form id="test-form" method="POST" onSubmit={onSubmit}>
+            <form id="test-form" method="POST" onSubmit={onSubmit} action="/testing-route">
                 <div className="field padding-bottom--24">
                     <label htmlFor="id">ID</label>
                     <input type="text" name="id"/>

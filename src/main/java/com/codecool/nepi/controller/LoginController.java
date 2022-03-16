@@ -1,6 +1,7 @@
 package com.codecool.nepi.controller;
 
 
+import com.codecool.nepi.model.LoginModel;
 import com.codecool.nepi.model.TestModel;
 import com.codecool.nepi.model.useraccounts.User;
 import com.codecool.nepi.service.UserAccountsService;
@@ -22,19 +23,24 @@ public class LoginController {
     UserAccountsService userAccountsService = UserAccountsService.getInstance();
 
     @PostMapping("/")
-    public ResponseEntity<Void> validateLogin(@RequestBody String email, @RequestBody String password) {
+    public ResponseEntity<Void> validateLogin(@RequestBody LoginModel loginModel) {
         List<User> currentlyRegisteredAccounts = userAccountsService.getRegisteredUsers();
+        System.out.println(currentlyRegisteredAccounts.size());
+        ResponseEntity<Void> defaultResponse = new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         for (User account : currentlyRegisteredAccounts) {
-            if (Objects.equals(account.getEmail(), email) && Objects.equals(account.getPassword(), password)) {
+            System.out.println(account.toString());
+            if (Objects.equals(account.getEmail(), loginModel.getEmail()) && Objects.equals(account.getPassword(), loginModel.getPassword())) {
                 System.out.println("VALIDATED");
-                return ResponseEntity.status(HttpStatus.OK).location(URI.create("http://localhost:3000/")).build();
+                defaultResponse= ResponseEntity.status(HttpStatus.OK).location(URI.create("http://localhost:3000/login-successful")).build();
+                break;
             }
             else {
                 System.out.println("INVALID");
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+                System.out.println(loginModel.getEmail() + "  " + loginModel.getPassword());
+                defaultResponse= ResponseEntity.status(HttpStatus.FORBIDDEN).build();
             }
         }
-        return null;
+        return defaultResponse;
 
     }
 

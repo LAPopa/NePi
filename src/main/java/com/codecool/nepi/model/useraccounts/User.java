@@ -7,6 +7,7 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Getter
+
 public abstract class User {
 
     protected UUID id;
@@ -29,5 +30,18 @@ public abstract class User {
 
     protected void setUserType(UserType userType){
         this.userType = userType;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", userType=" + userType +
+                '}';
     }
 }

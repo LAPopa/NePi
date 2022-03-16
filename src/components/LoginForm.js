@@ -1,4 +1,5 @@
 import '../App.css';
+import React from "react";
 
 
 export function LoginForm() {
@@ -13,7 +14,7 @@ export function LoginForm() {
         fetch(LOGIN_FORM_URL, {
             method: "POST",
             headers: {
-                Accept: "application/json",
+                // Accept: "application/json",
                 "Content-type": "application/json",
             },
             body: JSON.stringify({
@@ -22,9 +23,11 @@ export function LoginForm() {
             }),
         })
             .then((response) => response.json())
+            .catch(function (){})
             .then(() => {
                 alert("Success!");
             })
+        window.location.reload();
     }
 
 
@@ -81,6 +84,11 @@ export function LoginForm() {
                         <a href="#!"
                            className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot
                             password?</a>
+                        <button
+                            className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            type="submit">
+                            Login
+                        </button>
                     </div>
 
 

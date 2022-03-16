@@ -15,16 +15,17 @@ function TestFormService() {
         fetch(TEST_POST_API_URL, {
             method: "POST",
             headers: {
-                Accept: "application/json",
+                // Accept: "application/json",
                 "Content-type": "application/json",
             },
             body: JSON.stringify({
                 id: formData.get('id'),
                 name: formData.get('name'),
-                magicNumber: formData.get('magicNumber'),
+                magicNumber: formData.get('magicNumber')
             }),
         })
             .then((response) => response.json())
+            .catch(function (){})
             .then(() => {
                 alert("Success!");
             })

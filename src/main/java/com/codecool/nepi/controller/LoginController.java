@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.net.URI;
 import java.util.List;
@@ -23,24 +24,25 @@ public class LoginController {
     UserAccountsService userAccountsService = UserAccountsService.getInstance();
 
     @PostMapping("/")
-    public ResponseEntity<Void> validateLogin(@RequestBody LoginModel loginModel) {
+    public RedirectView validateLogin(@RequestBody LoginModel loginModel) {
         List<User> currentlyRegisteredAccounts = userAccountsService.getRegisteredUsers();
         System.out.println(currentlyRegisteredAccounts.size());
-        ResponseEntity<Void> defaultResponse = new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+        RedirectView defaultRedirect = new RedirectView();
         for (User account : currentlyRegisteredAccounts) {
             System.out.println(account.toString());
             if (Objects.equals(account.getEmail(), loginModel.getEmail()) && Objects.equals(account.getPassword(), loginModel.getPassword())) {
                 System.out.println("VALIDATED");
-                defaultResponse= ResponseEntity.status(HttpStatus.OK).location(URI.create("http://localhost:3000/login-successful")).build();
+                defaultRedirect.setUrl("/login-successful");
                 break;
             }
             else {
                 System.out.println("INVALID");
                 System.out.println(loginModel.getEmail() + "  " + loginModel.getPassword());
-                defaultResponse= ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+                defaultRedirect.setUrl("/");
             }
         }
-        return defaultResponse;
+        System.out.println(defaultRedirect.getUrl());
+        return defaultRedirect;
 
     }
 

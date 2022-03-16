@@ -1,9 +1,10 @@
 import '../App.css';
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 
 export function LoginForm() {
-
+    let navigate = useNavigate();
     const LOGIN_FORM_URL = 'http://localhost:8080/';
 
     const onSubmit = (e) => {
@@ -25,9 +26,11 @@ export function LoginForm() {
             .then((response) => response.json())
             .catch(function (){})
             .then(() => {
-                alert("Success!");
+                // alert("Success!");
+                navigate('/login-successful')
             })
-        window.location.reload();
+        // window.location.reload();
+
     }
 
 

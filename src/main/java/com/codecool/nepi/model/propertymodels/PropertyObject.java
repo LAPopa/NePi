@@ -14,6 +14,7 @@ public class PropertyObject {
     private String streetNumber;
     private String apartmentNumber;
     private boolean accountCreated = false;
+    private String enrollmentId;
 
 
 

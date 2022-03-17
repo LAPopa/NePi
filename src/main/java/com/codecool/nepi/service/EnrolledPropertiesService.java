@@ -34,10 +34,11 @@ public class EnrolledPropertiesService {
     }
 
     private void populateList() {
-        this.currentlyEnrolledProperties.add(new PropertyObject("First Street", "5", "1",false));
-        this.currentlyEnrolledProperties.add(new PropertyObject("First Street", "5", "2",false));
-        this.currentlyEnrolledProperties.add(new PropertyObject("Second Street", "6", "1",false));
-        this.currentlyEnrolledProperties.add(new PropertyObject("Second Street", "6", "2",false));
+        this.currentlyEnrolledProperties.add(new PropertyObject("First Street", "5", "1",false,"ID123"));
+        this.currentlyEnrolledProperties.add(new PropertyObject("First Street", "5", "2",false,"ID456"));
+        this.currentlyEnrolledProperties.add(new PropertyObject("Second Street", "6", "1",false,"ID000"));
+        this.currentlyEnrolledProperties.add(new PropertyObject("Second Street", "6", "2",false,"ID111"));
+        this.currentlyEnrolledProperties.add(new PropertyObject("Test Street", "1", "1",false,"ID111"));
     }
 
 }

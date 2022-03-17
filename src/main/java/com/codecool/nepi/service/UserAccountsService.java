@@ -46,7 +46,7 @@ public class UserAccountsService {
         Operator operator = new Operator("Joe","McLane","0789123123","yep@mail.com","123","CD4545");
         Overseer overseer = new Overseer("Jack","Reaper","0799616616","evil@haha.com","123");
         Owner owner = new Owner("Richie", "Rich","0789123456","richguy@money.com","123",
-                new PropertyObject("First Street","5","1",true));
+                new PropertyObject("First Street","5","1",true,"ID123"));
         Renter renter = new Renter("Some","Guy","0123456789","irent@here.com","123","XY123");
         this.registeredUsersAll.add(admin);
         this.registeredUsersAll.add(operator);

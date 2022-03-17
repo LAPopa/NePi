@@ -20,4 +20,5 @@ public class OwnerRegistrationModel {
     private String streetNumber;
     private String apartment;
     private String password;
+    private String enrollmentId;
 }

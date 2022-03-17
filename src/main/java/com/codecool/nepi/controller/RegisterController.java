@@ -33,7 +33,8 @@ public class RegisterController {
             if (Objects.equals(account.getEmail(), ownerRegistrationModel.getEmail()) ||
                     (Objects.equals(account.getRegistrationProperty().getStreetName(), ownerRegistrationModel.getStreetName()) &&
                             Objects.equals(account.getRegistrationProperty().getStreetNumber(), ownerRegistrationModel.getStreetNumber()) &&
-                            Objects.equals(account.getRegistrationProperty().getApartmentNumber(), ownerRegistrationModel.getApartment()))) {
+                            Objects.equals(account.getRegistrationProperty().getApartmentNumber(), ownerRegistrationModel.getApartment()) &&
+                            Objects.equals(account.getRegistrationProperty().getEnrollmentId(), ownerRegistrationModel.getEnrollmentId()))) {
                 System.out.println("OWNER ACCOUNT INVALID");
             } else {
                 List<PropertyObject> enrolledProperties = enrolledPropertiesService.getCurrentlyEnrolledProperties();

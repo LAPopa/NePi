@@ -48,7 +48,6 @@ public class UserAccountsService {
         Owner owner = new Owner("Richie", "Rich","0789123456","richguy@money.com","123",
                 EnrolledPropertiesService.getInstance().getCurrentlyEnrolledProperties().get(0));
 
-        System.out.println("Owner at creation "+ owner);
 
         Renter renter = new Renter("Some","Guy","0123456789","irent@here.com","123","XY123");
 
@@ -56,7 +55,6 @@ public class UserAccountsService {
         owner.assignProperty(EnrolledPropertiesService.getInstance().getCurrentlyEnrolledProperties().get(6));
         owner.rentProperty(EnrolledPropertiesService.getInstance().getCurrentlyEnrolledProperties().get(6));
 
-        System.out.println("owner after adding and renting " + owner);
 
 
 

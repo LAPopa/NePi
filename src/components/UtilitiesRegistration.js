@@ -6,11 +6,46 @@ import {useNavigate} from "react-router-dom";
 
 export function UtilitiesRegistration() {
     let navigate = useNavigate();
+    const UTILITIES_REGISTRATION_URL = 'http://localhost:8080/registration/utilities';
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+
+        fetch(UTILITIES_REGISTRATION_URL, {
+            method: "POST",
+            headers: {
+                // Accept: "application/json",
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                email: formData.get('email'),
+                password: formData.get('password'),
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                phonenumber: formData.get('phonenumber'),
+                contractId: formData.get('contractId'),
+                companyName: formData.get('companyName'),
+
+            }),
+        })
+            .then((response) => response.json())
+            .catch(function () {
+            })
+            .then(() => {
+                // alert("Success!");
+                navigate('/registration-successful')
+            })
+        // window.location.reload();
+
+    }
 
     return (
         <div>
             <section className="h-screen bg-gray-100 bg-opacity-50">
-                <form className="container max-w-2xl mx-auto shadow-md md:w-3/4">
+                <form className="container max-w-2xl mx-auto shadow-md md:w-3/4"
+                      method="POST" onSubmit={onSubmit} action="/registration/utilities">
                     <div className="p-4 bg-gray-100 border-t-2 border-indigo-400 rounded-lg bg-opacity-5">
                         <div className="max-w-sm mx-auto md:w-full md:mx-0">
                             <div className="inline-flex items-center space-x-4">
@@ -33,7 +68,8 @@ export function UtilitiesRegistration() {
                                 <div className=" relative ">
                                     <input type="text" id="user-utilities-info-email"
                                            className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                           placeholder="Email"/>
+                                           placeholder="Email"
+                                    name="email"/>
                                 </div>
                             </div>
                         </div>
@@ -47,19 +83,22 @@ export function UtilitiesRegistration() {
                                     <div className=" relative ">
                                         <input type="text" id="user-utilities-info-first-name"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                               placeholder="First Name"/>
+                                               placeholder="First Name"
+                                        name="firstName"/>
                                     </div>
                                     <div className=" relative ">
                                         <input type="text" id="user-utilities-info-last-name"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                               placeholder="Last Name"/>
+                                               placeholder="Last Name"
+                                        name="lastName"/>
                                     </div>
                                 </div>
                                 <div>
                                     <div className=" relative ">
                                         <input type="text" id="user-utilities-info-phone"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                               placeholder="Phone number"/>
+                                               placeholder="Phone number"
+                                        name="phonenumber"/>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +115,8 @@ export function UtilitiesRegistration() {
                                     <div className=" relative ">
                                         <input type="text" id="user-utilities-info-company-name"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                               placeholder="Company Name"/>
+                                               placeholder="Company Name"
+                                        name="companyName"/>
 
                                     </div>
                                 </div>
@@ -95,7 +135,8 @@ export function UtilitiesRegistration() {
                                     <div className=" relative ">
                                         <input type="text" id="user-utilities-company-ID"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                               placeholder="ID"/>
+                                               placeholder="ID"
+                                        name="contractId"/>
 
                                     </div>
                                 </div>

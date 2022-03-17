@@ -118,12 +118,13 @@ public class RegisterController {
 
         System.out.println("current operators : " + currentlyRegisteredOperators);
 
+        System.out.println("op name " + operatorRegistrationModel.getFirstName() + " company name " + operatorRegistrationModel.getCompanyName() + " id " + operatorRegistrationModel.getContractId());
+
         for (Operator operator : currentlyRegisteredOperators) {
-            
-            if (Objects.equals(operator.getEmail(), operatorRegistrationModel.getEmail())){
+            System.out.println("current operator " + operator);
+            if (Objects.equals(operator.getEmail(), operatorRegistrationModel.getEmail())) {
                 System.out.println("OPERATOR REGISTRATION FAILED, DUPLICATE EMAIL");
             } else {
-
                 for (BaseCompany company : currentlyEnrolledCompanies) {
 
                     System.out.println("CHECKING NAMES " + company.getCompanyName() + " [] " + operatorRegistrationModel.getCompanyName());
@@ -134,8 +135,8 @@ public class RegisterController {
                             company.getIdAvailability().get(operatorRegistrationModel.getContractId()) == true));
 
                     if (Objects.equals(company.getCompanyName(), operatorRegistrationModel.getCompanyName()) &&
-                    company.getIdAvailability().containsKey(operatorRegistrationModel.getContractId()) &&
-                    company.getIdAvailability().get(operatorRegistrationModel.getContractId()) == true){
+                            company.getIdAvailability().containsKey(operatorRegistrationModel.getContractId()) &&
+                            company.getIdAvailability().get(operatorRegistrationModel.getContractId()) == true) {
                         Operator newOperator = new Operator(operatorRegistrationModel.getFirstName(), operatorRegistrationModel.getLastName(),
                                 operatorRegistrationModel.getPhonenumber(), operatorRegistrationModel.getEmail(), operatorRegistrationModel.getPassword(),
                                 operatorRegistrationModel.getContractId());

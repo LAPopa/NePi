@@ -1,8 +1,11 @@
 package com.codecool.nepi.model.useraccounts;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Getter
+@NoArgsConstructor
+@Getter @Setter
 public class Renter extends User {
 
     private String contractID;

@@ -3,7 +3,9 @@ package com.codecool.nepi.controller;
 
 import com.codecool.nepi.model.propertymodels.PropertyObject;
 import com.codecool.nepi.model.registrationmodels.OwnerRegistrationModel;
+import com.codecool.nepi.model.registrationmodels.RenterRegistrationModel;
 import com.codecool.nepi.model.useraccounts.Owner;
+import com.codecool.nepi.model.useraccounts.Renter;
 import com.codecool.nepi.model.useraccounts.User;
 import com.codecool.nepi.service.EnrolledPropertiesService;
 import com.codecool.nepi.service.UserAccountsService;
@@ -49,7 +51,9 @@ public class RegisterController {
                             ownerRegistrationModel.getEmail(), ownerRegistrationModel.getPassword(), foundProperty);
                     currentlyRegisteredOwners.add(newOwner);
                     currentlyRegisteredAccounts.add(newOwner);
+
                     System.out.println("OWNER REGISTERED SUCCESSFULLY");
+
                     for (Owner owner : currentlyRegisteredOwners) {
                         System.out.println(owner);
                     }
@@ -57,6 +61,44 @@ public class RegisterController {
                 }
             }
 
+        }
+
+    }
+
+    @PostMapping("/registration/tenants")
+    public void registerNewTenant(@RequestBody RenterRegistrationModel renterRegistrationModel){
+
+        List<User> currentlyRegisteredAccounts = userAccountsService.getRegisteredUsersAll();
+        List<Renter> currentlyRegisteredRenters = userAccountsService.getRegisteredRenters();
+
+        for (Renter renter : currentlyRegisteredRenters){
+            if (Objects.equals(renter.getEmail(), renterRegistrationModel.getEmail())) {
+                System.out.println("RENTER registration failed, email already taken");
+            }
+        }
+
+        for (Owner owner : userAccountsService.getRegisteredOwners()){
+            for (PropertyObject propertyObject : owner.getCurrentProperties()) {
+
+                System.out.println("Checking property : " + propertyObject);
+                System.out.println("is rented? " + !propertyObject.isRented());
+                System.out.println("Checking ID equals " + propertyObject.getEnrollmentId()+ "[   ]" + renterRegistrationModel.getContractId());
+                System.out.println("check matching " + Objects.equals(propertyObject.getEnrollmentId(), renterRegistrationModel.getContractId()));
+                System.out.println("CHECK ALL MATCH " + (!propertyObject.isRented() && Objects.equals(propertyObject.getEnrollmentId(), renterRegistrationModel.getContractId())));
+
+                if ((propertyObject.isRented() == false) && Objects.equals(propertyObject.getEnrollmentId(), renterRegistrationModel.getContractId())) {
+                    Renter newRenter = new Renter(renterRegistrationModel.getFirstName(), renterRegistrationModel.getLastName(), renterRegistrationModel.getPhonenumber(),
+                            renterRegistrationModel.getEmail(), renterRegistrationModel.getPassword(), renterRegistrationModel.getContractId());
+                    currentlyRegisteredRenters.add(newRenter);
+                    currentlyRegisteredAccounts.add(newRenter);
+                    propertyObject.setRented(true);
+
+                    System.out.println("Renter created " + newRenter);
+                    System.out.println("Current renters" + currentlyRegisteredRenters);
+                    System.out.println("Owner's properties list : " + owner.getCurrentProperties());
+                    break;
+                }
+            }
         }
 
     }

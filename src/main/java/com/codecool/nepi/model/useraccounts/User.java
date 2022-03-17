@@ -3,10 +3,13 @@ package com.codecool.nepi.model.useraccounts;
 
 import com.codecool.nepi.model.types.UserType;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.UUID;
 
-@Getter
+@NoArgsConstructor
+@Getter @Setter
 
 public abstract class User {
 

@@ -15,11 +15,19 @@ public class PropertyObject {
     private String apartmentNumber;
     private boolean accountCreated = false;
     private String enrollmentId;
+    private boolean isRented = false;
 
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        return "PropertyObject{" +
+                "streetName='" + streetName + '\'' +
+                ", streetNumber='" + streetNumber + '\'' +
+                ", apartmentNumber='" + apartmentNumber + '\'' +
+                ", accountCreated=" + accountCreated +
+                ", enrollmentId='" + enrollmentId + '\'' +
+                ", isRented=" + isRented +
+                '}';
+    }
 }

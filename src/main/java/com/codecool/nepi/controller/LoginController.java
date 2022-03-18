@@ -26,9 +26,11 @@ public class LoginController {
         for (User account : currentlyRegisteredAccounts) {
             if (Objects.equals(account.getEmail(), loginModel.getEmail()) && Objects.equals(account.getPassword(), loginModel.getPassword())) {
                 defaultRedirect.setUrl("/login-successful");
+                System.out.println("LOGIN SUCCESSFUL for ACCOUNT TYPE " + account.getClass() + " User " + account.getFirstName()+account.getLastName());
                 break;
             }
             else {
+                System.out.println("LOGIN FAILED");
                 defaultRedirect.setUrl("/");
             }
         }

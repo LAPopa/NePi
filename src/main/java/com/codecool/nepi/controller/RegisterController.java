@@ -83,11 +83,12 @@ public class RegisterController {
                 for (Owner owner : userAccountsService.getRegisteredOwners()) {
                     for (PropertyObject propertyObject : owner.getCurrentProperties()) {
 
-//                        System.out.println("Checking property : " + propertyObject);
-//                        System.out.println("is rented? " + !propertyObject.isRented());
-//                        System.out.println("Checking ID equals " + propertyObject.getEnrollmentId() + "[   ]" + renterRegistrationModel.getContractId());
-//                        System.out.println("check matching " + Objects.equals(propertyObject.getEnrollmentId(), renterRegistrationModel.getContractId()));
-//                        System.out.println("CHECK ALL MATCH " + (!propertyObject.isRented() && Objects.equals(propertyObject.getEnrollmentId(), renterRegistrationModel.getContractId())));
+                        System.out.println("Checking property : " + propertyObject);
+                        System.out.println("is rented? " + !propertyObject.isRented());
+                        System.out.println("Checking ID equals " + propertyObject.getEnrollmentId() + "[   ]" + renterRegistrationModel.getContractId());
+                        System.out.println("check matching " + Objects.equals(propertyObject.getEnrollmentId(), renterRegistrationModel.getContractId()));
+                        System.out.println("CHECK ALL MATCH " + (!propertyObject.isRented() &&
+                        Objects.equals(propertyObject.getEnrollmentId(), renterRegistrationModel.getContractId())));
 
                         if ((propertyObject.isRented() == false) && Objects.equals(propertyObject.getEnrollmentId(), renterRegistrationModel.getContractId())) {
                             Renter newRenter = new Renter(renterRegistrationModel.getFirstName(), renterRegistrationModel.getLastName(), renterRegistrationModel.getPhonenumber(),
@@ -96,9 +97,9 @@ public class RegisterController {
                             currentlyRegisteredAccounts.add(newRenter);
                             propertyObject.setRented(true);
 
-//                            System.out.println("Renter created " + newRenter);
-//                            System.out.println("Current renters" + currentlyRegisteredRenters);
-//                            System.out.println("Owner's properties list : " + owner.getCurrentProperties());
+                            System.out.println("Renter created " + newRenter);
+                            System.out.println("Current renters" + currentlyRegisteredRenters);
+                            System.out.println("Owner's properties list : " + owner.getCurrentProperties());
                             break;
                         }
                     }
@@ -118,7 +119,6 @@ public class RegisterController {
 
         System.out.println("current operators : " + currentlyRegisteredOperators);
 
-        System.out.println("op name " + operatorRegistrationModel.getFirstName() + " company name " + operatorRegistrationModel.getCompanyName() + " id " + operatorRegistrationModel.getContractId());
 
         for (Operator operator : currentlyRegisteredOperators) {
             System.out.println("current operator " + operator);

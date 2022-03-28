@@ -2,17 +2,27 @@ package com.codecool.nepi.model.useraccounts;
 
 import com.codecool.nepi.model.propertymodels.PropertyObject;
 import com.codecool.nepi.model.types.UserType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Owner extends User {
 
+    @OneToOne
     private PropertyObject registrationProperty;
+    @OneToMany
     private List<PropertyObject> currentProperties = new ArrayList<>();
 
 

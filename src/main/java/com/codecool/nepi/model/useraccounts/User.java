@@ -6,14 +6,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.UUID;
 
 @NoArgsConstructor
 @Getter @Setter
-
+@Entity
 public abstract class User {
 
-    protected UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected Long id;
     protected String firstName;
     protected String lastName;
     protected String phoneNumber;
@@ -28,7 +34,6 @@ public abstract class User {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
-        this.id = UUID.randomUUID();
     }
 
     protected void setUserType(UserType userType){

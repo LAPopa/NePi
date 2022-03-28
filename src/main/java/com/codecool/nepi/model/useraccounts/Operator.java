@@ -1,7 +1,15 @@
 package com.codecool.nepi.model.useraccounts;
 
 import com.codecool.nepi.model.types.UserType;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+
+
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Operator extends User {
 
     private String contractID;

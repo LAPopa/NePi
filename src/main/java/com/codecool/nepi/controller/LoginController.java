@@ -20,21 +20,8 @@ public class LoginController {
     UserAccountsService userAccountsService = UserAccountsService.getInstance();
 
     @PostMapping("/")
-    public RedirectView validateLogin(@RequestBody LoginModel loginModel) {
-        List<User> currentlyRegisteredAccounts = userAccountsService.getRegisteredUsersAll();
-        RedirectView defaultRedirect = new RedirectView();
-        for (User account : currentlyRegisteredAccounts) {
-            if (Objects.equals(account.getEmail(), loginModel.getEmail()) && Objects.equals(account.getPassword(), loginModel.getPassword())) {
-                defaultRedirect.setUrl("/login-successful");
-                System.out.println("LOGIN SUCCESSFUL for ACCOUNT TYPE " + account.getClass() + " User " + account.getFirstName()+account.getLastName());
-                break;
-            }
-            else {
-                System.out.println("LOGIN FAILED");
-                defaultRedirect.setUrl("/");
-            }
-        }
-        return defaultRedirect;
+    public void validateLogin(@RequestBody LoginModel loginModel) {
+        userAccountsService.validateLogin(loginModel);
 
     }
 

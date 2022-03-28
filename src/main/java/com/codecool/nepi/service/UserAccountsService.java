@@ -1,13 +1,16 @@
 package com.codecool.nepi.service;
 
 
+import com.codecool.nepi.model.loginmodel.LoginModel;
 import com.codecool.nepi.model.propertymodels.PropertyObject;
 import com.codecool.nepi.model.useraccounts.*;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Getter
@@ -37,6 +40,21 @@ public class UserAccountsService {
 
         }
         return instance;
+    }
+
+
+    public void validateLogin(LoginModel loginModel) {
+        List<User> currentlyRegisteredAccounts = getRegisteredUsersAll();
+        for (User account : currentlyRegisteredAccounts) {
+            if (Objects.equals(account.getEmail(), loginModel.getEmail()) && Objects.equals(account.getPassword(), loginModel.getPassword())) {
+                System.out.println("LOGIN SUCCESSFUL for ACCOUNT TYPE " + account.getClass() + " User " + account.getFirstName()+account.getLastName());
+                break;
+            }
+            else {
+                System.out.println("LOGIN FAILED");
+            }
+        }
+
     }
 
     //TODO add new user - ties in with RegistrationService?

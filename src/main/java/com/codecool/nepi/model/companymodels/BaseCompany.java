@@ -10,28 +10,29 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
-@Entity
+//@Entity
 @NoArgsConstructor
 public class BaseCompany {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String companyName;
     private CompanyType companyType;
     private String description;
-    @Convert(converter = StringListConverter.class)
+//    @Convert(converter = StringListConverter.class)
     private List<String> allocatedIds;
 
-    @ElementCollection
-    @CollectionTable(name = "id_availability",
-    joinColumns = {@JoinColumn(name ="company_id", referencedColumnName="id")})
-    @MapKeyColumn(name="allocated_id")
-    @Column(name="available?")
-    private HashMap<String, Boolean> idAvailability;
+//    @ElementCollection
+//    @CollectionTable(name = "id_availability",
+//    joinColumns = {@JoinColumn(name ="company_id", referencedColumnName="id")})
+//    @MapKeyColumn(name="allocated_id")
+//    @Column(name="available?")
+    private Map<String, Boolean> idAvailability;
 
 
     public BaseCompany(String companyName, CompanyType companyType, String description) {

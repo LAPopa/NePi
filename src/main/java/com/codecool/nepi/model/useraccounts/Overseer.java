@@ -5,11 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "overseers")
+//@AllArgsConstructor
 public class Overseer extends User {
     public Overseer(String firstName, String lastName, String phoneNumber, String email, String password) {
         super(firstName, lastName, phoneNumber, email, password);

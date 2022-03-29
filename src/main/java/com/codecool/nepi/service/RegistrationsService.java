@@ -24,7 +24,8 @@ import java.util.Optional;
 @Component
 public class RegistrationsService {
 
-    UserAccountsService userAccountsService = UserAccountsService.getInstance();
+//    UserAccountsService userAccountsService = UserAccountsService.getInstance();
+    UserAccountsService userAccountsService;
     EnrolledPropertiesService enrolledPropertiesService = EnrolledPropertiesService.getInstance();
     EnrolledCompaniesService enrolledCompaniesService = EnrolledCompaniesService.getInstance();
     private static RegistrationsService instance = null;

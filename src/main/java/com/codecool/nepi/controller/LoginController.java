@@ -17,7 +17,9 @@ import java.util.Objects;
 @RestController
 public class LoginController {
 
-    UserAccountsService userAccountsService = UserAccountsService.getInstance();
+    UserAccountsService userAccountsService;
+
+    public LoginController(UserAccountsService userAccountsService) {this.userAccountsService = userAccountsService;}
 
     @PostMapping("/")
     public void validateLogin(@RequestBody LoginModel loginModel) {

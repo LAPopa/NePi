@@ -26,7 +26,14 @@ public class PropertyObject {
     private String enrollmentId;
     private boolean isRented = false;
 
-
+    public PropertyObject(String streetName, String streetNumber, String apartmentNumber, boolean accountCreated, String enrollmentId, boolean isRented) {
+        this.streetName = streetName;
+        this.streetNumber = streetNumber;
+        this.apartmentNumber = apartmentNumber;
+        this.accountCreated = accountCreated;
+        this.enrollmentId = enrollmentId;
+        this.isRented = isRented;
+    }
 
     @Override
     public String toString() {

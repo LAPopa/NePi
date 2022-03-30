@@ -1,5 +1,6 @@
 package com.codecool.nepi;
 
+import com.codecool.nepi.model.propertymodels.PropertyObject;
 import com.codecool.nepi.model.useraccounts.Admin;
 import com.codecool.nepi.model.useraccounts.Overseer;
 import com.codecool.nepi.repository.*;
@@ -22,10 +23,15 @@ public class NepiApplication {
 
     @Bean
     public CommandLineRunner testAdminLogin(AdminRepository adminRepository, OverseerRepository overseerRepository,
-                                            OperatorRepository operatorRepository, OwnerRepository ownerRepository, RenterRepository renterRepository) {
+                                            OperatorRepository operatorRepository, OwnerRepository ownerRepository, RenterRepository renterRepository,
+                                            PropertyObjectRepository propertyObjectRepository) {
         return (args) -> {
 //            adminRepository.save(new Admin("Mimi", "Moe", "01234", "test@mail.com", "1234"));
 //            overseerRepository.save(new Overseer("Joe","the Overseer","1234","overseer@mail.com","1234"));
+//            propertyObjectRepository.save(new PropertyObject("First Street", "1", "1", false, "AP1", false));
+//            propertyObjectRepository.save(new PropertyObject("First Street", "1", "2", false, "AP2", false));
+//            propertyObjectRepository.save(new PropertyObject("Second Street", "1", "1", false, "AP3", false));
+//            propertyObjectRepository.save(new PropertyObject("Second Street", "1", "2", false, "AP4", false));
 
 
             log.info("Current admin accounts ::");

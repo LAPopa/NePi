@@ -14,24 +14,24 @@ import java.util.Map;
 
 @Getter
 @Setter
-//@Entity
+@Entity
 @NoArgsConstructor
 public class BaseCompany {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String companyName;
     private CompanyType companyType;
     private String description;
-//    @Convert(converter = StringListConverter.class)
+    @Convert(converter = StringListConverter.class)
     private List<String> allocatedIds;
 
-//    @ElementCollection
-//    @CollectionTable(name = "id_availability",
-//    joinColumns = {@JoinColumn(name ="company_id", referencedColumnName="id")})
-//    @MapKeyColumn(name="allocated_id")
-//    @Column(name="available?")
+    @ElementCollection
+    @CollectionTable(name = "id_availability",
+    joinColumns = {@JoinColumn(name ="company_id", referencedColumnName="id")})
+    @MapKeyColumn(name="allocated_id")
+    @Column(name="availability")
     private Map<String, Boolean> idAvailability;
 
 

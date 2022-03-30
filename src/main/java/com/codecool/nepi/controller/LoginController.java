@@ -23,7 +23,12 @@ public class LoginController {
 
     @PostMapping("/")
     public void validateLogin(@RequestBody LoginModel loginModel) {
-        userAccountsService.validateLogin(loginModel);
+        if (userAccountsService.validateLogin(loginModel))
+        {
+            System.out.println("Login successful for the following credentials : " + loginModel.getEmail() + "    " + loginModel.getPassword());
+        } else {
+            System.out.println("No account with the following credentials : " + loginModel.getEmail() + "    " + loginModel.getPassword());
+        }
 
     }
 

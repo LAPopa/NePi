@@ -1,12 +1,11 @@
 package com.codecool.nepi.repository;
 
 import com.codecool.nepi.model.useraccounts.Admin;
-import com.codecool.nepi.model.useraccounts.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface LoginRepository extends JpaRepository<Admin,Long> {
+public interface AdminRepository extends JpaRepository<Admin,Long> {
 
 
 

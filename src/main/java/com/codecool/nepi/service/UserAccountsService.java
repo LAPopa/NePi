@@ -2,17 +2,13 @@ package com.codecool.nepi.service;
 
 
 import com.codecool.nepi.model.loginmodel.LoginModel;
-import com.codecool.nepi.model.propertymodels.PropertyObject;
 import com.codecool.nepi.model.useraccounts.*;
-import com.codecool.nepi.repository.LoginRepository;
+import com.codecool.nepi.repository.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @Getter
@@ -24,53 +20,42 @@ public class UserAccountsService {
     private List<Overseer> registeredOverseers;
     private List<Owner> registeredOwners;
     private List<Renter> registeredRenters;
-//    private static UserAccountsService instance = null;
-    private LoginRepository loginRepository;
+    private AdminRepository adminRepository;
+    private OperatorRepository operatorRepository;
+    private OverseerRepository overseerRepository;
+    private OwnerRepository ownerRepository;
+    private RenterRepository renterRepository;
 
-    public UserAccountsService(LoginRepository loginRepository) {
+    public UserAccountsService(AdminRepository adminRepository, OperatorRepository operatorRepository, OverseerRepository overseerRepository,
+                               OwnerRepository ownerRepository, RenterRepository renterRepository) {
         this.registeredUsersAll = new ArrayList<>();
         this.registeredAdmins = new ArrayList<>();
         this.registeredOperators = new ArrayList<>();
         this.registeredOverseers = new ArrayList<>();
-        this. registeredOwners = new ArrayList<>();
+        this.registeredOwners = new ArrayList<>();
         this.registeredRenters = new ArrayList<>();
-        this.loginRepository = loginRepository;
-//        populateList();
+        this.adminRepository = adminRepository;
+        this.operatorRepository = operatorRepository;
+        this.overseerRepository = overseerRepository;
+        this.ownerRepository = ownerRepository;
+        this.renterRepository = renterRepository;
     }
 
-//    public static UserAccountsService getInstance(){
-//        if(instance == null) {
-//            instance = new UserAccountsService();
-//
-//        }
-//        return instance;
-//    }
 
-    public void validateLogin(LoginModel loginModel){
+    public boolean validateLogin(LoginModel loginModel) {
         String email = loginModel.getEmail();
         String password = loginModel.getPassword();
-        Admin admin = loginRepository.checkAdminCredentials(email,password);
-        System.out.println("found admin with name : " + admin.getFirstName() + " " + admin.getLastName() +
-                "email : " + admin.getEmail() + " password : " +admin.getPassword());
 
+        return (adminRepository.checkAdminCredentials(email, password) != null ||
+                overseerRepository.checkOverseerCredentials(email, password) != null ||
+                operatorRepository.checkOperatorCredentials(email, password) != null ||
+                ownerRepository.checkOwnerCredentials(email, password) != null ||
+                renterRepository.checkOwnerCredentials(email, password) != null
+        );
 
 
     }
 
-
-//    public void validateLogin(LoginModel loginModel) {
-//        List<User> currentlyRegisteredAccounts = getRegisteredUsersAll();
-//        for (User account : currentlyRegisteredAccounts) {
-//            if (Objects.equals(account.getEmail(), loginModel.getEmail()) && Objects.equals(account.getPassword(), loginModel.getPassword())) {
-//                System.out.println("LOGIN SUCCESSFUL for ACCOUNT TYPE " + account.getClass() + " User " + account.getFirstName()+account.getLastName());
-//                break;
-//            }
-//            else {
-//                System.out.println("LOGIN FAILED");
-//            }
-//        }
-//
-//    }
 
     //TODO add new user - ties in with RegistrationService?
 

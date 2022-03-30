@@ -9,8 +9,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@NoArgsConstructor
 @Table(name = "overseers")
+@NoArgsConstructor
 //@AllArgsConstructor
 public class Overseer extends User {
     public Overseer(String firstName, String lastName, String phoneNumber, String email, String password) {

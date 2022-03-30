@@ -23,6 +23,7 @@ public class PropertyObject {
     private String streetNumber;
     private String apartmentNumber;
     private boolean accountCreated = false;
+    @Column(unique = true)
     private String enrollmentId;
     private boolean isRented = false;
 

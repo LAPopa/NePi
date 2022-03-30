@@ -36,10 +36,10 @@ public class RegisterController {
     }
 
 
-    @PostMapping("/registration/utilities")
-    public void registerNewOperator(@RequestBody OperatorRegistrationModel operatorRegistrationModel) {
-        registrationsService.registerNewOperator(operatorRegistrationModel);
-    }
+//    @PostMapping("/registration/utilities")
+//    public void registerNewOperator(@RequestBody OperatorRegistrationModel operatorRegistrationModel) {
+//        registrationsService.registerNewOperator(operatorRegistrationModel);
+//    }
 
 
 }

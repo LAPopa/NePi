@@ -6,6 +6,7 @@ import com.codecool.nepi.model.types.CompanyType;
 import com.codecool.nepi.model.useraccounts.Admin;
 import com.codecool.nepi.model.useraccounts.Overseer;
 import com.codecool.nepi.model.useraccounts.Owner;
+import com.codecool.nepi.model.useraccounts.Renter;
 import com.codecool.nepi.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,12 +41,14 @@ public class NepiApplication {
 //            propertyObjectRepository.save(new PropertyObject("Second Street", "1", "1", false, "AP3", false));
 //            propertyObjectRepository.save(new PropertyObject("Second Street", "1", "2", false, "AP4", false));
 //            baseCompanyRepository.save(new BaseCompany("Waterworks", CompanyType.WATER, "We solve all your water issues !"));
-            PropertyObject testPropertyObject = propertyObjectRepository.getPropertyObjectByEnrollmentId("AP1");
-            Owner testOwner = new Owner("Ala","bala","123","owner@mail.com","123",testPropertyObject);
+            PropertyObject testPropertyObject = propertyObjectRepository.getPropertyObjectByEnrollmentId("AP2");
+            Owner testOwner = new Owner("Trilu","lilu","123","owner2@mail.com","123",testPropertyObject);
 //            testPropertyObject.setAccountCreated(true);
-            testPropertyObject.setRented(true);
             ownerRepository.save(testOwner);
+            Renter testRenter = new Renter("guy","someguy","123","renter@mail.com","123","AP2");
+            testOwner.rentProperty(testPropertyObject);
             propertyObjectRepository.save(testPropertyObject);
+            renterRepository.save(testRenter);
             log.info("Current admin accounts ::");
             for (Admin admin : adminRepository.findAll()) {
                 log.info(admin.toString());

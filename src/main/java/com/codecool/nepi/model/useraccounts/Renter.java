@@ -21,4 +21,18 @@ public class Renter extends User {
         super(firstName, lastName, phoneNumber, email, password);
         this.contractID = contractID;
     }
+
+    @Override
+    public String toString() {
+        return "Renter{" +
+                "contractID='" + contractID + '\'' +
+                ", id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", userType=" + userType +
+                '}';
+    }
 }

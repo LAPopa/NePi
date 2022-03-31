@@ -1,20 +1,14 @@
 package com.codecool.nepi.controller;
 
 
-import com.codecool.nepi.model.companymodels.BaseCompany;
 import com.codecool.nepi.model.registrationmodels.OwnerRegistrationModel;
 import com.codecool.nepi.model.registrationmodels.RenterRegistrationModel;
 import com.codecool.nepi.model.registrationmodels.OperatorRegistrationModel;
-import com.codecool.nepi.model.useraccounts.Operator;
-import com.codecool.nepi.model.useraccounts.User;
 import com.codecool.nepi.service.RegistrationsService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-import java.util.Objects;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
@@ -34,7 +28,7 @@ public class RegisterController {
 
     @PostMapping("/registration/tenants")
     public void registerNewRenter(@RequestBody RenterRegistrationModel renterRegistrationModel) {
-        registrationsService.registerNewTenant(renterRegistrationModel);
+        registrationsService.registerNewRenter(renterRegistrationModel);
     }
 
 

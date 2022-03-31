@@ -1,26 +1,20 @@
 package com.codecool.nepi.service;
 
 
-import com.codecool.nepi.model.companymodels.BaseCompany;
 import com.codecool.nepi.model.propertymodels.PropertyObject;
 import com.codecool.nepi.model.registrationmodels.OperatorRegistrationModel;
 import com.codecool.nepi.model.registrationmodels.OwnerRegistrationModel;
 import com.codecool.nepi.model.registrationmodels.RenterRegistrationModel;
 import com.codecool.nepi.model.types.UserType;
-import com.codecool.nepi.model.useraccounts.Operator;
 import com.codecool.nepi.model.useraccounts.Owner;
 import com.codecool.nepi.model.useraccounts.Renter;
-import com.codecool.nepi.model.useraccounts.User;
 import com.codecool.nepi.repository.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.aspectj.apache.bcel.generic.Type;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Getter
@@ -62,7 +56,23 @@ public class RegistrationsService {
 
     }
 
-    public void registerNewTenant(RenterRegistrationModel renterRegistrationModel) {
+    public void registerNewRenter(RenterRegistrationModel renterRegistrationModel) {
+
+        if (userAccountsService.checkValidEmail(UserType.RENTER, renterRegistrationModel.getEmail()) &&
+                propertyObjectRepository.checkIfAccountWasCreated(renterRegistrationModel.getContractId()) &&
+                !propertyObjectRepository.checkIsRented(renterRegistrationModel.getContractId())) {
+
+            PropertyObject currentProperty = propertyObjectRepository.getPropertyObjectByEnrollmentId(renterRegistrationModel.getContractId());
+            Renter newRenter = new Renter(renterRegistrationModel.getFirstName(),renterRegistrationModel.getLastName(),
+                    renterRegistrationModel.getPhonenumber(), renterRegistrationModel.getEmail(), renterRegistrationModel.getPassword(),
+                    renterRegistrationModel.getContractId());
+
+            System.out.println("RENTER  " + newRenter.toString());
+
+            currentProperty.setRented(true);
+            propertyObjectRepository.save(currentProperty);
+            renterRepository.save(newRenter);
+        }
 
 //        List<User> currentlyRegisteredAccounts = userAccountsService.getRegisteredUsersAll();
 //        List<Renter> currentlyRegisteredRenters = userAccountsService.getRegisteredRenters();

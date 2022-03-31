@@ -22,7 +22,9 @@ import java.util.Objects;
 
 public class RegisterController {
 
-    RegistrationsService registrationsService = RegistrationsService.getInstance();
+    RegistrationsService registrationsService;
+
+    public RegisterController(RegistrationsService registrationsService){this.registrationsService = registrationsService;}
 
     @PostMapping("/registration/owners")
     public void registerNewOwner(@RequestBody OwnerRegistrationModel ownerRegistrationModel) {
@@ -36,10 +38,10 @@ public class RegisterController {
     }
 
 
-//    @PostMapping("/registration/utilities")
-//    public void registerNewOperator(@RequestBody OperatorRegistrationModel operatorRegistrationModel) {
-//        registrationsService.registerNewOperator(operatorRegistrationModel);
-//    }
+    @PostMapping("/registration/utilities")
+    public void registerNewOperator(@RequestBody OperatorRegistrationModel operatorRegistrationModel) {
+        registrationsService.registerNewOperator(operatorRegistrationModel);
+    }
 
 
 }

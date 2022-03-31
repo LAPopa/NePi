@@ -2,8 +2,10 @@ package com.codecool.nepi.service;
 
 
 import com.codecool.nepi.model.loginmodel.LoginModel;
+import com.codecool.nepi.model.types.UserType;
 import com.codecool.nepi.model.useraccounts.*;
 import com.codecool.nepi.repository.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 
@@ -12,34 +14,14 @@ import java.util.List;
 
 @Service
 @Getter
+@AllArgsConstructor
 public class UserAccountsService {
 
-    private List<User> registeredUsersAll;
-    private List<Admin> registeredAdmins;
-    private List<Operator> registeredOperators;
-    private List<Overseer> registeredOverseers;
-    private List<Owner> registeredOwners;
-    private List<Renter> registeredRenters;
     private AdminRepository adminRepository;
     private OperatorRepository operatorRepository;
     private OverseerRepository overseerRepository;
     private OwnerRepository ownerRepository;
     private RenterRepository renterRepository;
-
-    public UserAccountsService(AdminRepository adminRepository, OperatorRepository operatorRepository, OverseerRepository overseerRepository,
-                               OwnerRepository ownerRepository, RenterRepository renterRepository) {
-        this.registeredUsersAll = new ArrayList<>();
-        this.registeredAdmins = new ArrayList<>();
-        this.registeredOperators = new ArrayList<>();
-        this.registeredOverseers = new ArrayList<>();
-        this.registeredOwners = new ArrayList<>();
-        this.registeredRenters = new ArrayList<>();
-        this.adminRepository = adminRepository;
-        this.operatorRepository = operatorRepository;
-        this.overseerRepository = overseerRepository;
-        this.ownerRepository = ownerRepository;
-        this.renterRepository = renterRepository;
-    }
 
 
     public boolean validateLogin(LoginModel loginModel) {
@@ -53,6 +35,29 @@ public class UserAccountsService {
                 renterRepository.checkOwnerCredentials(email, password) != null
         );
 
+    }
+
+    public boolean checkValidEmail(UserType userType, String email) {
+        switch (userType) {
+            case OWNER -> {
+
+                return (ownerRepository.findByEmail(email) == null);
+            }
+            case RENTER -> {
+                return (renterRepository.findByEmail(email) == null);
+            }
+            case OVERSEER -> {
+                return (overseerRepository.findByEmail(email) == null);
+            }
+            case OPERATOR -> {
+                return (operatorRepository.findByEmail(email) == null);
+            }
+            case ADMIN -> {
+                return (adminRepository.findByEmail(email) == null);
+            }
+            default -> {return false;}
+
+        }
 
     }
 

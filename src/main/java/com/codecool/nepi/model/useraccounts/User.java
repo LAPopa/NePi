@@ -2,6 +2,7 @@ package com.codecool.nepi.model.useraccounts;
 
 
 import com.codecool.nepi.model.types.UserType;
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,10 +18,15 @@ public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
+    @NotNull
     protected String firstName;
+    @NotNull
     protected String lastName;
+    @NotNull
     protected String phoneNumber;
+    @NotNull
     protected String email;
+    @NotNull
     protected String password;
     protected UserType userType;
 

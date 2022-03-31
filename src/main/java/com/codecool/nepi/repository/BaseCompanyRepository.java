@@ -23,6 +23,9 @@ public interface BaseCompanyRepository extends JpaRepository<BaseCompany, Long> 
     @Query("SELECT bc FROM BaseCompany bc WHERE bc.companyName = :company_name")
     BaseCompany findByCompanyName(@Param("company_name") String companyName);
 
+    @Query("SELECT bc from BaseCompany bc WHERE bc.allocatedIds like concat('%', :aid, '%') ")
+    BaseCompany findByAllocatedId(@Param("aid") String allocatedId);
+
 
 
 

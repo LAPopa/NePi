@@ -19,4 +19,18 @@ public class Operator extends User {
         this.contractID = contractID;
         setUserType(UserType.OPERATOR);
     }
+
+    @Override
+    public String toString() {
+        return "Operator{" +
+                "contractID='" + contractID + '\'' +
+                ", id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", userType=" + userType +
+                '}';
+    }
 }

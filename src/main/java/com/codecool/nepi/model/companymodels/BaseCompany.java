@@ -15,6 +15,7 @@ import java.util.Map;
 @Getter
 @Setter
 @Entity
+@Table(name = "basecompany")
 @NoArgsConstructor
 public class BaseCompany {
 
@@ -25,8 +26,8 @@ public class BaseCompany {
     private String companyName;
     private CompanyType companyType;
     private String description;
-    @Convert(converter = StringListConverter.class)
-    private List<String> allocatedIds;
+//    @Convert(converter = StringListConverter.class)
+    private String allocatedIds;
 
 
 
@@ -35,11 +36,13 @@ public class BaseCompany {
         this.companyName = companyName;
         this.companyType = companyType;
         this.description = description;
-        this.allocatedIds = new ArrayList<>();
+        this.allocatedIds = "";
     }
 
     public void addId(String id) {
-        this.allocatedIds.add(id);
+        if (this.allocatedIds.length() != 0) {
+            this.allocatedIds = this.allocatedIds + ";" + id;
+        } else this.allocatedIds = id;
     }
 
 

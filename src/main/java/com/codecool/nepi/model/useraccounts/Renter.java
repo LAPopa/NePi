@@ -12,7 +12,6 @@ import javax.persistence.Table;
 @Getter @Setter
 @Entity
 @Table(name = "renters")
-//@AllArgsConstructor
 public class Renter extends User {
 
     private String contractID;

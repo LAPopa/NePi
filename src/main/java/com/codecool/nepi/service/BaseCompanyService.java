@@ -18,7 +18,6 @@ import java.util.List;
 public class BaseCompanyService {
 
     private List<BaseCompany> enrolledCompanies;
-//    private static BaseCompanyService instance = null;
     private BaseCompanyRepository baseCompanyRepository;
     @PersistenceContext
     private EntityManager entityManager;
@@ -28,17 +27,9 @@ public class BaseCompanyService {
     public BaseCompanyService(BaseCompanyRepository baseCompanyRepository) {
         this.enrolledCompanies = new ArrayList<>();
         this.baseCompanyRepository = baseCompanyRepository;
-//        populateList();
     }
 
 
-//    public static BaseCompanyService getInstance(){
-//        if(instance == null) {
-//            instance = new BaseCompanyService();
-//
-//        }
-//        return instance;
-//    }
 
     public void addNewId(String companyName, String newId){
 
@@ -51,20 +42,5 @@ public class BaseCompanyService {
 
     }
 
-//    private void populateList(){
-//
-//        BaseCompany waterCompany = new BaseCompany("Waterworks", CompanyType.WATER,"We handle all your water needs.");
-//        this.enrolledCompanies.add(waterCompany);
-//        waterCompany.addId("WA1");
-//        waterCompany.addId("WA2");
-//        waterCompany.addId("WA3");
-//        waterCompany.assignId("WA3");
-//
-//        BaseCompany electricityCompany = new BaseCompany("NoBattery", CompanyType.ELECTRICITY, "So you never need to rely on batteries ever again.");
-//        this.enrolledCompanies.add(electricityCompany);
-//        electricityCompany.addId("EL1");
-//        electricityCompany.addId("EL2");
-//        electricityCompany.addId("EL3");
-//        electricityCompany.assignId("EL3");
-//    }
+
 }

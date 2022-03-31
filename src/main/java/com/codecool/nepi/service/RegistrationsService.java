@@ -106,48 +106,6 @@ public class RegistrationsService {
             operatorRepository.save(newOperator);
             baseCompanyRepository.save(currentCompany);
         }
-
-//        List<User> currentlyRegisteredAccounts = userAccountsService.getRegisteredUsersAll();
-//        List<Operator> currentlyRegisteredOperators = userAccountsService.getRegisteredOperators();
-//        List<BaseCompany> currentlyEnrolledCompanies = baseCompanyService.getEnrolledCompanies();
-//
-//        System.out.println("current operators : " + currentlyRegisteredOperators);
-//
-//
-//        for (Operator operator : currentlyRegisteredOperators) {
-//            System.out.println("current operator " + operator);
-//            if (Objects.equals(operator.getEmail(), operatorRegistrationModel.getEmail())) {
-//                System.out.println("OPERATOR REGISTRATION FAILED, DUPLICATE EMAIL");
-//            } else {
-//                for (BaseCompany company : currentlyEnrolledCompanies) {
-//
-//                    System.out.println("CHECKING NAMES " + company.getCompanyName() + " [] " + operatorRegistrationModel.getCompanyName());
-//                    System.out.println("CHECKING KEY " + company.getIdAvailability().containsKey(operatorRegistrationModel.getContractId()));
-//                    System.out.println("CHECKING if AVAILABLE " + company.getIdAvailability().get(operatorRegistrationModel.getContractId()));
-//                    System.out.println("ALL CHECK " + (Objects.equals(company.getCompanyName(), operatorRegistrationModel.getCompanyName()) &&
-//                            company.getIdAvailability().containsKey(operatorRegistrationModel.getContractId()) &&
-//                            company.getIdAvailability().get(operatorRegistrationModel.getContractId()) == true));
-//
-//                    if (Objects.equals(company.getCompanyName(), operatorRegistrationModel.getCompanyName()) &&
-//                            company.getIdAvailability().containsKey(operatorRegistrationModel.getContractId()) &&
-//                            company.getIdAvailability().get(operatorRegistrationModel.getContractId()) == true) {
-//                        Operator newOperator = new Operator(operatorRegistrationModel.getFirstName(), operatorRegistrationModel.getLastName(),
-//                                operatorRegistrationModel.getPhonenumber(), operatorRegistrationModel.getEmail(), operatorRegistrationModel.getPassword(),
-//                                operatorRegistrationModel.getContractId());
-//                        currentlyRegisteredAccounts.add(newOperator);
-//                        currentlyRegisteredOperators.add(newOperator);
-//                        company.assignId(operatorRegistrationModel.getContractId());
-//
-//                        System.out.println("updated operators " + currentlyRegisteredOperators);
-//                        System.out.println("company id list : " + company.getIdAvailability());
-//                        break;
-//
-//                    } else {
-//                        System.out.println("OPERATOR REGISTRATION FAILED");
-//                    }
-//                }
-//            }
-//        }
     }
 
 

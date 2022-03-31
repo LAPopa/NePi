@@ -40,15 +40,21 @@ public class NepiApplication {
 //            propertyObjectRepository.save(new PropertyObject("First Street", "1", "2", false, "AP2", false));
 //            propertyObjectRepository.save(new PropertyObject("Second Street", "1", "1", false, "AP3", false));
 //            propertyObjectRepository.save(new PropertyObject("Second Street", "1", "2", false, "AP4", false));
+//            propertyObjectRepository.save(new PropertyObject("Third Street", "1", "1", false, "AP5", false));
+//            propertyObjectRepository.save(new PropertyObject("Third Street", "1", "2", false, "AP6", false));
 //            baseCompanyRepository.save(new BaseCompany("Waterworks", CompanyType.WATER, "We solve all your water issues !"));
+//            BaseCompany waterworks = baseCompanyRepository.findByCompanyName("Waterworks");
+//            waterworks.setAllocatedIds("WA1");
+//            waterworks.addId("WA2");
+//            waterworks.addId("WA3");
+//            baseCompanyRepository.save(waterworks);
+//            Owner testOwner = ownerRepository.findByEmail("owner_test@testing.com");
 //            PropertyObject testPropertyObject = propertyObjectRepository.getPropertyObjectByEnrollmentId("AP2");
-//            Owner testOwner = new Owner("Trilu","lilu","123","owner2@mail.com","123",testPropertyObject);
-//            testPropertyObject.setAccountCreated(true);
-//            ownerRepository.save(testOwner);
-//            Renter testRenter = new Renter("guy","someguy","123","renter@mail.com","123","AP2");
-//            testOwner.rentProperty(testPropertyObject);
+//            testOwner.assignProperty(testPropertyObject);
 //            propertyObjectRepository.save(testPropertyObject);
-//            renterRepository.save(testRenter);
+//            ownerRepository.save(testOwner);
+
+
             log.info("Current admin accounts ::");
             for (Admin admin : adminRepository.findAll()) {
                 log.info(admin.toString());

@@ -1,4 +1,4 @@
-package com.codecool.nepi.model.companymodels;
+package com.codecool.nepi.entity;
 
 import com.codecool.nepi.model.types.CompanyType;
 import com.codecool.nepi.utils.StringListConverter;

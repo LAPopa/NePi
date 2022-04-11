@@ -69,8 +69,8 @@ function Notifications() {
                 to="#0"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                <span className="block text-sm mb-2">📣 <span className="font-medium text-slate-800">Edit your information in a swipe</span> Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
-                <span className="block text-xs font-medium text-slate-400">Feb 12, 2021</span>
+                <span className="block text-sm mb-2">📣 <span className="font-medium text-slate-800">Here there will be notifications !</span> Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
+                <span className="block text-xs font-medium text-slate-400">Feb 12, 2022</span>
               </Link>
             </li>
             <li className="border-b border-slate-200 last:border-0">
@@ -79,8 +79,8 @@ function Notifications() {
                 to="#0"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                <span className="block text-sm mb-2">📣 <span className="font-medium text-slate-800">Edit your information in a swipe</span> Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
-                <span className="block text-xs font-medium text-slate-400">Feb 9, 2021</span>
+                <span className="block text-sm mb-2">📣 <span className="font-medium text-slate-800">Notifying you of stuff you didn't do</span> Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
+                <span className="block text-xs font-medium text-slate-400">Feb 9, 2022</span>
               </Link>
             </li>
             <li className="border-b border-slate-200 last:border-0">
@@ -89,8 +89,8 @@ function Notifications() {
                 to="#0"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                <span className="block text-sm mb-2">🚀<span className="font-medium text-slate-800">Say goodbye to paper receipts!</span> Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
-                <span className="block text-xs font-medium text-slate-400">Jan 24, 2020</span>
+                <span className="block text-sm mb-2">🚀<span className="font-medium text-slate-800">...or did partially...</span> Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
+                <span className="block text-xs font-medium text-slate-400">Mar 24, 2022</span>
               </Link>
             </li>
           </ul>

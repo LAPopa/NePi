@@ -1,4 +1,4 @@
-package com.codecool.nepi.model.useraccounts;
+package com.codecool.nepi.entity.useraccounts;
 
 import com.codecool.nepi.model.types.UserType;
 import lombok.AllArgsConstructor;

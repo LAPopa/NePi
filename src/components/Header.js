@@ -7,7 +7,7 @@ import {ReactComponent as NePiLogoNew} from "../assets/NePiLogo1.svg";
 export default function Header() {
     return (
         <header className="text-gray-600 body-font bg-gray-100">
-            <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <div className="container py-15 mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center ">
                 <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
 
                     {/*<img src={NePiLogo} height="100" width="100"/>*/}

@@ -1,15 +1,15 @@
 package com.codecool.nepi.service;
 
 
-import com.codecool.nepi.model.companymodels.BaseCompany;
-import com.codecool.nepi.model.propertymodels.PropertyObject;
+import com.codecool.nepi.entity.BaseCompany;
+import com.codecool.nepi.entity.PropertyObject;
 import com.codecool.nepi.model.registrationmodels.OperatorRegistrationModel;
 import com.codecool.nepi.model.registrationmodels.OwnerRegistrationModel;
 import com.codecool.nepi.model.registrationmodels.RenterRegistrationModel;
 import com.codecool.nepi.model.types.UserType;
-import com.codecool.nepi.model.useraccounts.Operator;
-import com.codecool.nepi.model.useraccounts.Owner;
-import com.codecool.nepi.model.useraccounts.Renter;
+import com.codecool.nepi.entity.useraccounts.Operator;
+import com.codecool.nepi.entity.useraccounts.Owner;
+import com.codecool.nepi.entity.useraccounts.Renter;
 import com.codecool.nepi.repository.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

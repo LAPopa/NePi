@@ -25,6 +25,8 @@ function Dashboard() {
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
+    // different return on user_role ?
+
     return (
         <div className="flex h-screen overflow-hidden">
 
@@ -84,17 +86,17 @@ function Dashboard() {
                             {/* Table (Top Channels) */}
                             <DashboardCard07 />
                             {/* Line chart (Sales Over Time) */}
-                            <DashboardCard08 />
+                            {/*<DashboardCard08 />*/}
                             {/* Stacked bar chart (Sales VS Refunds) */}
-                            <DashboardCard09 />
+                            {/*<DashboardCard09 />*/}
                             {/* Card (Customers) */}
-                            <DashboardCard10 />
+                            {/*<DashboardCard10 />*/}
                             {/* Card (Reasons for Refunds) */}
-                            <DashboardCard11 />
+                            {/*<DashboardCard11 />*/}
                             {/* Card (Recent Activity) */}
                             <DashboardCard12 />
                             {/* Card (Income/Expenses) */}
-                            <DashboardCard13 />
+                            {/*<DashboardCard13 />*/}
 
                         </div>
 

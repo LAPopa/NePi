@@ -1,7 +1,6 @@
 package com.codecool.nepi.repository;
 
-import com.codecool.nepi.model.useraccounts.Admin;
-import com.codecool.nepi.model.useraccounts.Operator;
+import com.codecool.nepi.entity.useraccounts.Operator;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

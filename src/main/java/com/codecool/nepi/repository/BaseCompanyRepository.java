@@ -1,13 +1,10 @@
 package com.codecool.nepi.repository;
 
-import com.codecool.nepi.model.companymodels.BaseCompany;
+import com.codecool.nepi.entity.BaseCompany;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
-import javax.transaction.Transactional;
-import java.util.Optional;
 
 public interface BaseCompanyRepository extends JpaRepository<BaseCompany, Long> {
 

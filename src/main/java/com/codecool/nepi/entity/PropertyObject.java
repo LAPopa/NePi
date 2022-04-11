@@ -1,4 +1,4 @@
-package com.codecool.nepi.model.propertymodels;
+package com.codecool.nepi.entity;
 
 
 import lombok.AllArgsConstructor;

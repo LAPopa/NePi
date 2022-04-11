@@ -1,8 +1,7 @@
-package com.codecool.nepi.model.useraccounts;
+package com.codecool.nepi.entity.useraccounts;
 
-import com.codecool.nepi.model.propertymodels.PropertyObject;
+import com.codecool.nepi.entity.PropertyObject;
 import com.codecool.nepi.model.types.UserType;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,12 +1,6 @@
 package com.codecool.nepi;
 
-import com.codecool.nepi.model.companymodels.BaseCompany;
-import com.codecool.nepi.model.propertymodels.PropertyObject;
-import com.codecool.nepi.model.types.CompanyType;
-import com.codecool.nepi.model.useraccounts.Admin;
-import com.codecool.nepi.model.useraccounts.Overseer;
-import com.codecool.nepi.model.useraccounts.Owner;
-import com.codecool.nepi.model.useraccounts.Renter;
+import com.codecool.nepi.entity.useraccounts.Admin;
 import com.codecool.nepi.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 @SpringBootApplication
 public class NepiApplication {

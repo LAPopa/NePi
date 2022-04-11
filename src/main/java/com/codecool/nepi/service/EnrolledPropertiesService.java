@@ -1,7 +1,7 @@
 package com.codecool.nepi.service;
 
 
-import com.codecool.nepi.model.propertymodels.PropertyObject;
+import com.codecool.nepi.entity.PropertyObject;
 import lombok.Getter;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

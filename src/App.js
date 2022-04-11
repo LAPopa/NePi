@@ -7,14 +7,14 @@ import {Routes} from "react-router";
 import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
 import Header from './components/Header';
-import {CommunityRegistrationSelector} from "./components/CommunityRegistrationSelector";
-import {OwnerRegistration} from "./components/OwnerRegistration";
-import {RenterRegistration} from "./components/RenterRegistration";
-import {UtilitiesRegistration} from "./components/UtilitiesRegistration";
+import {CommunityRegistrationSelector} from "./components/registrations/CommunityRegistrationSelector";
+import {OwnerRegistration} from "./components/registrations/OwnerRegistration";
+import {RenterRegistration} from "./components/registrations/RenterRegistration";
+import {UtilitiesRegistration} from "./components/registrations/UtilitiesRegistration";
 import TestComponent from "./components/testingStuff/TestComponent";
 import TestFormService from "./components/testingStuff/TestFormService";
-import LoginSuccessTest from "./components/LoginSuccessTest";
-import UserRegistrationSuccessTest from "./components/UserRegistrationSuccessTest";
+import LoginSuccessTest from "./components/logins/LoginSuccessTest";
+import UserRegistrationSuccessTest from "./components/registrations/UserRegistrationSuccessTest";
 
 function App() {
     return (

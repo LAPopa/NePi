@@ -1,19 +1,19 @@
-import '../App.css';
-import ProfilePic from '../assets/profilePic.png';
+import '../../App.css';
+import ProfilePic from '../../assets/profilePic.png';
 import React from "react";
 import {useNavigate} from "react-router-dom";
 
 
-export function RenterRegistration() {
+export function OwnerRegistration() {
     let navigate = useNavigate();
-    const RENTER_REGISTRATION_URL = 'http://localhost:8080/registration/tenants';
+    const OWNER_REGISTRATION_URL = 'http://localhost:8080/registration/owners';
 
     const onSubmit = (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.target);
 
-        fetch(RENTER_REGISTRATION_URL, {
+        fetch(OWNER_REGISTRATION_URL, {
             method: "POST",
             headers: {
                 // Accept: "application/json",
@@ -25,7 +25,10 @@ export function RenterRegistration() {
                 firstName: formData.get('firstName'),
                 lastName: formData.get('lastName'),
                 phonenumber: formData.get('phonenumber'),
-                contractId: formData.get('contractId'),
+                streetName: formData.get('streetName'),
+                streetNumber: formData.get('streetNumber'),
+                apartment: formData.get('apartment'),
+                enrollmentId: formData.get('enrollmentId'),
 
             }),
         })
@@ -40,11 +43,12 @@ export function RenterRegistration() {
 
     }
 
+
     return (
         <div>
             <section className="h-screen bg-gray-100 bg-opacity-50">
                 <form className="container max-w-2xl mx-auto shadow-md md:w-3/4"
-                      method="POST" onSubmit={onSubmit} action="/registration/tenants">
+                      method="POST" onSubmit={onSubmit} action="/registration/owners">
                     <div className="p-4 bg-gray-100 border-t-2 border-indigo-400 rounded-lg bg-opacity-5">
                         <div className="max-w-sm mx-auto md:w-full md:mx-0">
                             <div className="inline-flex items-center space-x-4">
@@ -78,20 +82,21 @@ export function RenterRegistration() {
                                 Personal info
                             </h2>
                             <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
-                                <div>
-                                    <div className=" relative ">
-                                        <input type="text" id="user-info-first-name"
-                                               className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                               placeholder="First Name"
-                                               name="firstName"/>
-                                    </div>
-                                    <div className=" relative ">
-                                        <input type="text" id="user-info-last-name"
-                                               className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                               placeholder="Last Name"
-                                               name="lastName"/>
-                                    </div>
+
+                                <div className=" relative ">
+                                    <input type="text" id="user-info-first-name"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           placeholder="First Name"
+                                           name="firstName"/>
                                 </div>
+
+                                <div className=" relative ">
+                                    <input type="text" id="user-info-last-name"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           placeholder="Last Name"
+                                           name="lastName"/>
+                                </div>
+
                                 <div>
                                     <div className=" relative ">
                                         <input type="text" id="user-info-phone"
@@ -103,22 +108,36 @@ export function RenterRegistration() {
                             </div>
                         </div>
                         <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
-                            <div className="h-full">
-                                <h2 className="max-w-sm mx-auto md:w-1/3 text-lg">
-                                    Renting Contract ID
-                                </h2>
-                                <h3 className="text-sm">Please enter the ID that the landlord has
-                                    given you after signing the contract.</h3>
-                            </div>
-
+                            <h2 className="max-w-sm mx-auto md:w-1/3 text-lg">
+                                Property information
+                            </h2>
                             <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
+                                <div className=" relative ">
+                                    <input type="text" id="user-info-street"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           placeholder="Street"
+                                           name="streetName"/>
+                                </div>
+                                <div className=" relative ">
+                                    <input type="text" id="user-info-number"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           placeholder="Number"
+                                           name="streetNumber"/>
+                                </div>
                                 <div>
                                     <div className=" relative ">
-                                        <input type="text" id="user-info-ID"
+                                        <input type="text" id="user-info-apartment"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                               placeholder="ID"
-                                               name="contractId"/>
-
+                                               placeholder="Apartment"
+                                               name="apartment"/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className=" relative ">
+                                        <input type="text" id="user-info-enrollment-id"
+                                               className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                               placeholder="Enrollment ID"
+                                               name="enrollmentId"/>
                                     </div>
                                 </div>
                             </div>

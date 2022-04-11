@@ -1,21 +1,22 @@
-import '../App.css';
-import CommunityBlob from '../assets/communityRoutes.png';
+import '../../App.css';
+import UtilitiesBlob from '../../assets/utilitiesBlob.png';
 import {LoginForm} from "./LoginForm";
+import {ReactComponent as UtilitiesBlobNew} from "../../assets/UtilitiesLoginBlob1.svg";
 import React from "react";
-import {ReactComponent as CommunityBlobNew} from "../assets/CommunityLoginBlob1.svg";
 
-export function CommunityBlobLoginModal() {
+export function UtilitiesBlobLoginModal() {
     const [showModal, setShowModal] = React.useState(false);
 
     return (
         <div>
             <button
-                className=" h-96 overflow-hidden text-white active:bg-green-700 font-bold uppercase text-sm px-6 py-3 hover:bg-green-600  mr-1 mb-1 ease-linear transition-all duration-150 rounded-full"
+                className="h-96 overflow-hidden text-white active:bg-green-700 font-bold uppercase text-sm px-6 py-3 hover:bg-green-600  mr-1 mb-1 ease-linear transition-all duration-150 rounded-full"
                 type="button"
                 onClick={() => setShowModal(true)}
-            ><CommunityBlobNew/>
+            >
                 {/*<img alt="content" className="object-fill object-center h-full w-full"*/}
-                {/*  src={CommunityBlob}/>*/}
+                {/*  src={UtilitiesBlob}/>*/}
+                <UtilitiesBlobNew/>
 
             </button>
             {showModal ? (

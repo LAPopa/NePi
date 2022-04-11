@@ -1,7 +1,7 @@
-import '../App.css';
-import LandlordImg from '../assets/landlord.png';
-import TenantImg from '../assets/tenant.png';
-import CommunityBlob from "../assets/communityRoutes.png";
+import '../../App.css';
+import LandlordImg from '../../assets/landlord.png';
+import TenantImg from '../../assets/tenant.png';
+import CommunityBlob from "../../assets/communityRoutes.png";
 import React from "react";
 import {useNavigate} from "react-router-dom";
 

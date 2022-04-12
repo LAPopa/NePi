@@ -21,4 +21,19 @@ public class OwnerRegistrationModel {
     private String apartment;
     private String password;
     private String enrollmentId;
+
+    @Override
+    public String toString() {
+        return "OwnerRegistrationModel{" +
+                "email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phonenumber='" + phonenumber + '\'' +
+                ", streetName='" + streetName + '\'' +
+                ", streetNumber='" + streetNumber + '\'' +
+                ", apartment='" + apartment + '\'' +
+                ", password='" + password + '\'' +
+                ", enrollmentId='" + enrollmentId + '\'' +
+                '}';
+    }
 }

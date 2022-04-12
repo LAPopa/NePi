@@ -17,24 +17,18 @@ import java.util.Objects;
 @RestController
 public class LoginController {
 
-    UserAccountsService userAccountsService = UserAccountsService.getInstance();
+    UserAccountsService userAccountsService;
+
+    public LoginController(UserAccountsService userAccountsService) {this.userAccountsService = userAccountsService;}
 
     @PostMapping("/")
-    public RedirectView validateLogin(@RequestBody LoginModel loginModel) {
-        List<User> currentlyRegisteredAccounts = userAccountsService.getRegisteredUsersAll();
-        RedirectView defaultRedirect = new RedirectView();
-        for (User account : currentlyRegisteredAccounts) {
-            if (Objects.equals(account.getEmail(), loginModel.getEmail()) && Objects.equals(account.getPassword(), loginModel.getPassword())) {
-                defaultRedirect.setUrl("/login-successful");
-                System.out.println("LOGIN SUCCESSFUL for ACCOUNT TYPE " + account.getClass() + " User " + account.getFirstName()+account.getLastName());
-                break;
-            }
-            else {
-                System.out.println("LOGIN FAILED");
-                defaultRedirect.setUrl("/");
-            }
+    public void validateLogin(@RequestBody LoginModel loginModel) {
+        if (userAccountsService.validateLogin(loginModel))
+        {
+            System.out.println("Login successful for the following credentials : " + loginModel.getEmail() + "    " + loginModel.getPassword());
+        } else {
+            System.out.println("No account with the following credentials : " + loginModel.getEmail() + "    " + loginModel.getPassword());
         }
-        return defaultRedirect;
 
     }
 

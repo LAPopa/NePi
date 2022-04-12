@@ -69,7 +69,7 @@ export function UtilitiesRegistration() {
                                     <input type="text" id="user-utilities-info-email"
                                            className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                            placeholder="Email"
-                                    name="email"/>
+                                           name="email"/>
                                 </div>
                             </div>
                         </div>
@@ -84,13 +84,13 @@ export function UtilitiesRegistration() {
                                         <input type="text" id="user-utilities-info-first-name"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                placeholder="First Name"
-                                        name="firstName"/>
+                                               name="firstName"/>
                                     </div>
                                     <div className=" relative ">
                                         <input type="text" id="user-utilities-info-last-name"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                placeholder="Last Name"
-                                        name="lastName"/>
+                                               name="lastName"/>
                                     </div>
                                 </div>
                                 <div>
@@ -98,7 +98,7 @@ export function UtilitiesRegistration() {
                                         <input type="text" id="user-utilities-info-phone"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                placeholder="Phone number"
-                                        name="phonenumber"/>
+                                               name="phonenumber"/>
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@ export function UtilitiesRegistration() {
                                         <input type="text" id="user-utilities-info-company-name"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                placeholder="Company Name"
-                                        name="companyName"/>
+                                               name="companyName"/>
 
                                     </div>
                                 </div>
@@ -127,7 +127,8 @@ export function UtilitiesRegistration() {
                                 <h2 className="max-w-sm mx-auto md:w-1/3 text-lg">
                                     Professional Contract ID
                                 </h2>
-                                <h3 className="text-sm">Please enter the company ID provided in the company contract.</h3>
+                                <h3 className="text-sm">Please enter the company ID provided in the company
+                                    contract.</h3>
                             </div>
 
                             <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
@@ -136,7 +137,7 @@ export function UtilitiesRegistration() {
                                         <input type="text" id="user-utilities-company-ID"
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                placeholder="ID"
-                                        name="contractId"/>
+                                               name="contractId"/>
 
                                     </div>
                                 </div>
@@ -151,7 +152,8 @@ export function UtilitiesRegistration() {
                                 <div className=" relative ">
                                     <input type="text" id="user-info-password"
                                            className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                           placeholder="Password"/>
+                                           placeholder="Password"
+                                           name="password"/>
                                 </div>
                             </div>
 

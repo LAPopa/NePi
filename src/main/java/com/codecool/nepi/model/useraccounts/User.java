@@ -2,22 +2,31 @@ package com.codecool.nepi.model.useraccounts;
 
 
 import com.codecool.nepi.model.types.UserType;
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.UUID;
 
 @NoArgsConstructor
 @Getter @Setter
-
+@MappedSuperclass
 public abstract class User {
 
-    protected UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected Long id;
+    @NotNull
     protected String firstName;
+    @NotNull
     protected String lastName;
+    @NotNull
     protected String phoneNumber;
+    @NotNull
     protected String email;
+    @NotNull
     protected String password;
     protected UserType userType;
 
@@ -28,7 +37,6 @@ public abstract class User {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
-        this.id = UUID.randomUUID();
     }
 
     protected void setUserType(UserType userType){

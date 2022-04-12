@@ -11,6 +11,13 @@ import {CommunityRegistrationSelector} from "./components/CommunityRegistrationS
 import {OwnerRegistration} from "./components/OwnerRegistration";
 import {RenterRegistration} from "./components/RenterRegistration";
 import {UtilitiesRegistration} from "./components/UtilitiesRegistration";
+<<<<<<< HEAD
+=======
+import TestComponent from "./components/testingStuff/TestComponent";
+import TestFormService from "./components/testingStuff/TestFormService";
+import LoginSuccessTest from "./components/LoginSuccessTest";
+import UserRegistrationSuccessTest from "./components/UserRegistrationSuccessTest";
+>>>>>>> sprint_2/development
 
 function App() {
     return (
@@ -20,6 +27,7 @@ function App() {
                 <Header/>
 
 
+<<<<<<< HEAD
 
 
                 <Routes>
@@ -31,6 +39,19 @@ function App() {
                     <Route exact path={"/registration/tenants"} element={<RenterRegistration/>}/>
                     <Route exact path={"/registration/utilities"} element={<UtilitiesRegistration/>}/>
 
+=======
+                <Routes>
+
+                    <Route path={"/"} element={<LandingPage/>}>
+                    </Route>
+                    <Route path={"/community-register"} element={<CommunityRegistrationSelector/>}/>
+                    <Route path={"/registration/owners"} element={<OwnerRegistration/>}/>
+                    <Route path={"/registration/tenants"} element={<RenterRegistration/>}/>
+                    <Route path={"/registration/utilities"} element={<UtilitiesRegistration/>}/>
+                    <Route path={"/testing-route"} element={<><TestComponent/><TestFormService/></>}/>
+                    <Route path={"/login-successful"} element={<LoginSuccessTest/>}/>
+                    <Route path={"/registration-successful"} element={<UserRegistrationSuccessTest/>}/>
+>>>>>>> sprint_2/development
 
                 </Routes>
                 <Footer/>
@@ -42,7 +63,10 @@ function App() {
 }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> sprint_2/development
 export default App;
 
 

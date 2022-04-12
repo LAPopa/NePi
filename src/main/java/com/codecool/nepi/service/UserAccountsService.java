@@ -3,7 +3,7 @@ package com.codecool.nepi.service;
 
 import com.codecool.nepi.model.loginmodel.LoginModel;
 import com.codecool.nepi.model.types.UserType;
-import com.codecool.nepi.model.useraccounts.*;
+import com.codecool.nepi.entity.useraccounts.*;
 import com.codecool.nepi.repository.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

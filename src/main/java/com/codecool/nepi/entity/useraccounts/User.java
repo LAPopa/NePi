@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -30,6 +32,9 @@ public abstract class User {
     protected String password;
     protected UserType userType;
 
+    @ElementCollection(fetch = FetchType.LAZY)
+    private List<String> roles;
+
 
     public User(String firstName, String lastName, String phoneNumber, String email, String password) {
         this.firstName = firstName;
@@ -37,6 +42,7 @@ public abstract class User {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
+        this.roles = new ArrayList<>();
     }
 
     protected void setUserType(UserType userType){

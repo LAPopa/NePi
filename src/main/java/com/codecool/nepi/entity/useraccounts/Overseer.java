@@ -14,5 +14,6 @@ public class Overseer extends User {
     public Overseer(String firstName, String lastName, String phoneNumber, String email, String password) {
         super(firstName, lastName, phoneNumber, email, password);
         setUserType(UserType.OVERSEER);
+        this.getRoles().add("ROLE_OVERSEER");
     }
 }

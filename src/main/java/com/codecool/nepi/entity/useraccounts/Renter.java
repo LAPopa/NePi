@@ -18,6 +18,7 @@ public class Renter extends User {
     public Renter(String firstName, String lastName, String phoneNumber, String email, String password, String contractID) {
         super(firstName, lastName, phoneNumber, email, password);
         this.contractID = contractID;
+        this.getRoles().add("ROLE_RENTER");
     }
 
     @Override

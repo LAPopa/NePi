@@ -14,5 +14,6 @@ public class Admin extends User {
     public Admin(String firstName, String lastName, String phoneNumber, String email, String password) {
         super(firstName, lastName, phoneNumber, email, password);
         setUserType(UserType.ADMIN);
+        this.getRoles().add("ROLE_ADMIN");
     }
 }

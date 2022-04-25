@@ -18,6 +18,7 @@ public class Operator extends User {
         super(firstName, lastName, phoneNumber, email, password);
         this.contractID = contractID;
         setUserType(UserType.OPERATOR);
+        this.getRoles().add("ROLE_OPERATOR");
     }
 
     @Override

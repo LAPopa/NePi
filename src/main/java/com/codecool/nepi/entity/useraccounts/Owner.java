@@ -29,6 +29,7 @@ public class Owner extends User {
         this.registrationProperty = registrationProperty;
         this.currentProperties.add(registrationProperty);
         setUserType(UserType.OWNER);
+        this.getRoles().add("ROLE_OWNER");
     }
 
     public void assignProperty(PropertyObject propertyObject) {

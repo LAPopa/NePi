@@ -61,76 +61,44 @@ public class LoginController {
             String loginType = userAccountsService.checkLoginType(email);
 
             switch (loginType) {
-                case "ADMIN":
+                case "ADMIN" -> {
                     Admin admin = userAccountsService.findAdminByEmail(email);
-                    Map<Object, Object> modelAdmin = new HashMap<>();
-                    modelAdmin.put("userID", admin.getId());
-                    modelAdmin.put("firstName", admin.getFirstName());
-                    modelAdmin.put("lastName", admin.getLastName());
-                    modelAdmin.put("email", admin.getEmail());
-                    modelAdmin.put("roles", roles);
-                    modelAdmin.put("token", token);
-                    modelAdmin.put("status",200);
-                    return ResponseEntity.ok(modelAdmin);
-                    break;
-
-                case "OVERSEER":
+                    return getObjectResponseEntity(roles, token, admin.getId(), admin.getFirstName(), admin.getLastName(), admin.getEmail());
+                }
+                case "OVERSEER" -> {
                     Overseer overseer = userAccountsService.findOverseerByEmail(email);
-                    Map<Object, Object> modelOverseer = new HashMap<>();
-                    modelOverseer.put("userID", overseer.getId());
-                    modelOverseer.put("firstName", overseer.getFirstName());
-                    modelOverseer.put("lastName", overseer.getLastName());
-                    modelOverseer.put("email", overseer.getEmail());
-                    modelOverseer.put("roles", roles);
-                    modelOverseer.put("token", token);
-                    modelOverseer.put("status",200);
-                    return ResponseEntity.ok(modelOverseer);
-                    break;
-
-                case "OPERATOR":
+                    return getObjectResponseEntity(roles, token, overseer.getId(), overseer.getFirstName(), overseer.getLastName(), overseer.getEmail());
+                }
+                case "OPERATOR" -> {
                     Operator operator = userAccountsService.findOperatorByEmail(email);
-                    Map<Object, Object> modelOperator = new HashMap<>();
-                    modelOperator.put("userID", operator.getId());
-                    modelOperator.put("firstName", operator.getFirstName());
-                    modelOperator.put("lastName", operator.getLastName());
-                    modelOperator.put("email", operator.getEmail());
-                    modelOperator.put("roles", roles);
-                    modelOperator.put("token", token);
-                    modelOperator.put("status",200);
-                    return ResponseEntity.ok(modelOperator);
-                    break;
-
-                case "OWNER":
+                    return getObjectResponseEntity(roles, token, operator.getId(), operator.getFirstName(), operator.getLastName(), operator.getEmail());
+                }
+                case "OWNER" -> {
                     Owner owner = userAccountsService.findOwnerByEmail(email);
-                    Map<Object, Object> modelOwner = new HashMap<>();
-                    modelOwner.put("userID", owner.getId());
-                    modelOwner.put("firstName", owner.getFirstName());
-                    modelOwner.put("lastName", owner.getLastName());
-                    modelOwner.put("email", owner.getEmail());
-                    modelOwner.put("roles", roles);
-                    modelOwner.put("token", token);
-                    modelOwner.put("status",200);
-                    return ResponseEntity.ok(modelOwner);
-                    break;
-
-                case "RENTER":
+                    return getObjectResponseEntity(roles, token, owner.getId(), owner.getFirstName(), owner.getLastName(), owner.getEmail());
+                }
+                case "RENTER" -> {
                     Renter renter = userAccountsService.findRenterByEmail(email);
-                    Map<Object, Object> modelRenter = new HashMap<>();
-                    modelRenter.put("userID", renter.getId());
-                    modelRenter.put("firstName", renter.getFirstName());
-                    modelRenter.put("lastName", renter.getLastName());
-                    modelRenter.put("email", renter.getEmail());
-                    modelRenter.put("roles", roles);
-                    modelRenter.put("token", token);
-                    modelRenter.put("status",200);
-                    return ResponseEntity.ok(modelRenter);
-                    break;
-
+                    return getObjectResponseEntity(roles, token, renter.getId(), renter.getFirstName(), renter.getLastName(), renter.getEmail());
+                }
             }
+            return ResponseEntity.of(null);
 
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid credentials. ");
         }
+    }
+
+    private ResponseEntity<Object> getObjectResponseEntity(List<String> roles, String token, Long id, String firstName, String lastName, String email2) {
+        Map<Object, Object> model = new HashMap<>();
+        model.put("userID", id);
+        model.put("firstName", firstName);
+        model.put("lastName", lastName);
+        model.put("email", email2);
+        model.put("roles", roles);
+        model.put("token", token);
+        model.put("status", 200);
+        return ResponseEntity.ok(model);
     }
 
 }

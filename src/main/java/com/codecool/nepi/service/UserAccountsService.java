@@ -37,6 +37,39 @@ public class UserAccountsService {
 
     }
 
+    public String checkLoginType(String email) {
+        String role = "";
+
+        if (adminRepository.findByEmail(email) != null) role = "ADMIN";
+        else if (overseerRepository.findByEmail(email) != null) role = "OVERSEER";
+        else if (operatorRepository.findByEmail(email) != null) role = "OPERATOR";
+        else if (ownerRepository.findByEmail(email) != null) role = "OWNER";
+        else if (renterRepository.findByEmail(email) != null) role = "RENTER";
+
+        return role;
+
+    }
+
+    public Admin findAdminByEmail(String email) {
+        return adminRepository.findByEmail(email);
+    }
+
+    public Overseer findOverseerByEmail(String email){
+        return overseerRepository.findByEmail(email);
+    }
+
+    public Operator findOperatorByEmail(String email) {
+        return operatorRepository.findByEmail(email);
+    }
+
+    public Owner findOwnerByEmail(String email) {
+        return ownerRepository.findByEmail(email);
+    }
+
+    public Renter findRenterByEmail(String email) {
+        return renterRepository.findByEmail(email);
+    }
+
     public boolean checkValidEmail(UserType userType, String email) {
         switch (userType) {
             case OWNER -> {
@@ -55,7 +88,9 @@ public class UserAccountsService {
             case ADMIN -> {
                 return (adminRepository.findByEmail(email) == null);
             }
-            default -> {return false;}
+            default -> {
+                return false;
+            }
 
         }
 

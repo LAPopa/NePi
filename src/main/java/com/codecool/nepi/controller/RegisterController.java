@@ -1,6 +1,7 @@
 package com.codecool.nepi.controller;
 
 
+import com.codecool.nepi.model.registrationmodels.AdminOverseerRegistrationModel;
 import com.codecool.nepi.model.registrationmodels.OwnerRegistrationModel;
 import com.codecool.nepi.model.registrationmodels.RenterRegistrationModel;
 import com.codecool.nepi.model.registrationmodels.OperatorRegistrationModel;
@@ -19,6 +20,16 @@ public class RegisterController {
     RegistrationsService registrationsService;
 
     public RegisterController(RegistrationsService registrationsService){this.registrationsService = registrationsService;}
+
+    @PostMapping("/registration/admin")
+    public void registerAdmin(@RequestBody AdminOverseerRegistrationModel registrationModel){
+        registrationsService.registerAdmin(registrationModel);
+    }
+
+    @PostMapping("/registration/overseer")
+    public void registerOverseer(@RequestBody AdminOverseerRegistrationModel registrationModel) {
+        registrationsService.registerOverseer(registrationModel);
+    }
 
     @PostMapping("/registration/owners")
     public void registerNewOwner(@RequestBody OwnerRegistrationModel ownerRegistrationModel) {

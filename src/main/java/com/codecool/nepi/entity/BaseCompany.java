@@ -24,25 +24,23 @@ public class BaseCompany {
     private Long id;
     @Column(unique = true)
     private String companyName;
-    private CompanyType companyType;
+    private String companyType;
     private String description;
-//    @Convert(converter = StringListConverter.class)
-    private String allocatedIds;
+    @ElementCollection(fetch = FetchType.LAZY)
+    private List<String> allocatedIds;
 
 
 
 
-    public BaseCompany(String companyName, CompanyType companyType, String description) {
+    public BaseCompany(String companyName, String companyType, String description) {
         this.companyName = companyName;
         this.companyType = companyType;
         this.description = description;
-        this.allocatedIds = "";
+        this.allocatedIds = new ArrayList<>();
     }
 
     public void addId(String id) {
-        if (this.allocatedIds.length() != 0) {
-            this.allocatedIds = this.allocatedIds + ";" + id;
-        } else this.allocatedIds = id;
+        allocatedIds.add(id);
     }
 
 

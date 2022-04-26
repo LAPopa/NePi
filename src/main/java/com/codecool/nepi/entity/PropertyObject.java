@@ -22,18 +22,18 @@ public class PropertyObject {
     private String streetName;
     private String streetNumber;
     private String apartmentNumber;
-    private boolean accountCreated = false;
+    private boolean accountCreated;
     @Column(unique = true)
     private String enrollmentId;
-    private boolean isRented = false;
+    private boolean isRented;
 
-    public PropertyObject(String streetName, String streetNumber, String apartmentNumber, boolean accountCreated, String enrollmentId, boolean isRented) {
+    public PropertyObject(String streetName, String streetNumber, String apartmentNumber,String enrollmentId) {
         this.streetName = streetName;
         this.streetNumber = streetNumber;
         this.apartmentNumber = apartmentNumber;
-        this.accountCreated = accountCreated;
+        this.accountCreated = false;
         this.enrollmentId = enrollmentId;
-        this.isRented = isRented;
+        this.isRented = false;
     }
 
     @Override

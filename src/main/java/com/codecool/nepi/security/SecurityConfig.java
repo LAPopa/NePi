@@ -42,6 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests() // restrict access based on endpoint config below
                 .antMatchers(POST, "/").permitAll()
                 .antMatchers(GET,"/").permitAll()
+                .antMatchers(POST, "/registration/**").permitAll()
+                .antMatchers(GET,"/TEST-DASHBOARD").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(new JwtTokenFilter(jwtTokenServices), UsernamePasswordAuthenticationFilter.class);

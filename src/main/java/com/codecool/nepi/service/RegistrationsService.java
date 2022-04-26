@@ -32,7 +32,7 @@ public class RegistrationsService {
     private OwnerRepository ownerRepository;
     private RenterRepository renterRepository;
     private PropertyObjectRepository propertyObjectRepository;
-    private EnrolledPropertiesService enrolledPropertiesService;
+    private EnrolledPropertiesCompaniesService enrolledPropertiesCompaniesService;
     private BaseCompanyRepository baseCompanyRepository;
     private BaseCompanyService baseCompanyService;
 
@@ -117,13 +117,14 @@ public class RegistrationsService {
                 baseCompanyRepository.findByCompanyName(operatorRegistrationModel.getCompanyName()) != null &&
                 baseCompanyRepository.getAllocatedIds(operatorRegistrationModel.getCompanyName()).contains(operatorRegistrationModel.getContractId())) {
 
-            String newIds = baseCompanyRepository.getAllocatedIds(operatorRegistrationModel.getCompanyName()).replace(operatorRegistrationModel.getContractId(), "");
-            BaseCompany currentCompany = baseCompanyRepository.findByAllocatedId(operatorRegistrationModel.getContractId());
+//            String newIds = baseCompanyRepository.getAllocatedIds(operatorRegistrationModel.getCompanyName()).replace(operatorRegistrationModel.getContractId(), "");
+            BaseCompany currentCompany = baseCompanyRepository.findByCompanyName(operatorRegistrationModel.getCompanyName());
 
 
-            System.out.println("NEW IDS " + newIds);
+//            System.out.println("NEW IDS " + newIds);
 
-            currentCompany.setAllocatedIds(newIds);
+//            currentCompany.setAllocatedIds(newIds);
+            currentCompany.getAllocatedIds().remove(operatorRegistrationModel.getContractId());
             System.out.println("MODIFIED COMPANY : " + currentCompany.toString());
 
             Operator newOperator = new Operator(operatorRegistrationModel.getFirstName(), operatorRegistrationModel.getLastName(),

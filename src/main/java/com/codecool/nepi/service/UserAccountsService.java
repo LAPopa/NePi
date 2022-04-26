@@ -104,14 +104,14 @@ public class UserAccountsService {
 //        Operator operator = new Operator("Joe","McLane","0789123123","yep@mail.com","123","CD4545");
 //        Overseer overseer = new Overseer("Jack","Reaper","0799616616","evil@haha.com","123");
 //        Owner owner = new Owner("Richie", "Rich","0789123456","richguy@money.com","123",
-//                EnrolledPropertiesService.getInstance().getCurrentlyEnrolledProperties().get(0));
+//                EnrolledPropertiesCompaniesService.getInstance().getCurrentlyEnrolledProperties().get(0));
 //
 //
 //        Renter renter = new Renter("Some","Guy","0123456789","irent@here.com","123","XY123");
 //
-//        owner.assignProperty(EnrolledPropertiesService.getInstance().getCurrentlyEnrolledProperties().get(5));
-//        owner.assignProperty(EnrolledPropertiesService.getInstance().getCurrentlyEnrolledProperties().get(6));
-//        owner.rentProperty(EnrolledPropertiesService.getInstance().getCurrentlyEnrolledProperties().get(6));
+//        owner.assignProperty(EnrolledPropertiesCompaniesService.getInstance().getCurrentlyEnrolledProperties().get(5));
+//        owner.assignProperty(EnrolledPropertiesCompaniesService.getInstance().getCurrentlyEnrolledProperties().get(6));
+//        owner.rentProperty(EnrolledPropertiesCompaniesService.getInstance().getCurrentlyEnrolledProperties().get(6));
 //
 //
 //

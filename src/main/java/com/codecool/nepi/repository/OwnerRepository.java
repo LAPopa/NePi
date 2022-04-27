@@ -17,4 +17,7 @@ public interface OwnerRepository extends JpaRepository<Owner,Long> {
 
     @Query("select a from Owner a where a.email = :email")
     Owner findByEmail(@Param("email") String email);
+
+    @Query("select a from Owner a where a.id = :id")
+    Owner findOwnerById(@Param("id") Long id);
 }

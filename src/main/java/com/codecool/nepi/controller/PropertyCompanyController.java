@@ -13,10 +13,13 @@ public class PropertyCompanyController {
 
     EnrolledPropertiesCompaniesService enrolledPropertiesCompaniesService;
 
+    public PropertyCompanyController(EnrolledPropertiesCompaniesService enrolledPropertiesCompaniesService) {
+        this.enrolledPropertiesCompaniesService = enrolledPropertiesCompaniesService;
+    }
 
     @PostMapping("/registration/new-property")
-    public void registerNewProperty(@RequestBody PropertyRegistrationModel propertyRegistrationModel){
-        enrolledPropertiesCompaniesService.registerNewProperty(propertyRegistrationModel);
+    public void registerNewProperty(@RequestBody PropertyRegistrationModel propertyRegistrationModel) {
+        enrolledPropertiesCompaniesService.enrollNewProperty(propertyRegistrationModel);
     }
 
     @PostMapping("/registration/new-company")
@@ -27,5 +30,10 @@ public class PropertyCompanyController {
     @PostMapping("/registration/company/{companyName}/add-id")
     public void addNewIdToCompany(@PathVariable String companyName, @RequestBody String id) {
         enrolledPropertiesCompaniesService.addNewCompanyId(companyName, id);
+    }
+
+    @PostMapping("/registration/owner/{ownerId}/add-property")
+    public void assignProperty(@PathVariable String ownerId, @RequestBody PropertyRegistrationModel propertyRegistrationModel) {
+        enrolledPropertiesCompaniesService.registerNewPropertyByOwner(propertyRegistrationModel, ownerId);
     }
 }

@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @AllArgsConstructor
@@ -111,19 +112,13 @@ public class RegistrationsService {
     public void registerNewOperator(OperatorRegistrationModel operatorRegistrationModel) {
 
         System.out.println("Company found : " + baseCompanyRepository.findByCompanyName(operatorRegistrationModel.getCompanyName()));
-        System.out.println("Current ids : " + baseCompanyRepository.getAllocatedIds(operatorRegistrationModel.getCompanyName()));
-
+        List<String> currentIds = baseCompanyRepository.findByCompanyName(operatorRegistrationModel.getCompanyName()).getAllocatedIds();
         if (userAccountsService.checkValidEmail(UserType.OPERATOR, operatorRegistrationModel.getEmail()) &&
                 baseCompanyRepository.findByCompanyName(operatorRegistrationModel.getCompanyName()) != null &&
-                baseCompanyRepository.getAllocatedIds(operatorRegistrationModel.getCompanyName()).contains(operatorRegistrationModel.getContractId())) {
+                currentIds.contains(operatorRegistrationModel.getContractId())) {
 
-//            String newIds = baseCompanyRepository.getAllocatedIds(operatorRegistrationModel.getCompanyName()).replace(operatorRegistrationModel.getContractId(), "");
             BaseCompany currentCompany = baseCompanyRepository.findByCompanyName(operatorRegistrationModel.getCompanyName());
 
-
-//            System.out.println("NEW IDS " + newIds);
-
-//            currentCompany.setAllocatedIds(newIds);
             currentCompany.getAllocatedIds().remove(operatorRegistrationModel.getContractId());
             System.out.println("MODIFIED COMPANY : " + currentCompany.toString());
 
@@ -131,7 +126,7 @@ public class RegistrationsService {
                     operatorRegistrationModel.getPhonenumber(), operatorRegistrationModel.getEmail(), operatorRegistrationModel.getPassword(),
                     operatorRegistrationModel.getContractId());
 
-            System.out.println("OPERATOR " + newOperator.toString());
+            System.out.println("OPERATOR " + newOperator);
 
             newOperator.setPassword(passwordEncoder.encode(operatorRegistrationModel.getPassword()));
             operatorRepository.save(newOperator);

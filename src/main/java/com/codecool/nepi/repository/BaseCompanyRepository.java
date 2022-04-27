@@ -13,20 +13,10 @@ import java.util.List;
 @Repository
 public interface BaseCompanyRepository extends JpaRepository<BaseCompany, Long> {
 
-    //TODO allocate ID
-
-    @Query("SELECT bc.allocatedIds FROM BaseCompany bc WHERE bc.companyName = :company_name")
-    List<String> getAllocatedIds(@Param("company_name") String companyName);
 
 
     @Query("SELECT bc FROM BaseCompany bc WHERE bc.companyName = :company_name")
     BaseCompany findByCompanyName(@Param("company_name") String companyName);
 
 
-
-
-
-
-
-    //TODO assign ID
 }

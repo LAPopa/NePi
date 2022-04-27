@@ -37,7 +37,7 @@ export function OwnerRegistration() {
             })
             .then(() => {
                 // alert("Success!");
-                navigate('/registration-successful')
+                navigate('/')
             })
         // window.location.reload();
 

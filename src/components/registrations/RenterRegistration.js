@@ -34,7 +34,7 @@ export function RenterRegistration() {
             })
             .then(() => {
                 // alert("Success!");
-                navigate('/registration-successful')
+                navigate('/')
             })
         // window.location.reload();
 

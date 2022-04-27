@@ -27,8 +27,7 @@ function App() {
 
                 <Routes>
 
-                    <Route path={"/"} element={<LandingPage/>}>
-                    </Route>
+                    <Route path={"/"} element={<LandingPage/>}/>
                     <Route path={"/community-register"} element={<CommunityRegistrationSelector/>}/>
                     <Route path={"/registration/owners"} element={<OwnerRegistration/>}/>
                     <Route path={"/registration/tenants"} element={<RenterRegistration/>}/>

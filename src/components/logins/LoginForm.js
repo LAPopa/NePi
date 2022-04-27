@@ -1,5 +1,5 @@
 import '../../App.css';
-import React from "react";
+import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 
@@ -7,36 +7,62 @@ export function LoginForm() {
     let navigate = useNavigate();
     const LOGIN_FORM_URL = 'http://localhost:8080/';
 
-    const onSubmit = (e) => {
+    const [user, setUser] = useState(
+        {
+            email:"",
+            password:""
+        }
+    )
+
+    const handleChange = event => {
+        const {name, value} = event.target
+        setUser({...user, [name]:value})
+        console.log(user)
+    }
+
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        const formData = new FormData(e.target);
+        // const formData = new FormData(e.target);
 
         fetch(LOGIN_FORM_URL, {
             method: "POST",
             headers: {
-                // Accept: "application/json",
                 "Content-type": "application/json",
             },
-            body: JSON.stringify({
-                email: formData.get('email'),
-                password: formData.get('password'),
-            }),
+            body: JSON.stringify(user)
         })
-            .then((response) => response.json())
-            .catch(function (){})
-            .then(() => {
-                // alert("Success!");
-                navigate('/login-successful')
-            })
-        // window.location.reload();
+            .then(response => response.json())
+            .then(response => {
+                console.log(JSON.stringify(response))
 
+                if(response.status === 200) {
+                    localStorage.setItem("userID", response.userID)
+                    localStorage.setItem("firstName", response.firstName)
+                    localStorage.setItem("lastName", response.lastName)
+                    localStorage.setItem("email", response.email)
+                    localStorage.setItem("roles", response.roles)
+                    localStorage.setItem("token", response.token)
+                    window.location.reload()
+                }
+                else {
+                    setUser({
+                        email:"",
+                        password:""
+                    })
+                    alert("Invalid credentials !")
+                }
+            })
+            .then(() => {
+
+            })
+            .catch(function () {})
     }
 
 
     return (
         <div className="block p-6 rounded-lg bg-white max-w-sm">
-            <form id="login-form" method="POST" onSubmit={onSubmit} action="/">
+            <form id="login-form" method="POST" onSubmit={handleSubmit} action="/">
                 <div className="form-group mb-6">
                     <label htmlFor="exampleInputEmail2" className="form-label inline-block mb-2 text-gray-700">Email
                         address</label>
@@ -55,7 +81,7 @@ export function LoginForm() {
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputEmail2"
-                           aria-describedby="emailHelp" placeholder="Enter email"/>
+                           aria-describedby="emailHelp" placeholder="Enter email" onChange={handleChange}/>
                 </div>
                 <div className="form-group mb-6">
                     <label htmlFor="exampleInputPassword2"
@@ -74,7 +100,7 @@ export function LoginForm() {
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputPassword2"
-                           placeholder="Password"/>
+                           placeholder="Password" onChange={handleChange}/>
                 </div>
                 <div className="flex justify-between items-center mb-6">
                     <div className="form-group form-check">

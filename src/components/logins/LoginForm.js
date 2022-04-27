@@ -43,7 +43,9 @@ export function LoginForm() {
                     localStorage.setItem("email", response.email)
                     localStorage.setItem("roles", response.roles)
                     localStorage.setItem("token", response.token)
+                    navigate('/TEST-DASHBOARD')
                     window.location.reload()
+
                 }
                 else {
                     setUser({

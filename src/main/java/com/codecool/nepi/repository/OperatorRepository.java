@@ -17,4 +17,6 @@ public interface OperatorRepository extends JpaRepository<Operator,Long> {
 
     @Query("select a from Operator a where a.email = :email")
     Operator findByEmail(@Param("email") String email);
+
+    Operator findByContractID(String contractId);
 }

@@ -2,7 +2,7 @@ package com.codecool.nepi.controller;
 
 
 import com.codecool.nepi.entity.useraccounts.*;
-import com.codecool.nepi.model.loginmodel.LoginModel;
+import com.codecool.nepi.model.login.LoginModel;
 import com.codecool.nepi.security.JwtTokenServices;
 import com.codecool.nepi.service.UserAccountsService;
 import org.springframework.http.ResponseEntity;

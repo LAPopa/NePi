@@ -1,4 +1,4 @@
-package com.codecool.nepi.model.registrationmodels;
+package com.codecool.nepi.model.login;
 
 
 import lombok.AllArgsConstructor;
@@ -8,12 +8,11 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-public class AdminOverseerRegistrationModel {
+@Getter @Setter
+public class LoginModel {
+
     private String email;
-    private String firstName;
-    private String lastName;
-    private String phonenumber;
     private String password;
+
+
 }

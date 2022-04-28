@@ -1,4 +1,4 @@
-package com.codecool.nepi.model.registrationmodels;
+package com.codecool.nepi.model.registration;
 
 
 import lombok.AllArgsConstructor;

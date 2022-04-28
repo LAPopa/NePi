@@ -1,8 +1,8 @@
 package com.codecool.nepi.controller;
 
 
-import com.codecool.nepi.model.registrationmodels.CompanyRegistrationModel;
-import com.codecool.nepi.model.registrationmodels.PropertyRegistrationModel;
+import com.codecool.nepi.model.registration.CompanyRegistrationModel;
+import com.codecool.nepi.model.registration.PropertyRegistrationModel;
 import com.codecool.nepi.service.EnrolledPropertiesCompaniesService;
 import org.springframework.web.bind.annotation.*;
 

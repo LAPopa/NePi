@@ -34,7 +34,7 @@ export function UtilitiesRegistration() {
             .catch(function () {
             })
             .then(() => {
-                // alert("Success!");
+                alert("Success!");
                 navigate('/')
             })
         // window.location.reload();

@@ -17,4 +17,5 @@ public interface RenterRepository extends JpaRepository<Renter,Long> {
 
     @Query("select a from Renter a where a.email = :email")
     Renter findByEmail(@Param("email") String email);
+
 }

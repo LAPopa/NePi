@@ -1,21 +1,23 @@
 package com.codecool.nepi.service;
 
 
-import com.codecool.nepi.model.companymodels.BaseCompany;
-import com.codecool.nepi.model.propertymodels.PropertyObject;
-import com.codecool.nepi.model.registrationmodels.OperatorRegistrationModel;
-import com.codecool.nepi.model.registrationmodels.OwnerRegistrationModel;
-import com.codecool.nepi.model.registrationmodels.RenterRegistrationModel;
+import com.codecool.nepi.entity.BaseCompany;
+import com.codecool.nepi.entity.PropertyObject;
+import com.codecool.nepi.entity.useraccounts.*;
+import com.codecool.nepi.model.registration.AdminOverseerRegistrationModel;
+import com.codecool.nepi.model.registration.OperatorRegistrationModel;
+import com.codecool.nepi.model.registration.OwnerRegistrationModel;
+import com.codecool.nepi.model.registration.RenterRegistrationModel;
 import com.codecool.nepi.model.types.UserType;
-import com.codecool.nepi.model.useraccounts.Operator;
-import com.codecool.nepi.model.useraccounts.Owner;
-import com.codecool.nepi.model.useraccounts.Renter;
 import com.codecool.nepi.repository.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @AllArgsConstructor
@@ -31,10 +33,36 @@ public class RegistrationsService {
     private OwnerRepository ownerRepository;
     private RenterRepository renterRepository;
     private PropertyObjectRepository propertyObjectRepository;
-    private EnrolledPropertiesService enrolledPropertiesService;
+    private EnrolledPropertiesCompaniesService enrolledPropertiesCompaniesService;
     private BaseCompanyRepository baseCompanyRepository;
     private BaseCompanyService baseCompanyService;
 
+    private final PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
+
+    public void registerAdmin(AdminOverseerRegistrationModel registrationModel) {
+        if (userAccountsService.checkValidEmail(UserType.ADMIN, registrationModel.getEmail())) {
+            Admin newAdmin = new Admin(registrationModel.getFirstName(), registrationModel.getLastName(),
+                    registrationModel.getPhonenumber(), registrationModel.getEmail(), passwordEncoder.encode(registrationModel.getPassword()));
+
+            System.out.println("NEW ADMIN REGISTERED AS " + newAdmin);
+            adminRepository.save(newAdmin);
+        } else {
+            System.out.println("EMAIL " + registrationModel.getEmail() + " already registered as ADMIN");
+        }
+    }
+
+    public void registerOverseer(AdminOverseerRegistrationModel registrationModel) {
+        if (userAccountsService.checkValidEmail(UserType.OVERSEER, registrationModel.getEmail())) {
+            Overseer newOverseer = new Overseer(registrationModel.getFirstName(), registrationModel.getLastName(),
+                    registrationModel.getPhonenumber(), registrationModel.getEmail(), passwordEncoder.encode(registrationModel.getPassword()));
+
+            System.out.println("NEW OVERSEER " + newOverseer);
+            overseerRepository.save(newOverseer);
+        } else {
+            System.out.println("EMAIL " + registrationModel.getEmail() + " already registered as OVERSEER");
+        }
+    }
 
     public void registerNewOwner(OwnerRegistrationModel ownerRegistrationModel) {
 
@@ -49,6 +77,7 @@ public class RegistrationsService {
                     ownerRegistrationModel.getPhonenumber(), ownerRegistrationModel.getEmail(), ownerRegistrationModel.getPassword(), currentProperty
             );
             System.out.println("OWNER REGISTRATION : " + ownerRegistrationModel.toString());
+            newOwner.setPassword(passwordEncoder.encode(ownerRegistrationModel.getPassword()));
             ownerRepository.save(newOwner);
             propertyObjectRepository.save(currentProperty);
             System.out.println("Owner registration successful !");
@@ -74,6 +103,7 @@ public class RegistrationsService {
 
             currentProperty.setRented(true);
             propertyObjectRepository.save(currentProperty);
+            newRenter.setPassword(passwordEncoder.encode(renterRegistrationModel.getPassword()));
             renterRepository.save(newRenter);
         }
     }
@@ -82,27 +112,23 @@ public class RegistrationsService {
     public void registerNewOperator(OperatorRegistrationModel operatorRegistrationModel) {
 
         System.out.println("Company found : " + baseCompanyRepository.findByCompanyName(operatorRegistrationModel.getCompanyName()));
-        System.out.println("Current ids : " + baseCompanyRepository.getAllocatedIds(operatorRegistrationModel.getCompanyName()));
-
+        List<String> currentIds = baseCompanyRepository.findByCompanyName(operatorRegistrationModel.getCompanyName()).getAllocatedIds();
         if (userAccountsService.checkValidEmail(UserType.OPERATOR, operatorRegistrationModel.getEmail()) &&
                 baseCompanyRepository.findByCompanyName(operatorRegistrationModel.getCompanyName()) != null &&
-                baseCompanyRepository.getAllocatedIds(operatorRegistrationModel.getCompanyName()).contains(operatorRegistrationModel.getContractId())) {
+                currentIds.contains(operatorRegistrationModel.getContractId())) {
 
-            String newIds = baseCompanyRepository.getAllocatedIds(operatorRegistrationModel.getCompanyName()).replace(operatorRegistrationModel.getContractId(), "");
-            BaseCompany currentCompany = baseCompanyRepository.findByAllocatedId(operatorRegistrationModel.getContractId());
+            BaseCompany currentCompany = baseCompanyRepository.findByCompanyName(operatorRegistrationModel.getCompanyName());
 
-
-            System.out.println("NEW IDS " + newIds);
-
-            currentCompany.setAllocatedIds(newIds);
+            currentCompany.getAllocatedIds().remove(operatorRegistrationModel.getContractId());
             System.out.println("MODIFIED COMPANY : " + currentCompany.toString());
 
             Operator newOperator = new Operator(operatorRegistrationModel.getFirstName(), operatorRegistrationModel.getLastName(),
                     operatorRegistrationModel.getPhonenumber(), operatorRegistrationModel.getEmail(), operatorRegistrationModel.getPassword(),
                     operatorRegistrationModel.getContractId());
 
-            System.out.println("OPERATOR " + newOperator.toString());
+            System.out.println("OPERATOR " + newOperator);
 
+            newOperator.setPassword(passwordEncoder.encode(operatorRegistrationModel.getPassword()));
             operatorRepository.save(newOperator);
             baseCompanyRepository.save(currentCompany);
         }

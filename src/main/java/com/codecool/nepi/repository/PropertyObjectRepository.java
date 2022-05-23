@@ -1,10 +1,13 @@
 package com.codecool.nepi.repository;
 
-import com.codecool.nepi.model.propertymodels.PropertyObject;
+import com.codecool.nepi.entity.PropertyObject;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public interface PropertyObjectRepository extends JpaRepository<PropertyObject, Long> {
 
     //TODO change state accountCreated false <-> true

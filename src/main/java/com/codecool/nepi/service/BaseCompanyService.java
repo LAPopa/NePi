@@ -1,9 +1,8 @@
 package com.codecool.nepi.service;
 
-import com.codecool.nepi.model.companymodels.BaseCompany;
+import com.codecool.nepi.entity.BaseCompany;
 import com.codecool.nepi.repository.BaseCompanyRepository;
 import lombok.Getter;
-import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -11,7 +10,7 @@ import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//FLAGGED - check DEPRECATED
 
 @Service
 @Getter

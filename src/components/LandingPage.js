@@ -1,8 +1,8 @@
 import '../App.css';
-import {CommunityBlobLoginModal} from "./CommunityBlobLoginModal";
+import {CommunityBlobLoginModal} from "./logins/CommunityBlobLoginModal";
 import React from "react";
-import {UtilitiesBlobLoginModal} from "./UtilitiesBlobLoginModal";
-import {CommunityRegistrationSelector} from "./CommunityRegistrationSelector";
+import {UtilitiesBlobLoginModal} from "./logins/UtilitiesBlobLoginModal";
+import {CommunityRegistrationSelector} from "./registrations/CommunityRegistrationSelector";
 import {useNavigate} from "react-router-dom";
 
 export default function LandingPage() {

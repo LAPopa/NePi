@@ -7,14 +7,15 @@ import {Routes} from "react-router";
 import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
 import Header from './components/Header';
-import {CommunityRegistrationSelector} from "./components/CommunityRegistrationSelector";
-import {OwnerRegistration} from "./components/OwnerRegistration";
-import {RenterRegistration} from "./components/RenterRegistration";
-import {UtilitiesRegistration} from "./components/UtilitiesRegistration";
+import {CommunityRegistrationSelector} from "./components/registrations/CommunityRegistrationSelector";
+import {OwnerRegistration} from "./components/registrations/OwnerRegistration";
+import {RenterRegistration} from "./components/registrations/RenterRegistration";
+import {UtilitiesRegistration} from "./components/registrations/UtilitiesRegistration";
 import TestComponent from "./components/testingStuff/TestComponent";
 import TestFormService from "./components/testingStuff/TestFormService";
-import LoginSuccessTest from "./components/LoginSuccessTest";
-import UserRegistrationSuccessTest from "./components/UserRegistrationSuccessTest";
+import LoginSuccessTest from "./components/logins/LoginSuccessTest";
+import UserRegistrationSuccessTest from "./components/registrations/UserRegistrationSuccessTest";
+import TESTDashboard from "./components/pages/Dashboard";
 
 function App() {
     return (
@@ -26,8 +27,7 @@ function App() {
 
                 <Routes>
 
-                    <Route path={"/"} element={<LandingPage/>}>
-                    </Route>
+                    <Route path={"/"} element={<LandingPage/>}/>
                     <Route path={"/community-register"} element={<CommunityRegistrationSelector/>}/>
                     <Route path={"/registration/owners"} element={<OwnerRegistration/>}/>
                     <Route path={"/registration/tenants"} element={<RenterRegistration/>}/>
@@ -35,6 +35,7 @@ function App() {
                     <Route path={"/testing-route"} element={<><TestComponent/><TestFormService/></>}/>
                     <Route path={"/login-successful"} element={<LoginSuccessTest/>}/>
                     <Route path={"/registration-successful"} element={<UserRegistrationSuccessTest/>}/>
+                    <Route path={"/TEST-DASHBOARD"} element={<TESTDashboard/>}/>
 
                 </Routes>
                 <Footer/>

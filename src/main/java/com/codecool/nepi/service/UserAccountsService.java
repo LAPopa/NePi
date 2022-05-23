@@ -1,16 +1,13 @@
 package com.codecool.nepi.service;
 
 
-import com.codecool.nepi.model.loginmodel.LoginModel;
+import com.codecool.nepi.model.login.LoginModel;
 import com.codecool.nepi.model.types.UserType;
-import com.codecool.nepi.model.useraccounts.*;
+import com.codecool.nepi.entity.useraccounts.*;
 import com.codecool.nepi.repository.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @Getter
@@ -37,6 +34,39 @@ public class UserAccountsService {
 
     }
 
+    public String checkLoginType(String email) {
+        String role = "";
+
+        if (adminRepository.findByEmail(email) != null) role = "ADMIN";
+        else if (overseerRepository.findByEmail(email) != null) role = "OVERSEER";
+        else if (operatorRepository.findByEmail(email) != null) role = "OPERATOR";
+        else if (ownerRepository.findByEmail(email) != null) role = "OWNER";
+        else if (renterRepository.findByEmail(email) != null) role = "RENTER";
+
+        return role;
+
+    }
+
+    public Admin findAdminByEmail(String email) {
+        return adminRepository.findByEmail(email);
+    }
+
+    public Overseer findOverseerByEmail(String email){
+        return overseerRepository.findByEmail(email);
+    }
+
+    public Operator findOperatorByEmail(String email) {
+        return operatorRepository.findByEmail(email);
+    }
+
+    public Owner findOwnerByEmail(String email) {
+        return ownerRepository.findByEmail(email);
+    }
+
+    public Renter findRenterByEmail(String email) {
+        return renterRepository.findByEmail(email);
+    }
+
     public boolean checkValidEmail(UserType userType, String email) {
         switch (userType) {
             case OWNER -> {
@@ -55,7 +85,9 @@ public class UserAccountsService {
             case ADMIN -> {
                 return (adminRepository.findByEmail(email) == null);
             }
-            default -> {return false;}
+            default -> {
+                return false;
+            }
 
         }
 
@@ -69,14 +101,14 @@ public class UserAccountsService {
 //        Operator operator = new Operator("Joe","McLane","0789123123","yep@mail.com","123","CD4545");
 //        Overseer overseer = new Overseer("Jack","Reaper","0799616616","evil@haha.com","123");
 //        Owner owner = new Owner("Richie", "Rich","0789123456","richguy@money.com","123",
-//                EnrolledPropertiesService.getInstance().getCurrentlyEnrolledProperties().get(0));
+//                EnrolledPropertiesCompaniesService.getInstance().getCurrentlyEnrolledProperties().get(0));
 //
 //
 //        Renter renter = new Renter("Some","Guy","0123456789","irent@here.com","123","XY123");
 //
-//        owner.assignProperty(EnrolledPropertiesService.getInstance().getCurrentlyEnrolledProperties().get(5));
-//        owner.assignProperty(EnrolledPropertiesService.getInstance().getCurrentlyEnrolledProperties().get(6));
-//        owner.rentProperty(EnrolledPropertiesService.getInstance().getCurrentlyEnrolledProperties().get(6));
+//        owner.assignProperty(EnrolledPropertiesCompaniesService.getInstance().getCurrentlyEnrolledProperties().get(5));
+//        owner.assignProperty(EnrolledPropertiesCompaniesService.getInstance().getCurrentlyEnrolledProperties().get(6));
+//        owner.rentProperty(EnrolledPropertiesCompaniesService.getInstance().getCurrentlyEnrolledProperties().get(6));
 //
 //
 //

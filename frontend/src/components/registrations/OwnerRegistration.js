@@ -10,37 +10,51 @@ export function OwnerRegistration() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
         const formData = new FormData(e.target);
 
-        fetch(OWNER_REGISTRATION_URL, {
-            method: "POST",
-            headers: {
-                // Accept: "application/json",
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-                email: formData.get('email'),
-                password: formData.get('password'),
-                firstName: formData.get('firstName'),
-                lastName: formData.get('lastName'),
-                phonenumber: formData.get('phonenumber'),
-                streetName: formData.get('streetName'),
-                streetNumber: formData.get('streetNumber'),
-                apartment: formData.get('apartment'),
-                enrollmentId: formData.get('enrollmentId'),
+        if (formData.get('email') !== ""
+            && formData.get('password') !== ""
+            && formData.get('firstName') !== ""
+            && formData.get('lastName') !== ""
+            && formData.get('phonenumber') !== ""
+            && formData.get('streetName') !== ""
+            && formData.get('streetNumber') !== ""
+            && formData.get('apartment') !== ""
+            && formData.get('enrollmentId') !== "") {
+            if (formData.get('password') !== formData.get('confirmpassword')) {
+                alert('Passwords do not match !')
+            } else {
+                fetch(OWNER_REGISTRATION_URL, {
+                    method: "POST",
+                    headers: {
+                        // Accept: "application/json",
+                        "Content-type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email: formData.get('email'),
+                        password: formData.get('password'),
+                        firstName: formData.get('firstName'),
+                        lastName: formData.get('lastName'),
+                        phonenumber: formData.get('phonenumber'),
+                        streetName: formData.get('streetName'),
+                        streetNumber: formData.get('streetNumber'),
+                        apartment: formData.get('apartment'),
+                        enrollmentId: formData.get('enrollmentId'),
 
-            }),
-        })
-            .then((response) => response.json())
-            .catch(function () {
-            })
-            .then(() => {
-                alert("Success!");
-                navigate('/')
-            })
-        // window.location.reload();
+                    }),
+                })
+                    .then((response) => response.json())
+                    .catch(function () {
+                    })
+                    .then(() => {
+                        alert("Success!");
+                        navigate('/')
+                    })
+            }
 
+            // window.location.reload();
+
+        }
     }
 
 
@@ -49,21 +63,22 @@ export function OwnerRegistration() {
             <section className="h-screen bg-gray-100 bg-opacity-50">
                 <form className="container max-w-2xl mx-auto shadow-md md:w-3/4"
                       method="POST" onSubmit={onSubmit} action="/registration/owners">
-                    <div className="p-4 bg-gray-100 border-t-2 border-indigo-400 rounded-lg bg-opacity-5">
-                        <div className="max-w-sm mx-auto md:w-full md:mx-0">
-                            <div className="inline-flex items-center space-x-4">
-                                <a href="#" className="block relative">
-                                    <img alt="profil" src={ProfilePic}
-                                         className="mx-auto object-cover rounded-full h-16 w-16 "/>
-                                </a>
-                                <h1 className="text-gray-600 text-2xl">
-                                    Just_a_Cat
-                                </h1>
-                            </div>
-                        </div>
-                    </div>
+                    {/*<div className="p-4 bg-gray-100 border-t-2 border-indigo-400 rounded-lg bg-opacity-5">*/}
+                    {/*    <div className="max-w-sm mx-auto md:w-full md:mx-0">*/}
+                    {/*        <div className="inline-flex items-center space-x-4">*/}
+                    {/*            <a href="#" className="block relative">*/}
+                    {/*                <img alt="profil" src={ProfilePic}*/}
+                    {/*                     className="mx-auto object-cover rounded-full h-16 w-16 "/>*/}
+                    {/*            </a>*/}
+                    {/*            <h1 className="text-gray-600 text-2xl">*/}
+                    {/*                Just_a_Cat*/}
+                    {/*            </h1>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                     <div className="space-y-6 bg-white">
-                        <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
+                        <div
+                            className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
                             <h2 className="max-w-sm mx-auto md:w-1/3 text-lg">
                                 Enter your email
                             </h2>
@@ -77,7 +92,8 @@ export function OwnerRegistration() {
                             </div>
                         </div>
                         <hr/>
-                        <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
+                        <div
+                            className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
                             <h2 className="max-w-sm mx-auto md:w-1/3 text-lg">
                                 Personal info
                             </h2>
@@ -107,7 +123,8 @@ export function OwnerRegistration() {
                                 </div>
                             </div>
                         </div>
-                        <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
+                        <div
+                            className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
                             <h2 className="max-w-sm mx-auto md:w-1/3 text-lg">
                                 Property information
                             </h2>
@@ -143,11 +160,13 @@ export function OwnerRegistration() {
                             </div>
                         </div>
                         <hr/>
-                        <div className="items-center w-full p-8 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
+                        <div
+                            className="items-center w-full p-8 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
                             <h2 className="max-w-sm mx-auto md:w-4/12 text-lg">
                                 Create password
                             </h2>
-                            <div className="w-full max-w-sm pl-2 mx-auto space-y-5 md:w-5/12 md:pl-9 md:inline-flex">
+                            <div
+                                className="w-full max-w-sm pl-2 mx-auto space-y-5 md:w-5/12 md:pl-9 md:inline-flex">
                                 <div className=" relative ">
                                     <input type="text" id="user-info-password"
                                            className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -155,10 +174,20 @@ export function OwnerRegistration() {
                                            name="password"/>
                                 </div>
                             </div>
+                            <div
+                                className="w-full max-w-sm pl-2 mx-auto space-y-5 md:w-5/12 md:pl-9 md:inline-flex">
+                                <div className=" relative ">
+                                    <input type="text" id="user-info-password"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           placeholder="Confirm Password"
+                                           name="confirmpassword"/>
+                                </div>
+                            </div>
 
 
                         </div>
-                        <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
+                        <div
+                            className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
 
 
                             <div className="max-w-sm mx-auto md:w-1/4">

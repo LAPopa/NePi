@@ -1,6 +1,5 @@
 package com.codecool.nepi.controller;
 
-
 import com.codecool.nepi.entity.useraccounts.*;
 import com.codecool.nepi.model.login.LoginModel;
 import com.codecool.nepi.security.JwtTokenServices;

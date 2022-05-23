@@ -1,10 +1,10 @@
 package com.codecool.nepi.controller;
 
 
-import com.codecool.nepi.model.registrationmodels.AdminOverseerRegistrationModel;
-import com.codecool.nepi.model.registrationmodels.OwnerRegistrationModel;
-import com.codecool.nepi.model.registrationmodels.RenterRegistrationModel;
-import com.codecool.nepi.model.registrationmodels.OperatorRegistrationModel;
+import com.codecool.nepi.model.registration.AdminOverseerRegistrationModel;
+import com.codecool.nepi.model.registration.OwnerRegistrationModel;
+import com.codecool.nepi.model.registration.RenterRegistrationModel;
+import com.codecool.nepi.model.registration.OperatorRegistrationModel;
 import com.codecool.nepi.service.RegistrationsService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -21,6 +21,8 @@ public class Owner extends User {
     private PropertyObject registrationProperty;
     @OneToMany(fetch = FetchType.EAGER)
     private List<PropertyObject> currentProperties = new ArrayList<>();
+    @ElementCollection(fetch = FetchType.LAZY)
+    private List<String> ticketList;
 
 
     public Owner(String firstName, String lastName, String phoneNumber, String email, String password, PropertyObject registrationProperty) {
@@ -30,6 +32,7 @@ public class Owner extends User {
         this.currentProperties.add(registrationProperty);
         setUserType(UserType.OWNER);
         this.getRoles().add("ROLE_OWNER");
+        this.ticketList = new ArrayList<>();
     }
 
     public void assignProperty(PropertyObject propertyObject) {

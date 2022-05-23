@@ -1,4 +1,4 @@
-package com.codecool.nepi.model.registrationmodels;
+package com.codecool.nepi.model.registration;
 
 
 import lombok.AllArgsConstructor;
@@ -10,11 +10,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class RenterRegistrationModel {
+public class OperatorRegistrationModel {
     private String email;
     private String firstName;
     private String lastName;
     private String phonenumber;
     private String contractId;
     private String password;
+    private String companyName;
 }

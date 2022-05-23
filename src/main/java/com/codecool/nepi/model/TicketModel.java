@@ -1,4 +1,4 @@
-package com.codecool.nepi.model.registrationmodels;
+package com.codecool.nepi.model;
 
 
 import lombok.AllArgsConstructor;
@@ -10,9 +10,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CompanyRegistrationModel {
-    String companyName;
-    String companyType;
+public class TicketModel {
+
+    String type;
+    String name;
     String description;
+    String propertyId;
+    String userEmail;
+    String userPhonenumber;
 
 }

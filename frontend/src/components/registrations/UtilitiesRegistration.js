@@ -13,30 +13,43 @@ export function UtilitiesRegistration() {
 
         const formData = new FormData(e.target);
 
-        fetch(UTILITIES_REGISTRATION_URL, {
-            method: "POST",
-            headers: {
-                // Accept: "application/json",
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-                email: formData.get('email'),
-                password: formData.get('password'),
-                firstName: formData.get('firstName'),
-                lastName: formData.get('lastName'),
-                phonenumber: formData.get('phonenumber'),
-                contractId: formData.get('contractId'),
-                companyName: formData.get('companyName'),
+        if (formData.get('email') !== "" &&
+            formData.get('password') !== "" &&
+            formData.get('firstName') !== "" &&
+            formData.get('lastName') !== "" &&
+            formData.get('phonenumber') !== "" &&
+            formData.get('contractId') !== "" &&
+            formData.get('companyName') !== "") {
+            if (formData.get('password') !== formData.get('confirmpassword')) {
+                alert("Passwords don't match !")
+            } else {
+                fetch(UTILITIES_REGISTRATION_URL, {
+                    method: "POST",
+                    headers: {
+                        // Accept: "application/json",
+                        "Content-type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email: formData.get('email'),
+                        password: formData.get('password'),
+                        firstName: formData.get('firstName'),
+                        lastName: formData.get('lastName'),
+                        phonenumber: formData.get('phonenumber'),
+                        contractId: formData.get('contractId'),
+                        companyName: formData.get('companyName'),
 
-            }),
-        })
-            .then((response) => response.json())
-            .catch(function () {
-            })
-            .then(() => {
-                alert("Success!");
-                navigate('/')
-            })
+                    }),
+                })
+                    .then((response) => response.json())
+                    .catch(function () {
+                    })
+                    .then(() => {
+                        alert("Success!");
+                        navigate('/')
+                    })
+            }
+        }
+
         // window.location.reload();
 
     }

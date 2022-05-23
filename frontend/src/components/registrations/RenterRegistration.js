@@ -13,30 +13,44 @@ export function RenterRegistration() {
 
         const formData = new FormData(e.target);
 
-        fetch(RENTER_REGISTRATION_URL, {
-            method: "POST",
-            headers: {
-                // Accept: "application/json",
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-                email: formData.get('email'),
-                password: formData.get('password'),
-                firstName: formData.get('firstName'),
-                lastName: formData.get('lastName'),
-                phonenumber: formData.get('phonenumber'),
-                contractId: formData.get('contractId'),
+        if(formData.get('email') !== "" &&
+        formData.get('firstName') !== "" &&
+        formData.get('lastName') !== "" &&
+        formData.get('phonenumber') !== "" &&
+        formData.get('contractId') !== "" &&
+        formData.get('password') !== ""){
+            if(formData.get('password') !== formData.get('confirmpassword')) {
+                alert("Passwords don't match !")
+            } else {
+                fetch(RENTER_REGISTRATION_URL, {
+                    method: "POST",
+                    headers: {
+                        // Accept: "application/json",
+                        "Content-type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email: formData.get('email'),
+                        password: formData.get('password'),
+                        firstName: formData.get('firstName'),
+                        lastName: formData.get('lastName'),
+                        phonenumber: formData.get('phonenumber'),
+                        contractId: formData.get('contractId'),
 
-            }),
-        })
-            .then((response) => response.json())
-            .catch(function () {
-            })
-            .then(() => {
-                alert("Success!");
-                navigate('/')
-            })
-        // window.location.reload();
+                    }),
+                })
+                    .then((response) => response.json())
+                    .catch(function () {
+                    })
+                    .then(() => {
+                        alert("Success!");
+                        navigate('/')
+                    })
+            }
+            // window.location.reload();
+
+        }
+
+
 
     }
 
@@ -134,6 +148,14 @@ export function RenterRegistration() {
                                            className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                            placeholder="Password"
                                            name="password"/>
+                                </div>
+                            </div>
+                            <div className="w-full max-w-sm pl-2 mx-auto space-y-5 md:w-5/12 md:pl-9 md:inline-flex">
+                                <div className=" relative ">
+                                    <input type="text" id="user-info-password"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           placeholder="Password"
+                                           name="confirmpassword"/>
                                 </div>
                             </div>
 

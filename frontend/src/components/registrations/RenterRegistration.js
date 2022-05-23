@@ -2,6 +2,7 @@ import '../../App.css';
 import ProfilePic from '../../assets/profilePic.png';
 import React from "react";
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 
 export function RenterRegistration() {
@@ -20,7 +21,15 @@ export function RenterRegistration() {
         formData.get('contractId') !== "" &&
         formData.get('password') !== ""){
             if(formData.get('password') !== formData.get('confirmpassword')) {
-                alert("Passwords don't match !")
+                toast.error('Passwords do not match !', {
+                    position: "top-center",
+                    autoClose: false,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
             } else {
                 fetch(RENTER_REGISTRATION_URL, {
                     method: "POST",
@@ -48,6 +57,16 @@ export function RenterRegistration() {
             }
             // window.location.reload();
 
+        } else {
+            toast.error('Please fill in all the fields !', {
+                position: "top-center",
+                autoClose: false,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
 
 

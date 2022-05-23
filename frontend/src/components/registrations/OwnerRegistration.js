@@ -2,6 +2,7 @@ import '../../App.css';
 import ProfilePic from '../../assets/profilePic.png';
 import React from "react";
 import {useNavigate} from "react-router-dom";
+import {toast, ToastContainer} from "react-toastify";
 
 
 export function OwnerRegistration() {
@@ -22,7 +23,16 @@ export function OwnerRegistration() {
             && formData.get('apartment') !== ""
             && formData.get('enrollmentId') !== "") {
             if (formData.get('password') !== formData.get('confirmpassword')) {
-                alert('Passwords do not match !')
+                // alert('Passwords do not match !')
+                toast.error('Passwords do not match !', {
+                    position: "top-center",
+                    autoClose: false,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
             } else {
                 fetch(OWNER_REGISTRATION_URL, {
                     method: "POST",
@@ -54,12 +64,31 @@ export function OwnerRegistration() {
 
             // window.location.reload();
 
+        } else {
+            toast.error('Please fill in all the fields !', {
+                position: "top-center",
+                autoClose: false,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }
 
 
     return (
         <div>
+            <ToastContainer
+                position="top-center"
+                autoClose={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+            />
             <section className="h-screen bg-gray-100 bg-opacity-50">
                 <form className="container max-w-2xl mx-auto shadow-md md:w-3/4"
                       method="POST" onSubmit={onSubmit} action="/registration/owners">

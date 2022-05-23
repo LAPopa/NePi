@@ -4,6 +4,10 @@ import React from "react";
 
 import {BrowserRouter as Router, Route, Navigate, Link, NavLink} from "react-router-dom";
 import {Routes} from "react-router";
+
+import {ToastContainer, toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
 import Header from './components/Header';
@@ -21,6 +25,7 @@ function App() {
     return (
 
         <div className="App">
+            <ToastContainer/>
             <Router>
                 <Header/>
 

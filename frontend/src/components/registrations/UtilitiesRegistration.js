@@ -2,6 +2,7 @@ import '../../App.css';
 import ProfilePic from '../../assets/profilePic.png';
 import React from "react";
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 
 export function UtilitiesRegistration() {
@@ -21,7 +22,15 @@ export function UtilitiesRegistration() {
             formData.get('contractId') !== "" &&
             formData.get('companyName') !== "") {
             if (formData.get('password') !== formData.get('confirmpassword')) {
-                alert("Passwords don't match !")
+                toast.error('Passwords do not match !', {
+                    position: "top-center",
+                    autoClose: false,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
             } else {
                 fetch(UTILITIES_REGISTRATION_URL, {
                     method: "POST",
@@ -48,6 +57,16 @@ export function UtilitiesRegistration() {
                         navigate('/')
                     })
             }
+        } else {
+            toast.error('Please fill in all the fields !', {
+                position: "top-center",
+                autoClose: false,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
 
         // window.location.reload();
@@ -167,6 +186,14 @@ export function UtilitiesRegistration() {
                                            className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                            placeholder="Password"
                                            name="password"/>
+                                </div>
+                            </div>
+                            <div className="w-full max-w-sm pl-2 mx-auto space-y-5 md:w-5/12 md:pl-9 md:inline-flex">
+                                <div className=" relative ">
+                                    <input type="text" id="user-info-password"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           placeholder="Password"
+                                           name="confirmpassword"/>
                                 </div>
                             </div>
 

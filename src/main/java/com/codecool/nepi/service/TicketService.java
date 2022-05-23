@@ -10,10 +10,11 @@ import lombok.Getter;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Getter
 @Service
-@Component
 public class TicketService {
 
     private TicketRepository ticketRepository;
@@ -22,6 +23,15 @@ public class TicketService {
     private OperatorRepository operatorRepository;
     private OwnerRepository ownerRepository;
     private RenterRepository renterRepository;
+
+
+    public List<Ticket> getAllTickets() {
+        return ticketRepository.getAll();
+    }
+
+    public List<Ticket> getTicketsByType(String type) {
+        return ticketRepository.findByType(type);
+    }
 
 
     public void createNewTicket(TicketModel ticketModel) {

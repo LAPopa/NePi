@@ -13,4 +13,8 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     List<Ticket> getTicketByStatusFalse();
     List<Ticket> getTicketByTypeEquals(String type);
     List<Ticket> getTicketByPropertyId(String propertyId);
+    List<Ticket> findByType(String type);
+
+    @Query("SELECT t FROM Ticket t ")
+    List<Ticket> getAll();
 }

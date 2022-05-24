@@ -20,6 +20,7 @@ import TestFormService from "./components/testingStuff/TestFormService";
 import LoginSuccessTest from "./components/logins/LoginSuccessTest";
 import UserRegistrationSuccessTest from "./components/registrations/UserRegistrationSuccessTest";
 import TESTDashboard from "./components/pages/Dashboard";
+import UserTickets from "./components/userpages/UserTickets";
 
 function App() {
     return (
@@ -41,6 +42,7 @@ function App() {
                     <Route path={"/login-successful"} element={<LoginSuccessTest/>}/>
                     <Route path={"/registration-successful"} element={<UserRegistrationSuccessTest/>}/>
                     <Route path={"/TEST-DASHBOARD"} element={<TESTDashboard/>}/>
+                    <Route path={"/tickets/show"} element={<UserTickets/>} />
 
                 </Routes>
                 <Footer/>

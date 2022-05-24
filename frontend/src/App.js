@@ -21,6 +21,7 @@ import LoginSuccessTest from "./components/logins/LoginSuccessTest";
 import UserRegistrationSuccessTest from "./components/registrations/UserRegistrationSuccessTest";
 import TESTDashboard from "./components/pages/Dashboard";
 import UserTickets from "./components/userpages/UserTickets";
+import PostTicket from "./components/userpages/PostTicket";
 
 function App() {
     return (
@@ -43,6 +44,7 @@ function App() {
                     <Route path={"/registration-successful"} element={<UserRegistrationSuccessTest/>}/>
                     <Route path={"/TEST-DASHBOARD"} element={<TESTDashboard/>}/>
                     <Route path={"/tickets/show"} element={<UserTickets/>} />
+                    <Route path={"/tickets/new"} element={<PostTicket/>}/>
 
                 </Routes>
                 <Footer/>

@@ -3,6 +3,8 @@ package com.codecool.nepi.service;
 
 import com.codecool.nepi.entity.Ticket;
 import com.codecool.nepi.entity.useraccounts.Operator;
+import com.codecool.nepi.entity.useraccounts.Owner;
+import com.codecool.nepi.entity.useraccounts.Renter;
 import com.codecool.nepi.model.TicketModel;
 import com.codecool.nepi.repository.*;
 import lombok.AllArgsConstructor;
@@ -10,6 +12,7 @@ import lombok.Getter;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -34,16 +37,61 @@ public class TicketService {
     }
 
 
-    public void createNewTicket(TicketModel ticketModel) {
-        ticketRepository.save(new Ticket(ticketModel.getType(), ticketModel.getName(), ticketModel.getDescription(),
-                ticketModel.getPropertyId(), ticketModel.getUserEmail(), ticketModel.getUserPhonenumber()));
+//    public List<String> getPropertyIdsFromUserId (String userId) {
+//        List<String> propertyIds = new ArrayList<>();
+//        if (renterRepository.findById(Long.parseLong(userId)).isPresent()) {
+//            propertyIds = renterRepository.
+//        }
+//    }
+//
+//    public List<Ticket> getTicketsByPropertyId(List<String> propertyId) {
+//
+//        List<Ticket> ticketList = new ArrayList<>();
+//        List<Ticket> intermediateList = new ArrayList<>();
+//
+//        for (String id : propertyId) {
+//            intermediateList = ticketRepository.findByPropertyId(id);
+//            for (Ticket ticket : intermediateList) {
+//                ticketList.add(ticket);
+//            }
+//        }
+//
+//        return ticketList;
+//    }
+
+    public List<Ticket> getTicketsByUserId(String userId){
+
+        List<Ticket> tickets = new ArrayList<>();
+        if(renterRepository.findById(Long.parseLong(userId)).isPresent()) {
+            tickets = renterRepository.findById(Long.parseLong(userId)).get().getTicketList();
+        } else if(ownerRepository.findById(Long.parseLong(userId)).isPresent()) {
+            tickets = ownerRepository.findById(Long.parseLong(userId)).get().getTicketList();
+        }
+        return tickets;
+    }
+
+
+    public void createNewTicket(TicketModel ticketModel, String userId) {
+        Ticket newTicket = new Ticket(ticketModel.getType(), ticketModel.getName(), ticketModel.getDescription(),
+                ticketModel.getPropertyId(), ticketModel.getUserEmail(), ticketModel.getUserPhonenumber());
+        ticketRepository.save(newTicket);
+
+        if (renterRepository.findById(Long.parseLong(userId)).isPresent()) {
+            Renter renter = renterRepository.getById(Long.parseLong(userId));
+            renter.getTicketList().add(newTicket);
+            renterRepository.save(renter);
+        } else if (ownerRepository.findById(Long.parseLong(userId)).isPresent()) {
+            Owner owner = ownerRepository.getById(Long.parseLong(userId));
+            owner.getTicketList().add(newTicket);
+            ownerRepository.save(owner);
+        }
     }
 
     public void assignOperatorToTicket(String operatorContractId, Long ticketId) {
         Ticket currentTicket = ticketRepository.getById(ticketId);
         Operator currentOperator = operatorRepository.findByContractID(operatorContractId);
 
-        currentOperator.getAssignedTickets().add(String.valueOf(ticketId));
+        currentOperator.getAssignedTickets().add(currentTicket);
         operatorRepository.save(currentOperator);
 
         currentTicket.setOperatorContractId(operatorContractId);

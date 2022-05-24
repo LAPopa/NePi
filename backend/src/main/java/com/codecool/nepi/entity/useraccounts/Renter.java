@@ -1,13 +1,11 @@
 package com.codecool.nepi.entity.useraccounts;
 
+import com.codecool.nepi.entity.Ticket;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +16,8 @@ import java.util.List;
 public class Renter extends User {
 
     private String contractID;
-    @ElementCollection(fetch = FetchType.LAZY)
-    private List<String> ticketList;
+    @OneToMany
+    private List<Ticket> ticketList;
 
     public Renter(String firstName, String lastName, String phoneNumber, String email, String password, String contractID) {
         super(firstName, lastName, phoneNumber, email, password);

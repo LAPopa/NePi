@@ -26,9 +26,14 @@ public class TicketController {
         return ticketService.getTicketsByType(ticketType);
     }
 
+    @GetMapping("/tickets/show")
+    public List<Ticket> getUserTickets(@RequestParam String userId) {
+        return ticketService.getTicketsByUserId(userId);
+    }
+
     @PostMapping("/tickets/new")
-    public void createNewTicket(@RequestBody TicketModel ticketModel) {
-        ticketService.createNewTicket(ticketModel);
+    public void createNewTicket(@RequestBody TicketModel ticketModel, @RequestParam String userId) {
+        ticketService.createNewTicket(ticketModel, userId);
     }
 
 

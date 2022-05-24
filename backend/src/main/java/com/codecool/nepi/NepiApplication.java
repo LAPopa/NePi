@@ -1,5 +1,6 @@
 package com.codecool.nepi;
 
+import com.codecool.nepi.entity.Ticket;
 import com.codecool.nepi.entity.useraccounts.Admin;
 import com.codecool.nepi.repository.*;
 import org.slf4j.Logger;
@@ -22,7 +23,8 @@ public class NepiApplication {
     @Bean
     public CommandLineRunner testAdminLogin(AdminRepository adminRepository, OverseerRepository overseerRepository,
                                             OperatorRepository operatorRepository, OwnerRepository ownerRepository, RenterRepository renterRepository,
-                                            PropertyObjectRepository propertyObjectRepository, BaseCompanyRepository baseCompanyRepository) {
+                                            PropertyObjectRepository propertyObjectRepository, BaseCompanyRepository baseCompanyRepository,
+                                            TicketRepository ticketRepository) {
         return (args) -> {
 //            adminRepository.save(new Admin("Mimi", "Moe", "01234", "test@mail.com", "1234"));
 //            overseerRepository.save(new Overseer("Joe","the Overseer","1234","overseer@mail.com","1234"));
@@ -48,6 +50,10 @@ public class NepiApplication {
             log.info("Current admin accounts ::");
             for (Admin admin : adminRepository.findAll()) {
                 log.info(admin.toString());
+            }
+
+            for(Ticket ticket : ticketRepository.findByPropertyId("UR2")) {
+                log.info(ticket.toString());
             }
         };
     }

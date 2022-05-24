@@ -1,5 +1,6 @@
 package com.codecool.nepi.entity.useraccounts;
 
+import com.codecool.nepi.entity.Ticket;
 import com.codecool.nepi.model.types.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +22,8 @@ import java.util.List;
 public class Operator extends User {
 
     private String contractID;
-    @ElementCollection(fetch = FetchType.LAZY)
-    private List<String> assignedTickets;
+    @OneToMany
+    private List<Ticket> assignedTickets;
 
     public Operator(String firstName, String lastName, String phoneNumber, String email, String password, String contractID) {
         super(firstName, lastName, phoneNumber, email, password);

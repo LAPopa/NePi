@@ -15,6 +15,9 @@ export default function Header() {
         localStorage.removeItem("email")
         localStorage.removeItem("roles")
         localStorage.removeItem("token")
+        localStorage.removeItem("role")
+        localStorage.removeItem("username")
+        localStorage.removeItem("userId")
         navigate('/')
         window.location.reload()
     }

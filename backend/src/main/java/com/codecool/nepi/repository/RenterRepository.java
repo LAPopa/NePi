@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 
 @Repository
 public interface RenterRepository extends JpaRepository<Renter,Long> {
@@ -17,4 +19,9 @@ public interface RenterRepository extends JpaRepository<Renter,Long> {
 
     @Query("select a from Renter a where a.email = :email")
     Renter findByEmail(@Param("email") String email);
+
+    Optional<Renter> findById(Long id);
+
+//    @Query("SELECT a. from Renter a ")
+//    String getPropertyIdByUserId(Long userId)
 }

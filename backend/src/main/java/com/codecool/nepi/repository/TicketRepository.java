@@ -17,4 +17,6 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
     @Query("SELECT t FROM Ticket t ")
     List<Ticket> getAll();
+
+    List<Ticket> findByPropertyId(String propertyId);
 }

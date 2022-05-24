@@ -1,6 +1,7 @@
 package com.codecool.nepi.entity.useraccounts;
 
 import com.codecool.nepi.entity.PropertyObject;
+import com.codecool.nepi.entity.Ticket;
 import com.codecool.nepi.model.types.UserType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,8 +22,8 @@ public class Owner extends User {
     private PropertyObject registrationProperty;
     @OneToMany(fetch = FetchType.EAGER)
     private List<PropertyObject> currentProperties = new ArrayList<>();
-    @ElementCollection(fetch = FetchType.LAZY)
-    private List<String> ticketList;
+    @OneToMany
+    private List<Ticket> ticketList;
 
 
     public Owner(String firstName, String lastName, String phoneNumber, String email, String password, PropertyObject registrationProperty) {

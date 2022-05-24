@@ -22,6 +22,7 @@ import UserRegistrationSuccessTest from "./components/registrations/UserRegistra
 import TESTDashboard from "./components/pages/Dashboard";
 import UserTickets from "./components/userpages/UserTickets";
 import PostTicket from "./components/userpages/PostTicket";
+import UserDetails from "./components/userpages/UserDetails";
 
 function App() {
     return (
@@ -45,6 +46,7 @@ function App() {
                     <Route path={"/TEST-DASHBOARD"} element={<TESTDashboard/>}/>
                     <Route path={"/tickets/show"} element={<UserTickets/>} />
                     <Route path={"/tickets/new"} element={<PostTicket/>}/>
+                    <Route path={"/get-user-details"} element={<UserDetails/>}/>
 
                 </Routes>
                 <Footer/>

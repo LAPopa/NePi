@@ -73,9 +73,12 @@ public class UserAccountsService {
             userDetails.add(owner.get().getEmail());
             userDetails.add(owner.get().getPhoneNumber());
             List<PropertyObject> properties = owner.get().getCurrentProperties();
+            String propertiesString = "";
             for(PropertyObject property : properties) {
-                userDetails.add(property.toString());
+//                userDetails.add(property.getEnrollmentId());
+                propertiesString = propertiesString +" "+ property.getEnrollmentId();
             }
+            userDetails.add(propertiesString);
         } else if (findRenterById(id).isPresent()) {
             Optional<Renter> renter = findRenterById(id);
             userDetails.add(renter.get().getEmail());

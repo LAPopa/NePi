@@ -1,13 +1,16 @@
 package com.codecool.nepi.entity.useraccounts;
 
 import com.codecool.nepi.model.types.UserType;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 
 @Entity
+@Getter @Setter
 @Table(name = "overseers")
 @NoArgsConstructor
 public class Overseer extends User {

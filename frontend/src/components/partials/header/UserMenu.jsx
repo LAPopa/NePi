@@ -7,6 +7,7 @@ import UserAvatar from '../../images/user-avatar-32.png';
 function UserMenu() {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [userDetails, allUserDetails] = useState([]);
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
@@ -18,8 +19,26 @@ function UserMenu() {
       setDropdownOpen(false);
     };
     document.addEventListener('click', clickHandler);
+
+    let userId = localStorage.getItem("userID");
+
+    fetch(`http://localhost:8080/get-user-details?userId=${localStorage.getItem("userID")}`,
+        {
+          method : "GET",
+          headers : {
+            'Authorization' : 'Bearer ' + localStorage.getItem("token"),
+            "Content-Type" : "application/json"
+          }
+        }
+    )
+        .then(response => response.json())
+        .then((response) => {
+          allUserDetails(response)
+        })
+
+
     return () => document.removeEventListener('click', clickHandler);
-  });
+  },[]);
 
   // close if the esc key is pressed
   useEffect(() => {
@@ -68,6 +87,9 @@ function UserMenu() {
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
             <div className="font-medium text-slate-800">{localStorage.getItem("firstName")} {localStorage.getItem("lastName")}</div>
             <div className="text-xs text-slate-500 italic">{localStorage.getItem("roles")}</div>
+            {userDetails.map((UD) =>
+                <div className="text-xs text-slate-500 italic">{UD.email}</div>
+            )}
           </div>
           <ul>
             <li>

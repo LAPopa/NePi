@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests() // restrict access based on endpoint config below
                 .antMatchers(POST, "/").permitAll()
                 .antMatchers(GET,"/").permitAll()
+                .antMatchers(GET,"/get-user-details").hasAnyRole("ADMIN","OVERSEER","OPERATOR","OWNER","RENTER")
                 .antMatchers(POST, "/tickets/new").hasAnyRole("OWNER", "RENTER")
                 .antMatchers(GET, "/tickets/show").hasAnyRole("OWNER", "RENTER")
                 .antMatchers(POST, "/tickets/resolve-ticket").hasAnyRole("OPERATOR")

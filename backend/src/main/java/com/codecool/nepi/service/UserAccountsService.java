@@ -1,6 +1,7 @@
 package com.codecool.nepi.service;
 
 
+import com.codecool.nepi.entity.PropertyObject;
 import com.codecool.nepi.model.login.LoginModel;
 import com.codecool.nepi.model.types.UserType;
 import com.codecool.nepi.entity.useraccounts.*;
@@ -8,6 +9,10 @@ import com.codecool.nepi.repository.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Getter
@@ -47,6 +52,43 @@ public class UserAccountsService {
 
     }
 
+    public List<String> getUserDetailsFromId(String id) {
+
+        List<String> userDetails = new ArrayList<>();
+
+        if (findAdminById(id).isPresent()) {
+            Optional<Admin> admin = findAdminById(id);
+            userDetails.add(admin.get().getEmail());
+            userDetails.add(admin.get().getPhoneNumber());
+        } else if (findOverseerById(id).isPresent()) {
+            Optional<Overseer> overseer = findOverseerById(id);
+            userDetails.add(overseer.get().getEmail());
+            userDetails.add(overseer.get().getPhoneNumber());
+        } else if (findOperatorById(id).isPresent()) {
+            Optional<Operator> operator = findOperatorById(id);
+            userDetails.add(operator.get().getEmail());
+            userDetails.add(operator.get().getPhoneNumber());
+        } else if (findOwnerById(id).isPresent()) {
+            Optional<Owner> owner = findOwnerById(id);
+            userDetails.add(owner.get().getEmail());
+            userDetails.add(owner.get().getPhoneNumber());
+            List<PropertyObject> properties = owner.get().getCurrentProperties();
+            for(PropertyObject property : properties) {
+                userDetails.add(property.toString());
+            }
+        } else if (findRenterById(id).isPresent()) {
+            Optional<Renter> renter = findRenterById(id);
+            userDetails.add(renter.get().getEmail());
+            userDetails.add(renter.get().getPhoneNumber());
+            userDetails.add(renter.get().getContractID());
+        } else {
+            System.out.println("NO USER FOUND WITH THAT ID : " + id);
+        }
+
+        return userDetails;
+    }
+
+
     public Admin findAdminByEmail(String email) {
         return adminRepository.findByEmail(email);
     }
@@ -66,6 +108,16 @@ public class UserAccountsService {
     public Renter findRenterByEmail(String email) {
         return renterRepository.findByEmail(email);
     }
+
+    public Optional<Admin> findAdminById(String id) {return adminRepository.findById(Long.parseLong(id));}
+
+    public Optional<Overseer> findOverseerById(String id) {return overseerRepository.findById(Long.parseLong(id));}
+
+    public Optional<Operator> findOperatorById(String id) {return operatorRepository.findById(Long.parseLong(id));}
+
+    public Optional<Owner> findOwnerById(String id) {return ownerRepository.findById(Long.parseLong(id));}
+
+    public Optional<Renter> findRenterById(String id) {return renterRepository.findById(Long.parseLong(id));}
 
     public boolean checkValidEmail(UserType userType, String email) {
         switch (userType) {

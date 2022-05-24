@@ -80,15 +80,15 @@ export function OwnerRegistration() {
 
     return (
         <div>
-            <ToastContainer
-                position="top-center"
-                autoClose={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-            />
+            {/*<ToastContainer*/}
+            {/*    position="top-center"*/}
+            {/*    autoClose={false}*/}
+            {/*    newestOnTop={false}*/}
+            {/*    closeOnClick*/}
+            {/*    rtl={false}*/}
+            {/*    pauseOnFocusLoss*/}
+            {/*    draggable*/}
+            {/*/>*/}
             <section className="h-screen bg-gray-100 bg-opacity-50">
                 <form className="container max-w-2xl mx-auto shadow-md md:w-3/4"
                       method="POST" onSubmit={onSubmit} action="/registration/owners">

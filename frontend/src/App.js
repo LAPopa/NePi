@@ -23,6 +23,7 @@ import TESTDashboard from "./components/pages/Dashboard";
 import UserTickets from "./components/userpages/UserTickets";
 import PostTicket from "./components/userpages/PostTicket";
 import UserDetails from "./components/userpages/UserDetails";
+import AssignOperator from "./components/userpages/AssignOperator";
 
 function App() {
     return (
@@ -47,6 +48,7 @@ function App() {
                     <Route path={"/tickets/show"} element={<UserTickets/>} />
                     <Route path={"/tickets/new"} element={<PostTicket/>}/>
                     <Route path={"/get-user-details"} element={<UserDetails/>}/>
+                    <Route path={"/tickets/assign-operators"} element={<AssignOperator/>}/>
 
                 </Routes>
                 <Footer/>

@@ -66,6 +66,8 @@ public class TicketService {
             tickets = renterRepository.findById(Long.parseLong(userId)).get().getTicketList();
         } else if(ownerRepository.findById(Long.parseLong(userId)).isPresent()) {
             tickets = ownerRepository.findById(Long.parseLong(userId)).get().getTicketList();
+        } else if (operatorRepository.findById(Long.parseLong(userId)).isPresent()) {
+            tickets = operatorRepository.findById(Long.parseLong(userId)).get().getAssignedTickets();
         }
         return tickets;
     }

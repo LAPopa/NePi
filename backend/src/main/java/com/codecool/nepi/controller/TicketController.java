@@ -1,8 +1,11 @@
 package com.codecool.nepi.controller;
 
 import com.codecool.nepi.entity.Ticket;
+import com.codecool.nepi.entity.useraccounts.Operator;
 import com.codecool.nepi.model.TicketModel;
+import com.codecool.nepi.model.TicketOperatorAssign;
 import com.codecool.nepi.service.TicketService;
+import com.codecool.nepi.service.UserAccountsService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +17,11 @@ import java.util.List;
 public class TicketController {
 
     TicketService ticketService;
+    UserAccountsService userAccountsService;
 
+
+    @GetMapping("/tickets/operators/all")
+    public List<Operator> getAllOperators() {return userAccountsService.getAllOperators();}
 
     @GetMapping("/tickets/all")
     public List<Ticket> getAllTickets() {
@@ -38,8 +45,8 @@ public class TicketController {
 
 
     @PostMapping("/tickets/assign-operator")
-    public void assignOperatorToTicket(@RequestParam String operatorContractId, @RequestParam String ticketId) {
-        ticketService.assignOperatorToTicket(operatorContractId, Long.parseLong(ticketId));
+    public void assignOperatorToTicket(@RequestBody TicketOperatorAssign ticketOperatorAssign) {
+        ticketService.assignOperatorToTicket(ticketOperatorAssign.getOperatorContractId(), Long.parseLong(ticketOperatorAssign.getTicketId()));
 
     }
 

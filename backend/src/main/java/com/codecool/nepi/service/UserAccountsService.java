@@ -148,6 +148,8 @@ public class UserAccountsService {
 
     }
 
+    public List<Operator> getAllOperators() {return operatorRepository.findAll();}
+
 
     //TODO add new user - ties in with RegistrationService?
 

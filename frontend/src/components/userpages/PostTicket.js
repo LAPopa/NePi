@@ -1,5 +1,5 @@
 import '../../App.css';
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {toast, ToastContainer} from "react-toastify";
 
@@ -8,6 +8,23 @@ export default function PostTicket() {
 
     let navigate = useNavigate();
     // const POST_TICKET_URL = 'http://localhost:8080/tickets/new';
+    const [userDetails, allUserDetails] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:8080/get-user-details?userId=${localStorage.getItem("userID")}`,
+            {
+                method: "GET",
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                    "Content-Type": "application/json"
+                }
+            }
+        )
+            .then(response => response.json())
+            .then((response) => {
+                allUserDetails(response)
+            })
+    }, []);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -93,6 +110,20 @@ export default function PostTicket() {
                         <div
                             className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
                             <h2 className="max-w-sm mx-auto md:w-1/3 text-lg">
+                                Property ids
+                            </h2>
+                            <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
+
+                                <div className=" relative ">
+                                    {userDetails[2]}
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div
+                            className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
+                            <h2 className="max-w-sm mx-auto md:w-1/3 text-lg">
                                 Ticket type
                             </h2>
                             <div className="max-w-sm mx-auto md:w-2/3">
@@ -125,6 +156,7 @@ export default function PostTicket() {
                                            placeholder="Enter a problem description"
                                            name="description"/>
                                 </div>
+
 
                                 <div>
                                     <div className=" relative ">

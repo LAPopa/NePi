@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(GET,"/").permitAll()
                 .antMatchers(GET,"/get-user-details").hasAnyRole("ADMIN","OVERSEER","OPERATOR","OWNER","RENTER")
                 .antMatchers(POST, "/tickets/new").hasAnyRole("OWNER", "RENTER")
-                .antMatchers(GET, "/tickets/show").hasAnyRole("OWNER", "RENTER")
+                .antMatchers(GET, "/tickets/show").hasAnyRole("OWNER", "RENTER", "OPERATOR")
                 .antMatchers(POST, "/tickets/resolve-ticket").hasAnyRole("OPERATOR")
                 .antMatchers(POST,"/registration/owners","/registration/tenants","/registration/utilities").permitAll()
                 .antMatchers(POST, "/registration/owner/**").hasRole("OWNER")

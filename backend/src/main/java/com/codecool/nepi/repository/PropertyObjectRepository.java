@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 public interface PropertyObjectRepository extends JpaRepository<PropertyObject, Long> {
@@ -31,4 +33,6 @@ public interface PropertyObjectRepository extends JpaRepository<PropertyObject, 
 
     @Query("select po.apartmentNumber from PropertyObject po where po.enrollmentId = :id")
     String checkApartmentNumber(@Param("id") String enrollmentId);
+
+
 }

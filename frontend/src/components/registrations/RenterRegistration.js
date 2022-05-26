@@ -1,6 +1,6 @@
 import '../../App.css';
 import ProfilePic from '../../assets/profilePic.png';
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
 
@@ -8,6 +8,25 @@ import {toast} from "react-toastify";
 export function RenterRegistration() {
     let navigate = useNavigate();
     const RENTER_REGISTRATION_URL = 'http://localhost:8080/registration/tenants';
+
+    const [enrolledPropertyIds, allEnrolledPropertyIds] = useState([]);
+
+    useEffect(() => {
+
+        fetch(`http://localhost:8080/registration/check-enrolledPropertyIds`,
+            {
+                method : "GET",
+                headers : {
+                    "Content-Type": "application/json"
+                }
+            }
+        )
+            .then(response => response.json())
+            .then((response) => {
+                allEnrolledPropertyIds(response)
+            })
+    },[])
+
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -30,7 +49,19 @@ export function RenterRegistration() {
                     draggable: true,
                     progress: undefined,
                 });
-            } else {
+            } else if (!enrolledPropertyIds.includes(formData.get('contractId')) ){
+                toast.error('The contract Id was not found !', {
+                    position: "top-center",
+                    autoClose: false,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+
+            else {
                 fetch(RENTER_REGISTRATION_URL, {
                     method: "POST",
                     headers: {

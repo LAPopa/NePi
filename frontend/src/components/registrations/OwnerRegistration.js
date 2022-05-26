@@ -1,6 +1,6 @@
 import '../../App.css';
 import ProfilePic from '../../assets/profilePic.png';
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {toast, ToastContainer} from "react-toastify";
 
@@ -8,6 +8,25 @@ import {toast, ToastContainer} from "react-toastify";
 export function OwnerRegistration() {
     let navigate = useNavigate();
     const OWNER_REGISTRATION_URL = 'http://localhost:8080/registration/owners';
+
+    const [enrolledPropertyIds, allEnrolledPropertyIds] = useState([]);
+
+    useEffect(() => {
+
+        fetch(`http://localhost:8080/registration/check-enrolledPropertyIds`,
+            {
+                method : "GET",
+                headers : {
+                    "Content-Type": "application/json"
+                }
+            }
+            )
+            .then(response => response.json())
+            .then((response) => {
+                allEnrolledPropertyIds(response)
+            })
+    },[])
+
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -33,7 +52,18 @@ export function OwnerRegistration() {
                     draggable: true,
                     progress: undefined,
                 });
-            } else {
+            }else if (!enrolledPropertyIds.includes(formData.get('enrollmentId')) ){
+                toast.error('The enrollment Id was not found !', {
+                    position: "top-center",
+                    autoClose: false,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+            else {
                 fetch(OWNER_REGISTRATION_URL, {
                     method: "POST",
                     headers: {

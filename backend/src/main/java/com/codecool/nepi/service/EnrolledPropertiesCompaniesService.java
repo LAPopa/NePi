@@ -15,6 +15,9 @@ import lombok.Getter;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @Getter
 @Service
@@ -57,6 +60,26 @@ public class EnrolledPropertiesCompaniesService {
             throw new RuntimeException("PROPERTY NOT FOUND");
         }
 
+    }
+
+    public List<String> getEnrolledPropertyIds() {
+
+        List<String> enrolledPropertyIds = new ArrayList<>();
+        List<PropertyObject> allProperties = propertyObjectRepository.findAll();
+        for(PropertyObject propertyObject : allProperties) {
+            enrolledPropertyIds.add(propertyObject.getEnrollmentId());
+        }
+        return  enrolledPropertyIds;
+    }
+
+    public List<String> getBaseCompanyAllocatedIds() {
+
+        List<String> allocatedIds = new ArrayList<>();
+        List<BaseCompany> allCompanies = baseCompanyRepository.findAll();
+        for(BaseCompany baseCompany : allCompanies) {
+            allocatedIds.addAll(baseCompany.getAllocatedIds());
+        }
+        return allocatedIds;
     }
 
 

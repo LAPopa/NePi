@@ -4,6 +4,8 @@ package com.codecool.nepi.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,6 +28,8 @@ public class Ticket {
     private String userPhonenumber;
     private boolean status;  // false - not solved, true - solved
     private String operatorContractId;  // operator assigned to the ticket
+    private String postedAt;
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     public Ticket(String type,String name, String description, String propertyId, String userEmail, String userPhonenumber) {
         this.type = type;
@@ -36,6 +40,7 @@ public class Ticket {
         this.userPhonenumber = userPhonenumber;
         this.status = false;
         this.operatorContractId = "";
+        this.postedAt = LocalDateTime.now().format(FORMATTER);
     }
 
 

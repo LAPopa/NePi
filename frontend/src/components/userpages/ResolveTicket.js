@@ -59,6 +59,9 @@ export default function ResolveTicket() {
                         Status
                     </th>
                     <th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                        Posted At
+                    </th>
+                    <th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
                         Set as Resolved ?
                     </th>
                 </tr>
@@ -107,6 +110,15 @@ export default function ResolveTicket() {
                                 <div>
                                     <p className="text-gray-900 whitespace-no-wrap">
                                         {ticket.status.toString()}
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <div className="flex items-center">
+                                <div>
+                                    <p className="text-gray-900 whitespace-no-wrap">
+                                        {ticket.postedAt}
                                     </p>
                                 </div>
                             </div>

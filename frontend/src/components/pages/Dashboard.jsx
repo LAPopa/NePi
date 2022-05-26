@@ -81,7 +81,7 @@ function Dashboard() {
 
                                         {/* Cards */}
                                         <div className="grid grid-cols-12 gap-6">
-                                            {localStorage.getItem("roles") === "ROLE_ADMIN" ?
+                                            {localStorage.getItem("roles") === "ROLE_ADMIN" || localStorage.getItem("roles") === "ROLE_OVERSEER" ?
                                                 <>
                                                     {/* Line chart (Acme Plus) */}
                                                     <DashboardCard01/>

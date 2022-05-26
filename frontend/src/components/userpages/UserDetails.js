@@ -7,7 +7,6 @@ export default function UserDetails() {
     const [userDetails, allUserDetails] = useState([]);
 
 
-    let userId = localStorage.getItem("userID");
 
     useEffect(() => {
         fetch(`http://localhost:8080/get-user-details?userId=${localStorage.getItem("userID")}`,

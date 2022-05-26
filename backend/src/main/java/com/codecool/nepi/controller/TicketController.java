@@ -53,6 +53,7 @@ public class TicketController {
 
     @PostMapping("/tickets/resolve-ticket")
     public void markTicketAsSolved(@RequestParam String ticketId) {
+        System.out.println(ticketId + ticketId.getClass());
         ticketService.resolveTicket(Long.parseLong(ticketId));
     }
 

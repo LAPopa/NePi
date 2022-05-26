@@ -43,7 +43,7 @@ export function LoginForm() {
                     localStorage.setItem("email", response.email)
                     localStorage.setItem("roles", response.roles)
                     localStorage.setItem("token", response.token)
-                    navigate('/TEST-DASHBOARD')
+                    navigate('/user-dashboard')
                     window.location.reload()
 
                 }

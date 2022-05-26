@@ -25,6 +25,8 @@ import PostTicket from "./components/userpages/PostTicket";
 import UserDetails from "./components/userpages/UserDetails";
 import AssignOperator from "./components/userpages/AssignOperator";
 import ResolveTicket from "./components/userpages/ResolveTicket";
+import AllTickets from "./components/userpages/AllTickets";
+
 
 function App() {
     return (
@@ -45,12 +47,13 @@ function App() {
                     <Route path={"/testing-route"} element={<><TestComponent/><TestFormService/></>}/>
                     <Route path={"/login-successful"} element={<LoginSuccessTest/>}/>
                     <Route path={"/registration-successful"} element={<UserRegistrationSuccessTest/>}/>
-                    <Route path={"/TEST-DASHBOARD"} element={<TESTDashboard/>}/>
+                    <Route path={"/user-dashboard"} element={<TESTDashboard/>}/>
                     <Route path={"/tickets/show"} element={<UserTickets/>} />
                     <Route path={"/tickets/new"} element={<PostTicket/>}/>
                     <Route path={"/get-user-details"} element={<UserDetails/>}/>
                     <Route path={"/tickets/assign-operators"} element={<AssignOperator/>}/>
                     <Route path={"/tickets/resolve-ticket"} element={<ResolveTicket/>} />
+                    <Route path={"/tickets/all"} element={<AllTickets/>}/>
 
                 </Routes>
                 <Footer/>

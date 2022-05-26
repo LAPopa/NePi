@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from "react";
 import '../../App.css';
+import {useNavigate} from "react-router-dom";
 
-export default function ResolveTicket() {
-
+export default function AllTickets() {
+    let navigate = useNavigate();
     const [tickets, allTickets] = useState([]);
 
     useEffect(() => {
 
-        fetch(`http://localhost:8080/tickets/show?userId=${localStorage.getItem("userID")}`,
+        fetch(`http://localhost:8080/tickets/all`,
             {
                 method: "GET",
                 headers: {
@@ -22,21 +23,6 @@ export default function ResolveTicket() {
             })
     }, []);
 
-    const handleClick = (event) => {
-        console.log(event.target.id);
-
-        fetch(`http://localhost:8080/tickets/resolve-ticket?ticketId=${event.target.id}`,
-            {
-                method: "POST",
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
-                    // "Content-Type" : "application/x-www-form-urlencoded"
-                }
-            })
-        window.location.reload();
-    }
-
-
     return (
 
 
@@ -48,7 +34,7 @@ export default function ResolveTicket() {
                     </h2>
 
                 </div>
-                <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 ">
+                <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                     <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
                         <table className="min-w-full leading-normal">
                             <thead>
@@ -76,10 +62,6 @@ export default function ResolveTicket() {
                                 <th scope="col"
                                     className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
                                     Posted At
-                                </th>
-                                <th scope="col"
-                                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                    Set as resolved ?
                                 </th>
                             </tr>
                             </thead>
@@ -149,13 +131,11 @@ export default function ResolveTicket() {
                                             {ticket.postedAt}
                                         </p>
                                     </td>
-                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <button id={ticket.id}
-                                                className="text-indigo-600 hover:text-indigo-900"
-                                                onClick={handleClick}>
-                                            Set as Resolved
-                                        </button>
-                                    </td>
+                                    {/*<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">*/}
+                                    {/*    <a href="#" className="text-indigo-600 hover:text-indigo-900">*/}
+                                    {/*        Edit*/}
+                                    {/*    </a>*/}
+                                    {/*</td>*/}
                                 </tr>
                             )}
                             </tbody>
@@ -167,6 +147,6 @@ export default function ResolveTicket() {
         </div>
 
 
-    )
 
+    )
 }

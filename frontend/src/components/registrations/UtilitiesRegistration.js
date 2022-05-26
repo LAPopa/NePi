@@ -1,6 +1,6 @@
 import '../../App.css';
 import ProfilePic from '../../assets/profilePic.png';
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
 
@@ -8,6 +8,24 @@ import {toast} from "react-toastify";
 export function UtilitiesRegistration() {
     let navigate = useNavigate();
     const UTILITIES_REGISTRATION_URL = 'http://localhost:8080/registration/utilities';
+
+    const [allocatedCompanyIds, allAllocatedCompanyIds] = useState([]);
+
+    useEffect(() => {
+
+        fetch(`http://localhost:8080/registration/check-companyAllocatedIds`,
+            {
+                method : "GET",
+                headers : {
+                    "Content-Type": "application/json"
+                }
+            }
+        )
+            .then(response => response.json())
+            .then((response) => {
+                allAllocatedCompanyIds(response)
+            })
+    },[])
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -31,7 +49,19 @@ export function UtilitiesRegistration() {
                     draggable: true,
                     progress: undefined,
                 });
-            } else {
+            } else if (!allocatedCompanyIds.includes(formData.get('contractId')) ){
+                toast.error('The contract Id was not found !', {
+                    position: "top-center",
+                    autoClose: false,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+
+            else {
                 fetch(UTILITIES_REGISTRATION_URL, {
                     method: "POST",
                     headers: {

@@ -51,7 +51,15 @@ export function RenterRegistration() {
                     .catch(function () {
                     })
                     .then(() => {
-                        alert("Success!");
+                        toast.success('Account created successfully !', {
+                            position: "top-center",
+                            autoClose: false,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        });
                         navigate('/')
                     })
             }

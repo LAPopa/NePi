@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import '../../App.css';
+import {toast} from "react-toastify";
 
 export default function AssignOperator() {
 
@@ -62,6 +63,16 @@ export default function AssignOperator() {
                 .then(() => {
                     window.location.reload();
                 })
+        } else {
+            toast.error('Please fill in the ticket id and operator contract id !', {
+                position: "top-center",
+                autoClose: false,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
 
 

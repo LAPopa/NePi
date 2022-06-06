@@ -6,7 +6,8 @@ import {
 import 'chartjs-adapter-moment';
 
 // Import utilities
-import { tailwindConfig, formatValue } from '../utils/Utils';
+// import { tailwindConfig, formatValue } from '../utils/Utils';
+import { tailwindConfig} from '../utils/Utils';
 
 Chart.register(LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip);
 
@@ -37,7 +38,7 @@ function LineChart02({
             },
             ticks: {
               maxTicksLimit: 5,
-              callback: (value) => formatValue(value),
+              // callback: (value) => formatValue(value),
             },
           },
           x: {
@@ -66,7 +67,7 @@ function LineChart02({
           tooltip: {
             callbacks: {
               title: () => false, // Disable tooltip title
-              label: (context) => formatValue(context.parsed.y),
+              // label: (context) => formatValue(context.parsed.y),
             },
           },
         },

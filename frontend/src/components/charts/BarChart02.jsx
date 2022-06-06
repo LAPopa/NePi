@@ -6,7 +6,7 @@ import {
 import 'chartjs-adapter-moment';
 
 // Import utilities
-import { formatValue } from '../utils/Utils';
+// import { formatValue } from '../utils/Utils';
 
 Chart.register(BarController, BarElement, LinearScale, TimeScale, Tooltip, Legend);
 
@@ -42,7 +42,7 @@ function BarChart02({
             beginAtZero: true,
             ticks: {
               maxTicksLimit: 5,
-              callback: (value) => formatValue(value),
+              // callback: (value) => formatValue(value),
             },
           },
           x: {
@@ -72,7 +72,7 @@ function BarChart02({
           tooltip: {
             callbacks: {
               title: () => false, // Disable tooltip title
-              label: (context) => formatValue(context.parsed.y),
+              // label: (context) => formatValue(context.parsed.y),
             },
           },
         },

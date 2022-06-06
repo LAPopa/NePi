@@ -6,7 +6,8 @@ import {
 import 'chartjs-adapter-moment';
 
 // Import utilities
-import { tailwindConfig, formatValue } from '../utils/Utils';
+// import { tailwindConfig, formatValue } from '../utils/Utils';
+import { tailwindConfig} from '../utils/Utils';
 
 Chart.register(BarController, BarElement, LinearScale, TimeScale, Tooltip, Legend);
 
@@ -41,7 +42,7 @@ function BarChart01({
             },
             ticks: {
               maxTicksLimit: 5,
-              callback: (value) => formatValue(value),
+              // callback: (value) => formatValue(value),
             },
           },
           x: {
@@ -66,7 +67,7 @@ function BarChart01({
           tooltip: {
             callbacks: {
               title: () => false, // Disable tooltip title
-              label: (context) => formatValue(context.parsed.y),
+              // label: (context) => formatValue(context.parsed.y),
             },
           },
         },
@@ -129,9 +130,9 @@ function BarChart01({
             label.style.fontSize = tailwindConfig().theme.fontSize.sm[0];
             label.style.lineHeight = tailwindConfig().theme.fontSize.sm[1].lineHeight;
             const theValue = c.data.datasets[item.datasetIndex].data.reduce((a, b) => a + b, 0);
-            const valueText = document.createTextNode(formatValue(theValue));
+            // const valueText = document.createTextNode(formatValue(theValue));
             const labelText = document.createTextNode(item.text);
-            value.appendChild(valueText);
+            // value.appendChild(valueText);
             label.appendChild(labelText);
             li.appendChild(button);
             button.appendChild(box);

@@ -1,6 +1,6 @@
 <!-- TABLE OF CONTENTS -->
 
-# VillageHub app
+# NePi - Community Hub (and more) for tomorrow's cities
 
 <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
 <ol>

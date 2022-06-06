@@ -30,16 +30,16 @@ export default function Footer() {
                         <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Info</h2>
                         <nav className="list-none mb-10">
                             <li>
-                                <a className="text-gray-600 hover:text-gray-800">First Link</a>
+                                <a className="text-gray-600 hover:text-gray-800">Frequently Asked Questions</a>
                             </li>
                             <li>
-                                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+                                <a className="text-gray-600 hover:text-gray-800">How to Use the NePi Platform</a>
                             </li>
                             <li>
-                                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+                                <a className="text-gray-600 hover:text-gray-800">Terms of Use</a>
                             </li>
                             <li>
-                                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+                                <a className="text-gray-600 hover:text-gray-800">How to Enroll your Property in NePi</a>
                             </li>
                         </nav>
                     </div>
@@ -48,16 +48,16 @@ export default function Footer() {
                         <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Troubleshooting</h2>
                         <nav className="list-none mb-10">
                             <li>
-                                <a className="text-gray-600 hover:text-gray-800">First Link</a>
+                                <a className="text-gray-600 hover:text-gray-800">Account Issues</a>
                             </li>
                             <li>
-                                <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+                                <a className="text-gray-600 hover:text-gray-800">Ticketing System</a>
                             </li>
                             <li>
-                                <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+                                <a className="text-gray-600 hover:text-gray-800">Legal</a>
                             </li>
                             <li>
-                                <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+                                <a className="text-gray-600 hover:text-gray-800">Other</a>
                             </li>
                         </nav>
                     </div>

@@ -9,14 +9,14 @@ export function LoginForm() {
 
     const [user, setUser] = useState(
         {
-            email:"",
-            password:""
+            email: "",
+            password: ""
         }
     )
 
     const handleChange = event => {
         const {name, value} = event.target
-        setUser({...user, [name]:value})
+        setUser({...user, [name]: value})
         console.log(user)
     }
 
@@ -36,7 +36,7 @@ export function LoginForm() {
             .then(response => {
                 console.log(JSON.stringify(response))
 
-                if(response.status === 200) {
+                if (response.status === 200) {
                     localStorage.setItem("userID", response.userID)
                     localStorage.setItem("firstName", response.firstName)
                     localStorage.setItem("lastName", response.lastName)
@@ -46,11 +46,10 @@ export function LoginForm() {
                     navigate('/user-dashboard')
                     window.location.reload()
 
-                }
-                else {
+                } else {
                     setUser({
-                        email:"",
-                        password:""
+                        email: "",
+                        password: ""
                     })
                     alert("Invalid credentials !")
                 }
@@ -58,7 +57,8 @@ export function LoginForm() {
             .then(() => {
 
             })
-            .catch(function () {})
+            .catch(function () {
+            })
     }
 
 
@@ -109,8 +109,8 @@ export function LoginForm() {
                         <input type="checkbox"
                                className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                                id="exampleCheck2"/>
-                            <label className="form-check-label inline-block text-gray-800" htmlFor="exampleCheck2">Remember
-                                me</label>
+                        <label className="form-check-label inline-block text-gray-800" htmlFor="exampleCheck2">Remember
+                            me</label>
                         <br/>
                         <a href="#!"
                            className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot

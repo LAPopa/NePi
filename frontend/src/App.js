@@ -1,6 +1,6 @@
 import './App.css';
 
-import React from "react";
+import React, {useEffect} from "react";
 
 import {BrowserRouter as Router, Route, Navigate, Link, NavLink} from "react-router-dom";
 import {Routes} from "react-router";
@@ -29,6 +29,10 @@ import AllTickets from "./components/userpages/AllTickets";
 
 
 function App() {
+
+    useEffect(() => {
+        document.title = "NePi"
+    }, []);
     return (
 
         <div className="App">

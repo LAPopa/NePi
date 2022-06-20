@@ -112,7 +112,7 @@ function Dashboard() {
                                                 </>
                                                 :
                                                 <>
-                                                    <p>Hello user</p>
+                                                    {/*<p>Hello user</p>*/}
                                                 </>
                                             }
 

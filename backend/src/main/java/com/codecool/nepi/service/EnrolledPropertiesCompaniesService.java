@@ -15,6 +15,7 @@ import lombok.Getter;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -61,8 +62,24 @@ public class EnrolledPropertiesCompaniesService {
 
     }
 
-    public List<String> getEnrolledPropertyIds() {return  propertyObjectRepository.getAllEnrollmentIds();}
-    public List<String> getBaseCompanyAllocatedIds() {return baseCompanyRepository.getAllAllocatedIds();}
+    public List<String> getEnrolledPropertyIds() {
+
+        List<String> enrolledPropertyIds = new ArrayList<>();
+        List<PropertyObject> allProperties = propertyObjectRepository.findAll();
+        for(PropertyObject propertyObject : allProperties) {
+            enrolledPropertyIds.add(propertyObject.getEnrollmentId());
+        }
+        return  enrolledPropertyIds;
+    }
+    public List<String> getBaseCompanyAllocatedIds() {
+
+        List<String> allocatedIds = new ArrayList<>();
+        List<BaseCompany> allCompanies = baseCompanyRepository.findAll();
+        for(BaseCompany baseCompany : allCompanies) {
+            allocatedIds.addAll(baseCompany.getAllocatedIds());
+        }
+        return allocatedIds;
+    }
 
 
 }

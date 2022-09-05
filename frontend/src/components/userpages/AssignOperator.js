@@ -3,12 +3,10 @@ import '../../App.css';
 import {toast} from "react-toastify";
 
 export default function AssignOperator() {
-
     const [tickets, allTickets] = useState([]);
     const [operators, allOperators] = useState([]);
 
     useEffect(() => {
-
         fetch(`http://localhost:8080/tickets/all`,
             {
                 method: "GET",
@@ -43,7 +41,6 @@ export default function AssignOperator() {
 
         if (formData.get('ticketId') !== ""
             && formData.get('operatorContractId') !== "") {
-
             fetch(`http://localhost:8080/tickets/assign-operator`, {
                 method: "POST",
                 headers: {
@@ -54,7 +51,6 @@ export default function AssignOperator() {
                 body: JSON.stringify({
                     ticketId: formData.get('ticketId'),
                     operatorContractId: formData.get('operatorContractId'),
-
                 }),
             })
                 .then((response) => response.json())
@@ -74,13 +70,9 @@ export default function AssignOperator() {
                 progress: undefined,
             });
         }
-
-
     }
 
-
     return (
-
         <div>
             <div className="container mx-auto px-2 sm:px-8 max-w-3xl">
                 <div className="py-8">
@@ -88,7 +80,6 @@ export default function AssignOperator() {
                         <h2 className="text-2xl leading-tight">
                             Tickets
                         </h2>
-
                     </div>
                     <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 ">
                         <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -134,7 +125,6 @@ export default function AssignOperator() {
                                     <tr>
                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <div className="flex items-center">
-
                                                 <div className="ml-3">
                                                     <p className="text-gray-900 whitespace-no-wrap">
                                                         {ticket.id}
@@ -144,7 +134,6 @@ export default function AssignOperator() {
                                         </td>
                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <div className="flex items-center">
-
                                                 <div className="ml-3">
                                                     <p className="text-gray-900 whitespace-no-wrap">
                                                         {ticket.name}
@@ -170,7 +159,6 @@ export default function AssignOperator() {
                                         {ticket.status.toString() === "true" ?
                                             <>
                                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-
                                     <span
                                         className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                         <span aria-hidden="true"
@@ -185,7 +173,6 @@ export default function AssignOperator() {
                                             :
                                             <>
                                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-
                                     <span
                                         className="relative inline-block px-3 py-1 font-semibold text-red-700 leading-tight">
                                         <span aria-hidden="true"
@@ -198,8 +185,6 @@ export default function AssignOperator() {
                                                 </td>
                                             </>
                                         }
-
-
                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p className="text-gray-900 whitespace-no-wrap">
                                                 {ticket.postedAt}
@@ -210,28 +195,20 @@ export default function AssignOperator() {
                                                 {ticket.operatorContractId}
                                             </p>
                                         </td>
-                                        {/*<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">*/}
-                                        {/*    <a href="#" className="text-indigo-600 hover:text-indigo-900">*/}
-                                        {/*        Edit*/}
-                                        {/*    </a>*/}
-                                        {/*</td>*/}
                                     </tr>
                                 )}
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
             </div>
-
             <div className="container mx-auto px-2 sm:px-8 max-w-3xl">
                 <div className="py-8">
                     <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
                         <h2 className="text-2xl leading-tight">
                             Operators
                         </h2>
-
                     </div>
                     <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 ">
                         <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -266,7 +243,6 @@ export default function AssignOperator() {
                                         className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
                                         Assigned Tickets
                                     </th>
-
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -274,7 +250,6 @@ export default function AssignOperator() {
                                     <tr>
                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <div className="flex items-center">
-
                                                 <div className="ml-3">
                                                     <p className="text-gray-900 whitespace-no-wrap">
                                                         {operator.id}
@@ -284,7 +259,6 @@ export default function AssignOperator() {
                                         </td>
                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <div className="flex items-center">
-
                                                 <div className="ml-3">
                                                     <p className="text-gray-900 whitespace-no-wrap">
                                                         {operator.firstName}
@@ -315,7 +289,6 @@ export default function AssignOperator() {
                                         {operator.assignedTickets.length <= 5 ?
                                             <>
                                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-
                                     <span
                                         className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                         <span aria-hidden="true"
@@ -330,7 +303,6 @@ export default function AssignOperator() {
                                             :
                                             <>
                                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-
                                     <span
                                         className="relative inline-block px-3 py-1 font-semibold text-red-700 leading-tight">
                                         <span aria-hidden="true"
@@ -343,24 +315,15 @@ export default function AssignOperator() {
                                                 </td>
                                             </>
                                         }
-
-
-                                        {/*<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">*/}
-                                        {/*    <a href="#" className="text-indigo-600 hover:text-indigo-900">*/}
-                                        {/*        Edit*/}
-                                        {/*    </a>*/}
-                                        {/*</td>*/}
                                     </tr>
                                 )}
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
             </div>
             <div>
-
                 <section className="h-screen bg-gray-100 bg-opacity-50">
                     <form className="container max-w-2xl mx-auto shadow-md md:w-3/4"
                           method="POST" onSubmit={onSubmit}>
@@ -377,7 +340,6 @@ export default function AssignOperator() {
                                            placeholder="Enter a ticket Id"
                                            name="ticketId"/>
                                 </div>
-
                                 <div className=" relative ">
                                     <input type="text" id="user-info-last-name"
                                            className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -390,16 +352,11 @@ export default function AssignOperator() {
                                         Submit
                                     </button>
                                 </div>
-
                             </div>
                         </div>
                     </form>
                 </section>
             </div>
         </div>
-
-
-
-
     )
 }

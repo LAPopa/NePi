@@ -6,7 +6,6 @@ export default function ResolveTicket() {
     const [tickets, allTickets] = useState([]);
 
     useEffect(() => {
-
         fetch(`http://localhost:8080/tickets/show?userId=${localStorage.getItem("userID")}`,
             {
                 method: "GET",
@@ -24,7 +23,6 @@ export default function ResolveTicket() {
 
     const handleClick = (event) => {
         console.log(event.target.id);
-
         fetch(`http://localhost:8080/tickets/resolve-ticket?ticketId=${event.target.id}`,
             {
                 method: "POST",
@@ -36,17 +34,13 @@ export default function ResolveTicket() {
         window.location.reload();
     }
 
-
     return (
-
-
         <div className="container mx-auto px-4 sm:px-8 max-w-3xl">
             <div className="py-8">
                 <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
                     <h2 className="text-2xl leading-tight">
                         Tickets
                     </h2>
-
                 </div>
                 <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 ">
                     <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -129,7 +123,6 @@ export default function ResolveTicket() {
                                         :
                                         <>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-
                                     <span
                                         className="relative inline-block px-3 py-1 font-semibold text-red-700 leading-tight">
                                         <span aria-hidden="true"
@@ -142,8 +135,6 @@ export default function ResolveTicket() {
                                             </td>
                                         </>
                                     }
-
-
                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p className="text-gray-900 whitespace-no-wrap">
                                             {ticket.postedAt}
@@ -160,13 +151,9 @@ export default function ResolveTicket() {
                             )}
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
         </div>
-
-
     )
-
 }

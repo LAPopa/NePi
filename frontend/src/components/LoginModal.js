@@ -2,7 +2,6 @@ import '../App.css';
 import {LoginForm} from "./LoginForm";
 import React from "react";
 
-
 export function LoginModal() {
     const [showModal, setShowModal] = React.useState(false);
     return (
@@ -25,9 +24,7 @@ export function LoginModal() {
                                     {/*header*/}
                                     <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                                         <LoginForm/>
-
                                     </div>
-
                                     <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                                         <button
                                             className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -50,8 +47,6 @@ export function LoginModal() {
                         <div className="opacity-25 fixed inset-0 z-40 bg-black"/>
                     </>
             ) : null}
-
-
         </div>
 )
 }

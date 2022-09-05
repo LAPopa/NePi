@@ -20,8 +20,6 @@ export function CommunityRegistrationSelector() {
                                 <img alt="content" className=" object-center h-full"
                                      src={LandlordImg}/>
                             </div>
-
-                            {/*<p className="leading-relaxed text-base">Property owner/landlord.</p>*/}
                             <button
                                 className="flex mx-auto mt-6 text-white bg-green-500 border-0 py-2 px-5 focus:outline-none hover:bg-green-600 rounded"
                             onClick={() => navigate("/registration/owners")}>Register
@@ -33,8 +31,6 @@ export function CommunityRegistrationSelector() {
                                 <img alt="content" className="object-fill object-center h-full w-full"
                                      src={TenantImg}/>
                             </div>
-
-                            {/*<p className="leading-relaxed text-base">I am a renter.</p>*/}
                             <button
                                 className="flex mx-auto mt-6 text-white bg-green-500 border-0 py-2 px-5 focus:outline-none hover:bg-green-600 rounded"
                             onClick={() => navigate("/registration/tenants")}>Register
@@ -46,9 +42,7 @@ export function CommunityRegistrationSelector() {
                         onClick={() => navigate("/")}>Back
                         </button>
                     </div>
-
                 </div>
-
             </section>
         </div>
     )

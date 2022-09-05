@@ -5,12 +5,10 @@ import CommunityBlob from "../assets/communityRoutes.png";
 import React from "react";
 import {useNavigate} from "react-router-dom";
 
-
 export function CommunityRegistrationSelector() {
     let navigate = useNavigate();
     return (
         <div>
-
             <section className="text-gray-600 body-font">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-wrap -mx-4 -mb-10 text-center">
@@ -20,7 +18,6 @@ export function CommunityRegistrationSelector() {
                                 <img alt="content" className="object-fill object-center h-full w-full"
                                      src={LandlordImg}/>
                             </div>
-
                             <p className="leading-relaxed text-base">I have a house/ apartment or lend others
                                 property.</p>
                             <button
@@ -34,7 +31,6 @@ export function CommunityRegistrationSelector() {
                                 <img alt="content" className="object-fill object-center h-full w-full"
                                      src={TenantImg}/>
                             </div>
-
                             <p className="leading-relaxed text-base">I currently rent the space I live in.</p>
                             <button
                                 className="flex mx-auto mt-6 text-white bg-green-500 border-0 py-2 px-5 focus:outline-none hover:bg-green-600 rounded"
@@ -47,9 +43,7 @@ export function CommunityRegistrationSelector() {
                         onClick={() => navigate("/")}>Back
                         </button>
                     </div>
-
                 </div>
-
             </section>
         </div>
     )

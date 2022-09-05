@@ -42,7 +42,6 @@ export function OwnerRegistration() {
             && formData.get('apartment') !== ""
             && formData.get('enrollmentId') !== "") {
             if (formData.get('password') !== formData.get('confirmpassword')) {
-                // alert('Passwords do not match !')
                 toast.error('Passwords do not match !', {
                     position: "top-center",
                     autoClose: false,
@@ -99,9 +98,6 @@ export function OwnerRegistration() {
                         navigate('/')
                     })
             }
-
-            // window.location.reload();
-
         } else {
             toast.error('Please fill in all the fields !', {
                 position: "top-center",
@@ -118,31 +114,9 @@ export function OwnerRegistration() {
 
     return (
         <div>
-            {/*<ToastContainer*/}
-            {/*    position="top-center"*/}
-            {/*    autoClose={false}*/}
-            {/*    newestOnTop={false}*/}
-            {/*    closeOnClick*/}
-            {/*    rtl={false}*/}
-            {/*    pauseOnFocusLoss*/}
-            {/*    draggable*/}
-            {/*/>*/}
             <section className="h-screen bg-gray-100 bg-opacity-50">
                 <form className="container max-w-2xl mx-auto shadow-md md:w-3/4"
                       method="POST" onSubmit={onSubmit} action="/registration/owners">
-                    {/*<div className="p-4 bg-gray-100 border-t-2 border-indigo-400 rounded-lg bg-opacity-5">*/}
-                    {/*    <div className="max-w-sm mx-auto md:w-full md:mx-0">*/}
-                    {/*        <div className="inline-flex items-center space-x-4">*/}
-                    {/*            <a href="#" className="block relative">*/}
-                    {/*                <img alt="profil" src={ProfilePic}*/}
-                    {/*                     className="mx-auto object-cover rounded-full h-16 w-16 "/>*/}
-                    {/*            </a>*/}
-                    {/*            <h1 className="text-gray-600 text-2xl">*/}
-                    {/*                Just_a_Cat*/}
-                    {/*            </h1>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
                     <div className="space-y-6 bg-white">
                         <div
                             className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
@@ -255,8 +229,6 @@ export function OwnerRegistration() {
                         </div>
                         <div
                             className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
-
-
                             <div className="max-w-sm mx-auto md:w-1/4">
                                 <button
                                     className="py-2 px-4  bg-red-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
@@ -273,12 +245,9 @@ export function OwnerRegistration() {
 
                         </div>
                         <hr/>
-
-
                     </div>
                 </form>
             </section>
-
         </div>
     )
 }

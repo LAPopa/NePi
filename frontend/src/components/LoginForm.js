@@ -9,9 +9,7 @@ export function LoginForm() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
         const formData = new FormData(e.target);
-
         fetch(LOGIN_FORM_URL, {
             method: "POST",
             headers: {
@@ -29,10 +27,7 @@ export function LoginForm() {
                 // alert("Success!");
                 navigate('/login-successful')
             })
-        // window.location.reload();
-
     }
-
 
     return (
         <div className="block p-6 rounded-lg bg-white max-w-sm">
@@ -93,10 +88,7 @@ export function LoginForm() {
                             Login
                         </button>
                     </div>
-
-
                 </div>
-
             </form>
         </div>
     )

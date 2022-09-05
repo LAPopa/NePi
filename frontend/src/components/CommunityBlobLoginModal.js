@@ -1,5 +1,4 @@
 import '../App.css';
-import CommunityBlob from '../assets/communityRoutes.png';
 import {LoginForm} from "./LoginForm";
 import React from "react";
 import {ReactComponent as CommunityBlobNew} from "../assets/CommunityLoginBlob1.svg";
@@ -14,9 +13,6 @@ export function CommunityBlobLoginModal() {
                 type="button"
                 onClick={() => setShowModal(true)}
             ><CommunityBlobNew/>
-                {/*<img alt="content" className="object-fill object-center h-full w-full"*/}
-                {/*  src={CommunityBlob}/>*/}
-
             </button>
             {showModal ? (
                 <>
@@ -29,7 +25,6 @@ export function CommunityBlobLoginModal() {
                                 {/*header*/}
                                 <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                                     <LoginForm/>
-
                                 </div>
 
                                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
@@ -54,8 +49,6 @@ export function CommunityBlobLoginModal() {
                     <div className="opacity-25 fixed inset-0 z-40 bg-black"/>
                 </>
             ) : null}
-
-
         </div>
     )
 }

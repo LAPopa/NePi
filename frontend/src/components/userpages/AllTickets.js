@@ -5,7 +5,6 @@ import {useNavigate} from "react-router-dom";
 export default function AllTickets() {
     let navigate = useNavigate();
     const [tickets, allTickets] = useState([]);
-
     useEffect(() => {
 
         fetch(`http://localhost:8080/tickets/all`,
@@ -24,15 +23,12 @@ export default function AllTickets() {
     }, []);
 
     return (
-
-
         <div className="container mx-auto px-4 sm:px-8 max-w-3xl">
             <div className="py-8">
                 <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
                     <h2 className="text-2xl leading-tight">
                         Tickets
                     </h2>
-
                 </div>
                 <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                     <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -96,7 +92,6 @@ export default function AllTickets() {
                                     {ticket.status.toString() === "true" ?
                                         <>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-
                                     <span
                                         className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                         <span aria-hidden="true"
@@ -111,7 +106,6 @@ export default function AllTickets() {
                                         :
                                         <>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-
                                     <span
                                         className="relative inline-block px-3 py-1 font-semibold text-red-700 leading-tight">
                                         <span aria-hidden="true"
@@ -124,29 +118,18 @@ export default function AllTickets() {
                                             </td>
                                         </>
                                     }
-
-
                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p className="text-gray-900 whitespace-no-wrap">
                                             {ticket.postedAt}
                                         </p>
                                     </td>
-                                    {/*<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">*/}
-                                    {/*    <a href="#" className="text-indigo-600 hover:text-indigo-900">*/}
-                                    {/*        Edit*/}
-                                    {/*    </a>*/}
-                                    {/*</td>*/}
                                 </tr>
                             )}
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     )
 }

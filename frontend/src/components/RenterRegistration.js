@@ -3,16 +3,13 @@ import ProfilePic from '../assets/profilePic.png';
 import React from "react";
 import {useNavigate} from "react-router-dom";
 
-
 export function RenterRegistration() {
     let navigate = useNavigate();
     const RENTER_REGISTRATION_URL = 'http://localhost:8080/registration/tenants';
 
     const onSubmit = (e) => {
         e.preventDefault();
-
         const formData = new FormData(e.target);
-
         fetch(RENTER_REGISTRATION_URL, {
             method: "POST",
             headers: {
@@ -26,18 +23,14 @@ export function RenterRegistration() {
                 lastName: formData.get('lastName'),
                 phonenumber: formData.get('phonenumber'),
                 contractId: formData.get('contractId'),
-
             }),
         })
             .then((response) => response.json())
             .catch(function () {
             })
             .then(() => {
-                // alert("Success!");
                 navigate('/registration-successful')
             })
-        // window.location.reload();
-
     }
 
     return (
@@ -110,7 +103,6 @@ export function RenterRegistration() {
                                 <h3 className="text-sm">Please enter the ID that the landlord has
                                     given you after signing the contract.</h3>
                             </div>
-
                             <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
                                 <div>
                                     <div className=" relative ">
@@ -118,7 +110,6 @@ export function RenterRegistration() {
                                                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                placeholder="ID"
                                                name="contractId"/>
-
                                     </div>
                                 </div>
                             </div>
@@ -136,12 +127,8 @@ export function RenterRegistration() {
                                            name="password"/>
                                 </div>
                             </div>
-
-
                         </div>
                         <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
-
-
                             <div className="max-w-sm mx-auto md:w-1/4">
                                 <button
                                     className="py-2 px-4  bg-red-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
@@ -155,15 +142,11 @@ export function RenterRegistration() {
                                     Submit
                                 </button>
                             </div>
-
                         </div>
                         <hr/>
-
-
                     </div>
                 </form>
             </section>
-
         </div>
     )
 }

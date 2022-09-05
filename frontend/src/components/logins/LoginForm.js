@@ -6,25 +6,19 @@ import {useNavigate} from "react-router-dom";
 export function LoginForm() {
     let navigate = useNavigate();
     const LOGIN_FORM_URL = 'http://localhost:8080/';
-
     const [user, setUser] = useState(
         {
             email: "",
             password: ""
         }
     )
-
     const handleChange = event => {
         const {name, value} = event.target
         setUser({...user, [name]: value})
         console.log(user)
     }
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // const formData = new FormData(e.target);
-
         fetch(LOGIN_FORM_URL, {
             method: "POST",
             headers: {
@@ -45,7 +39,6 @@ export function LoginForm() {
                     localStorage.setItem("token", response.token)
                     navigate('/user-dashboard')
                     window.location.reload()
-
                 } else {
                     setUser({
                         email: "",
@@ -60,7 +53,6 @@ export function LoginForm() {
             .catch(function () {
             })
     }
-
 
     return (
         <div className="block p-6 rounded-lg bg-white max-w-sm">
@@ -121,10 +113,7 @@ export function LoginForm() {
                             Login
                         </button>
                     </div>
-
-
                 </div>
-
             </form>
         </div>
     )

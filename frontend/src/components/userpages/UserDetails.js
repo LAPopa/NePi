@@ -3,9 +3,7 @@ import '../../App.css';
 
 
 export default function UserDetails() {
-
     const [userDetails, allUserDetails] = useState([]);
-
 
     useEffect(() => {
         fetch(`http://localhost:8080/get-user-details?userId=${localStorage.getItem("userID")}`,
@@ -23,18 +21,13 @@ export default function UserDetails() {
             })
     }, []);
 
-
-
     return (
-
-
         <div className="container mx-auto px-4 sm:px-8 max-w-3xl">
             <div className="py-8">
                 <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
                     <h2 className="text-2xl leading-tight">
                         User Details
                     </h2>
-
                 </div>
                 <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                     <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -53,7 +46,6 @@ export default function UserDetails() {
                                     className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
                                     Registered property codes
                                 </th>
-
                             </tr>
                             </thead>
                             <tbody>
@@ -88,7 +80,6 @@ export default function UserDetails() {
                                         </div>
                                     </div>
                                 </td>
-
                             </tr>
                             </tbody>
                         </table>
@@ -96,11 +87,7 @@ export default function UserDetails() {
                 </div>
             </div>
         </div>
-
-
     )
-
-
 }
 
 

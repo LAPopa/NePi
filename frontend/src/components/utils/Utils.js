@@ -21,9 +21,3 @@ export const hexToRGB = (h) => {
     return `${+r},${+g},${+b}`;
 };
 
-// export const formatValue = (value) => Intl.NumberFormat('en-US', {
-//     style: 'currency',
-//     currency: 'USD',
-//     maximumSignificantDigits: 3,
-//     notation: 'compact',
-// }).format(value);

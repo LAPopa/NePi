@@ -3,7 +3,6 @@ import ProfilePic from '../assets/profilePic.png';
 import React from "react";
 import {useNavigate} from "react-router-dom";
 
-
 export function OwnerRegistration() {
     let navigate = useNavigate();
     const OWNER_REGISTRATION_URL = 'http://localhost:8080/registration/owners';

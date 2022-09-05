@@ -1,6 +1,10 @@
 package com.codecool.nepi.controller;
 
-import com.codecool.nepi.entity.useraccounts.*;
+import com.codecool.nepi.entity.useraccounts.Admin;
+import com.codecool.nepi.entity.useraccounts.Operator;
+import com.codecool.nepi.entity.useraccounts.Overseer;
+import com.codecool.nepi.entity.useraccounts.Owner;
+import com.codecool.nepi.entity.useraccounts.Renter;
 import com.codecool.nepi.model.login.LoginModel;
 import com.codecool.nepi.security.JwtTokenServices;
 import com.codecool.nepi.service.UserAccountsService;
@@ -24,7 +28,6 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 public class LoginController {
-
     UserAccountsService userAccountsService;
     AuthenticationManager authenticationManager;
     JwtTokenServices jwtTokenServices;
@@ -35,17 +38,6 @@ public class LoginController {
         this.jwtTokenServices = jwtTokenServices;
     }
 
-//    @PostMapping("/")
-//    public void validateLogin(@RequestBody LoginModel loginModel) {
-//        if (userAccountsService.validateLogin(loginModel))
-//        {
-//            System.out.println("Login successful for the following credentials : " + loginModel.getEmail() + "    " + loginModel.getPassword());
-//        } else {
-//            System.out.println("No account with the following credentials : " + loginModel.getEmail() + "    " + loginModel.getPassword());
-//        }
-//
-//    }
-
     @PostMapping("/")
     public ResponseEntity<Object> validateLogin(@RequestBody LoginModel loginModel) {
         try {
@@ -55,10 +47,8 @@ public class LoginController {
                     .stream()
                     .map(GrantedAuthority::getAuthority)
                     .collect(Collectors.toList());
-
             String token = jwtTokenServices.createToken(email, roles);
             String loginType = userAccountsService.checkLoginType(email);
-
             switch (loginType) {
                 case "ADMIN" -> {
                     Admin admin = userAccountsService.findAdminByEmail(email);
@@ -82,7 +72,6 @@ public class LoginController {
                 }
             }
             return ResponseEntity.of(null);
-
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid credentials. ");
         }
@@ -99,5 +88,4 @@ public class LoginController {
         model.put("status", 200);
         return ResponseEntity.ok(model);
     }
-
 }

@@ -1,6 +1,5 @@
 package com.codecool.nepi.entity.useraccounts;
 
-
 import com.codecool.nepi.model.types.UserType;
 //import com.sun.istack.NotNull;
 import lombok.Getter;
@@ -31,11 +30,10 @@ public abstract class User {
     protected String email;
     @NotNull
     protected String password;
+    @Enumerated(EnumType.STRING)
     protected UserType userType;
-
     @ElementCollection(fetch = FetchType.LAZY)
     private List<String> roles;
-
 
     public User(String firstName, String lastName, String phoneNumber, String email, String password) {
         this.firstName = firstName;

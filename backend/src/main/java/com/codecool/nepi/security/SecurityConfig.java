@@ -1,6 +1,5 @@
 package com.codecool.nepi.security;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,9 +18,7 @@ import static org.springframework.http.HttpMethod.POST;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
     private final JwtTokenServices jwtTokenServices;
-
     @Autowired
     public SecurityConfig(JwtTokenServices jwtTokenServices){
         this.jwtTokenServices = jwtTokenServices;
@@ -52,7 +49,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(POST, "/registration/owner/**").hasRole("OWNER")
                 .antMatchers(GET,"/tickets/all","/tickets/type","/tickets/operators/all").hasAnyRole("OVERSEER", "ADMIN")
                 .antMatchers(POST,"/tickets/assign-operator").hasRole("OVERSEER")
-//                .antMatchers(GET, "/TEST-DASHBOARD").hasRole("ADMIN")
                 .antMatchers(GET,"/**").hasRole("ADMIN")
                 .antMatchers(POST,"/**").hasRole("ADMIN")
                 .anyRequest().authenticated()

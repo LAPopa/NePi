@@ -1,6 +1,5 @@
 package com.codecool.nepi.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

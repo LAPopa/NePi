@@ -8,20 +8,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-
 @Repository
 public interface OwnerRepository extends JpaRepository<Owner,Long> {
-
-
-
     @Query("SELECT a FROM Owner a where a.email = :input_email and a.password = :input_password")
     Owner checkOwnerCredentials(@Param("input_email") String inputEmail, @Param("input_password") String inputPassword);
-
     @Query("select a from Owner a where a.email = :email")
     Owner findByEmail(@Param("email") String email);
-
     @Query("select a from Owner a where a.id = :id")
     Owner findOwnerById(@Param("id") Long id);
-
     Optional<Owner> findById(Long id);
 }

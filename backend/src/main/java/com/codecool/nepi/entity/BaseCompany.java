@@ -1,16 +1,19 @@
 package com.codecool.nepi.entity;
 
-import com.codecool.nepi.model.types.CompanyType;
-import com.codecool.nepi.utils.StringListConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Getter
 @Setter
@@ -29,9 +32,6 @@ public class BaseCompany {
     @ElementCollection(fetch = FetchType.LAZY)
     private List<String> allocatedIds;
 
-
-
-
     public BaseCompany(String companyName, String companyType, String description) {
         this.companyName = companyName;
         this.companyType = companyType;
@@ -42,8 +42,6 @@ public class BaseCompany {
     public void addId(String id) {
         allocatedIds.add(id);
     }
-
-
 
     @Override
     public String toString() {

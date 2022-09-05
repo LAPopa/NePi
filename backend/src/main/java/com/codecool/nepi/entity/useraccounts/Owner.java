@@ -10,21 +10,18 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
 @Entity
 @Table(name = "owners")
 @NoArgsConstructor
 @Getter
 @Setter
 public class Owner extends User {
-
     @OneToOne
     private PropertyObject registrationProperty;
     @OneToMany(fetch = FetchType.EAGER)
     private List<PropertyObject> currentProperties = new ArrayList<>();
     @OneToMany
     private List<Ticket> ticketList;
-
 
     public Owner(String firstName, String lastName, String phoneNumber, String email, String password, PropertyObject registrationProperty) {
         super(firstName, lastName, phoneNumber, email, password);

@@ -1,9 +1,17 @@
 package com.codecool.nepi.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import lombok.*;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -15,11 +23,11 @@ import java.time.format.DateTimeFormatter;
 @Entity
 @Table(name = "tickets")
 public class Ticket {
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-
     private String type;   //water, gas etc
     private String name;  // short description
     private String description;
@@ -29,9 +37,8 @@ public class Ticket {
     private boolean status;  // false - not solved, true - solved
     private String operatorContractId;  // operator assigned to the ticket
     private String postedAt;
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
-    public Ticket(String type,String name, String description, String propertyId, String userEmail, String userPhonenumber) {
+    public Ticket(String type, String name, String description, String propertyId, String userEmail, String userPhonenumber) {
         this.type = type;
         this.name = name;
         this.description = description;
@@ -42,6 +49,4 @@ public class Ticket {
         this.operatorContractId = "";
         this.postedAt = LocalDateTime.now().format(FORMATTER);
     }
-
-
 }

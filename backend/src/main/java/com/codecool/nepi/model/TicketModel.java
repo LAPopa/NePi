@@ -11,12 +11,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TicketModel {
-
     String type;
     String name;
     String description;
     String propertyId;
     String userEmail;
     String userPhonenumber;
-
 }

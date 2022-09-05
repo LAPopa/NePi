@@ -1,6 +1,5 @@
 package com.codecool.nepi.model.registration;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

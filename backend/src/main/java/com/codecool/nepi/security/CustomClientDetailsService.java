@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 
 @Component
 public class CustomClientDetailsService implements UserDetailsService{
-
     private AdminRepository adminRepository;
     private OverseerRepository overseerRepository;
     private OperatorRepository operatorRepository;
@@ -33,16 +32,13 @@ public class CustomClientDetailsService implements UserDetailsService{
         this.renterRepository = renterRepository;
     }
 
-
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
         Admin admin = adminRepository.findByEmail(email);
         Overseer overseer = overseerRepository.findByEmail(email);
         Operator operator = operatorRepository.findByEmail(email);
         Owner owner = ownerRepository.findByEmail(email);
         Renter renter = renterRepository.findByEmail(email);
-
         if( admin != null) return new User(admin.getEmail(), admin.getPassword(), admin.getRoles().stream()
                 .map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
         else if (overseer != null) return new User(overseer.getEmail(), overseer.getPassword(), overseer.getRoles().stream()

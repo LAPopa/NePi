@@ -1,6 +1,5 @@
 package com.codecool.nepi.service;
 
-
 import com.codecool.nepi.entity.BaseCompany;
 import com.codecool.nepi.entity.PropertyObject;
 import com.codecool.nepi.entity.useraccounts.Owner;
@@ -24,7 +23,6 @@ import java.util.List;
 @Component
 
 public class EnrolledPropertiesCompaniesService {
-
     private PropertyObjectRepository propertyObjectRepository;
     private BaseCompanyRepository baseCompanyRepository;
     private OwnerRepository ownerRepository;
@@ -33,7 +31,6 @@ public class EnrolledPropertiesCompaniesService {
     public void enrollNewProperty(PropertyRegistrationModel propertyRegistrationModel) {
         propertyObjectRepository.save(new PropertyObject(propertyRegistrationModel.getStreetName(), propertyRegistrationModel.getStreetNumber(),
                 propertyRegistrationModel.getApartmentNumber(), propertyRegistrationModel.getEnrollmentId()));
-
     }
 
     public void registerNewCompany(CompanyRegistrationModel companyRegistrationModel) {
@@ -53,33 +50,28 @@ public class EnrolledPropertiesCompaniesService {
         try {
             PropertyObject currentProperty = propertyObjectRepository.getPropertyObjectByEnrollmentId(propertyRegistrationModel.getEnrollmentId());
             currentOwner.assignProperty(currentProperty);
-
             ownerRepository.save(currentOwner);
             propertyObjectRepository.save(currentProperty);
         } catch (Exception e) {
             throw new RuntimeException("PROPERTY NOT FOUND");
         }
-
     }
 
     public List<String> getEnrolledPropertyIds() {
-
         List<String> enrolledPropertyIds = new ArrayList<>();
         List<PropertyObject> allProperties = propertyObjectRepository.findAll();
-        for(PropertyObject propertyObject : allProperties) {
+        for (PropertyObject propertyObject : allProperties) {
             enrolledPropertyIds.add(propertyObject.getEnrollmentId());
         }
-        return  enrolledPropertyIds;
+        return enrolledPropertyIds;
     }
-    public List<String> getBaseCompanyAllocatedIds() {
 
+    public List<String> getBaseCompanyAllocatedIds() {
         List<String> allocatedIds = new ArrayList<>();
         List<BaseCompany> allCompanies = baseCompanyRepository.findAll();
-        for(BaseCompany baseCompany : allCompanies) {
+        for (BaseCompany baseCompany : allCompanies) {
             allocatedIds.addAll(baseCompany.getAllocatedIds());
         }
         return allocatedIds;
     }
-
-
 }

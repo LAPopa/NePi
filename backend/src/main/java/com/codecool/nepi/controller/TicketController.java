@@ -15,10 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 public class TicketController {
-
     TicketService ticketService;
     UserAccountsService userAccountsService;
-
 
     @GetMapping("/tickets/operators/all")
     public List<Operator> getAllOperators() {return userAccountsService.getAllOperators();}
@@ -43,18 +41,14 @@ public class TicketController {
         ticketService.createNewTicket(ticketModel, userId);
     }
 
-
     @PostMapping("/tickets/assign-operator")
     public void assignOperatorToTicket(@RequestBody TicketOperatorAssign ticketOperatorAssign) {
         ticketService.assignOperatorToTicket(ticketOperatorAssign.getOperatorContractId(), Long.parseLong(ticketOperatorAssign.getTicketId()));
-
     }
-
 
     @PostMapping("/tickets/resolve-ticket")
     public void markTicketAsSolved(@RequestParam String ticketId) {
         System.out.println(ticketId + ticketId.getClass());
         ticketService.resolveTicket(Long.parseLong(ticketId));
     }
-
 }

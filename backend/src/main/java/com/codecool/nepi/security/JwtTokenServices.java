@@ -1,6 +1,5 @@
 package com.codecool.nepi.security;
 
-
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,10 +22,8 @@ public class JwtTokenServices {
 
     @Value("${security.jwt.token.secret-key:secret}")
     private String secretKey = "secret";
-
     @Value("${security.jwt.token.expire-length:36000000}")
     private long validityInMilliseconds = 36000000; // 10h
-
     private final String rolesFieldName = "roles";
 
     @PostConstruct
@@ -39,10 +36,8 @@ public class JwtTokenServices {
         // Add a custom field to the token
         Claims claims = Jwts.claims().setSubject(email);
         claims.put(rolesFieldName, roles);
-
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
-
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)

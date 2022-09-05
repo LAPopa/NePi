@@ -1,16 +1,18 @@
 package com.codecool.nepi.controller;
 
-
 import com.codecool.nepi.model.registration.CompanyRegistrationModel;
 import com.codecool.nepi.model.registration.PropertyRegistrationModel;
 import com.codecool.nepi.service.EnrolledPropertiesCompaniesService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 
 public class PropertyCompanyController {
-
     EnrolledPropertiesCompaniesService enrolledPropertiesCompaniesService;
 
     public PropertyCompanyController(EnrolledPropertiesCompaniesService enrolledPropertiesCompaniesService) {

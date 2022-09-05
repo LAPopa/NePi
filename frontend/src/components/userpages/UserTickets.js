@@ -5,18 +5,34 @@ import {useNavigate} from "react-router-dom";
 export default function UserTickets() {
     let navigate = useNavigate();
     const [tickets, allTickets] = useState([]);
-
     useEffect(() => {
 
-        fetch(`http://localhost:8080/tickets/show?userId=${localStorage.getItem("userID")}`, {
-            method: "GET", headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem("token"), "Content-Type": "application/json"
-            }
-        })
-            .then(response => response.json())
-            .then((response) => {
-                allTickets(response)
+        if(localStorage.getItem("roles") === "ROLE_ADMIN" || localStorage.getItem("roles") === "ROLE_OVERSEER") {
+            fetch(`http://localhost:8080/tickets/all`,
+                {
+                    method: "GET",
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                        "Content-Type": "application/json"
+                    }
+                }
+            )
+                .then(response => response.json())
+                .then((response) => {
+                    allTickets(response)
+                })
+        } else {
+            fetch(`http://localhost:8080/tickets/show?userId=${localStorage.getItem("userID")}`, {
+                method: "GET", headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"), "Content-Type": "application/json"
+                }
             })
+                .then(response => response.json())
+                .then((response) => {
+                    allTickets(response)
+                })
+        }
+
     }, []);
 
     return (
@@ -59,34 +75,36 @@ export default function UserTickets() {
                             </tr>
                             </thead>
                             <tbody>
-                            {tickets.map((ticket) => <tr>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div className="flex items-center">
-
-                                        <div className="ml-3">
-                                            <p className="text-gray-900 whitespace-no-wrap">
-                                                {ticket.name}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p className="text-gray-900 whitespace-no-wrap">
-                                        {ticket.description}
-                                    </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p className="text-gray-900 whitespace-no-wrap">
-                                        {ticket.type}
-                                    </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p className="text-gray-900 whitespace-no-wrap">
-                                        {ticket.propertyId}
-                                    </p>
-                                </td>
-                                {ticket.status.toString() === "true" ? <>
+                            {tickets.map((ticket) =>
+                                <tr>
                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <div className="flex items-center">
+
+                                            <div className="ml-3">
+                                                <p className="text-gray-900 whitespace-no-wrap">
+                                                    {ticket.name}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p className="text-gray-900 whitespace-no-wrap">
+                                            {ticket.description}
+                                        </p>
+                                    </td>
+                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p className="text-gray-900 whitespace-no-wrap">
+                                            {ticket.type}
+                                        </p>
+                                    </td>
+                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p className="text-gray-900 whitespace-no-wrap">
+                                            {ticket.propertyId}
+                                        </p>
+                                    </td>
+                                    {ticket.status.toString() === "true" ?
+                                        <>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <span
                                         className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                         <span aria-hidden="true"
@@ -96,9 +114,11 @@ export default function UserTickets() {
                                             {ticket.status.toString()}
                                         </span>
                                     </span>
-                                    </td>
-                                </> : <>
-                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            </td>
+                                        </>
+                                        :
+                                        <>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <span
                                         className="relative inline-block px-3 py-1 font-semibold text-red-700 leading-tight">
                                         <span aria-hidden="true"
@@ -108,14 +128,16 @@ export default function UserTickets() {
                                             {ticket.status.toString()}
                                         </span>
                                     </span>
+                                            </td>
+                                        </>
+                                    }
+                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p className="text-gray-900 whitespace-no-wrap">
+                                            {ticket.postedAt}
+                                        </p>
                                     </td>
-                                </>}
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p className="text-gray-900 whitespace-no-wrap">
-                                        {ticket.postedAt}
-                                    </p>
-                                </td>
-                            </tr>)}
+                                </tr>
+                            )}
                             </tbody>
                         </table>
                     </div>

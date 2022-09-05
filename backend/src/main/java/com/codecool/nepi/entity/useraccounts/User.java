@@ -30,7 +30,7 @@ public abstract class User {
     protected String email;
     @NotNull
     protected String password;
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     protected UserType userType;
     @ElementCollection(fetch = FetchType.LAZY)
     private List<String> roles;

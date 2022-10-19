@@ -125,7 +125,7 @@ export function OwnerRegistration() {
     return (
         <div>
             <section className="h-screen bg-gray-100 bg-opacity-50">
-                <form className="container max-w-2xl mx-auto shadow-md md:w-3/4"
+                <form className="container max-w-2xl mx-auto py-3 shadow-md md:w-3/4"
                       method="POST" onSubmit={onSubmit} action="/registration/owners">
                     <div className="space-y-6 bg-white">
                         <div
@@ -136,7 +136,7 @@ export function OwnerRegistration() {
                             <div className="max-w-sm mx-auto md:w-2/3">
                                 <div className=" relative ">
                                     <input type="text" id="user-info-email"
-                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-violet-700 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                            placeholder="Email"
                                            name="email"/>
                                 </div>
@@ -152,14 +152,14 @@ export function OwnerRegistration() {
 
                                 <div className=" relative ">
                                     <input type="text" id="user-info-first-name"
-                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-violet-700 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                            placeholder="First Name"
                                            name="firstName"/>
                                 </div>
 
                                 <div className=" relative ">
                                     <input type="text" id="user-info-last-name"
-                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-violet-700 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                            placeholder="Last Name"
                                            name="lastName"/>
                                 </div>
@@ -167,7 +167,7 @@ export function OwnerRegistration() {
                                 <div>
                                     <div className=" relative ">
                                         <input type="text" id="user-info-phone"
-                                               className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                               className=" rounded-lg border-transparent flex-1 appearance-none border border-violet-700 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                placeholder="Phone number"
                                                name="phonenumber"/>
                                     </div>
@@ -182,20 +182,20 @@ export function OwnerRegistration() {
                             <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
                                 <div className=" relative ">
                                     <input type="text" id="user-info-street"
-                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-violet-700 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                            placeholder="Street"
                                            name="streetName"/>
                                 </div>
                                 <div className=" relative ">
                                     <input type="text" id="user-info-number"
-                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-violet-700 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                            placeholder="Number"
                                            name="streetNumber"/>
                                 </div>
                                 <div>
                                     <div className=" relative ">
                                         <input type="text" id="user-info-apartment"
-                                               className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                               className=" rounded-lg border-transparent flex-1 appearance-none border border-violet-700 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                placeholder="Apartment"
                                                name="apartment"/>
                                     </div>
@@ -203,7 +203,7 @@ export function OwnerRegistration() {
                                 <div>
                                     <div className=" relative ">
                                         <input type="text" id="user-info-enrollment-id"
-                                               className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                               className=" rounded-lg border-transparent flex-1 appearance-none border border-violet-700 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                                placeholder="Enrollment ID"
                                                name="enrollmentId"/>
                                     </div>
@@ -220,7 +220,7 @@ export function OwnerRegistration() {
                                 className="w-full max-w-sm pl-2 mx-auto space-y-5 md:w-5/12 md:pl-9 md:inline-flex">
                                 <div className=" relative ">
                                     <input type="text" id="user-info-password"
-                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-violet-700 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                            placeholder="Password"
                                            name="password"/>
                                 </div>
@@ -229,7 +229,7 @@ export function OwnerRegistration() {
                                 className="w-full max-w-sm pl-2 mx-auto space-y-5 md:w-5/12 md:pl-9 md:inline-flex">
                                 <div className=" relative ">
                                     <input type="text" id="user-info-password"
-                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                           className=" rounded-lg border-transparent flex-1 appearance-none border border-violet-700 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                            placeholder="Confirm Password"
                                            name="confirmpassword"/>
                                 </div>
@@ -248,7 +248,7 @@ export function OwnerRegistration() {
                             </div>
                             <div className="max-w-sm mx-auto md:w-1/4">
                                 <button type="submit"
-                                        className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                        className="py-2 px-4  bg-green-500 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                     Submit
                                 </button>
                             </div>

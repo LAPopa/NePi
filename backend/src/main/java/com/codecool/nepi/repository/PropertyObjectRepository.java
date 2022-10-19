@@ -22,4 +22,5 @@ public interface PropertyObjectRepository extends JpaRepository<PropertyObject, 
     String checkStreetNumber(@Param("id") String enrollmentId);
     @Query("select po.apartmentNumber from PropertyObject po where po.enrollmentId = :id")
     String checkApartmentNumber(@Param("id") String enrollmentId);
+
 }

@@ -3,6 +3,7 @@ import ProfilePic from '../../assets/profilePic.png';
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {toast, ToastContainer} from "react-toastify";
+import {validateEmail} from "./EmailFormatValidator";
 
 
 export function OwnerRegistration() {
@@ -15,17 +16,17 @@ export function OwnerRegistration() {
 
         fetch(`http://localhost:8080/registration/check-enrolledPropertyIds`,
             {
-                method : "GET",
-                headers : {
+                method: "GET",
+                headers: {
                     "Content-Type": "application/json"
                 }
             }
-            )
+        )
             .then(response => response.json())
             .then((response) => {
                 allEnrolledPropertyIds(response)
             })
-    },[])
+    }, [])
 
 
     const onSubmit = (e) => {
@@ -51,7 +52,17 @@ export function OwnerRegistration() {
                     draggable: true,
                     progress: undefined,
                 });
-            }else if (!enrolledPropertyIds.includes(formData.get('enrollmentId')) ){
+            } else if (!validateEmail(formData.get('email'))) {
+                toast.error('Please provide a valid email !', {
+                    position: "top-center",
+                    autoClose: false,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            } else if (!enrolledPropertyIds.includes(formData.get('enrollmentId'))) {
                 toast.error('The enrollment Id was not found !', {
                     position: "top-center",
                     autoClose: false,
@@ -61,8 +72,7 @@ export function OwnerRegistration() {
                     draggable: true,
                     progress: undefined,
                 });
-            }
-            else {
+            } else {
                 fetch(OWNER_REGISTRATION_URL, {
                     method: "POST",
                     headers: {

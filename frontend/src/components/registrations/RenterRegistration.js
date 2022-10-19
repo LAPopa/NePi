@@ -1,5 +1,5 @@
 import '../../App.css';
-import ProfilePic from '../../assets/profilePic.png';
+import {validateEmail} from "./EmailFormatValidator";
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
@@ -15,8 +15,8 @@ export function RenterRegistration() {
 
         fetch(`http://localhost:8080/registration/check-enrolledPropertyIds`,
             {
-                method : "GET",
-                headers : {
+                method: "GET",
+                headers: {
                     "Content-Type": "application/json"
                 }
             }
@@ -25,18 +25,18 @@ export function RenterRegistration() {
             .then((response) => {
                 allEnrolledPropertyIds(response)
             })
-    },[])
+    }, [])
     const onSubmit = (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.target);
-        if(formData.get('email') !== "" &&
-        formData.get('firstName') !== "" &&
-        formData.get('lastName') !== "" &&
-        formData.get('phonenumber') !== "" &&
-        formData.get('contractId') !== "" &&
-        formData.get('password') !== ""){
-            if(formData.get('password') !== formData.get('confirmpassword')) {
+        if (formData.get('email') !== "" &&
+            formData.get('firstName') !== "" &&
+            formData.get('lastName') !== "" &&
+            formData.get('phonenumber') !== "" &&
+            formData.get('contractId') !== "" &&
+            formData.get('password') !== "") {
+            if (formData.get('password') !== formData.get('confirmpassword')) {
                 toast.error('Passwords do not match !', {
                     position: "top-center",
                     autoClose: false,
@@ -46,7 +46,17 @@ export function RenterRegistration() {
                     draggable: true,
                     progress: undefined,
                 });
-            } else if (!enrolledPropertyIds.includes(formData.get('contractId')) ){
+            } else if (!validateEmail(formData.get('email'))) {
+                toast.error('Please provide a valid email !', {
+                    position: "top-center",
+                    autoClose: false,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            } else if (!enrolledPropertyIds.includes(formData.get('contractId'))) {
                 toast.error('The contract Id was not found !', {
                     position: "top-center",
                     autoClose: false,
@@ -56,8 +66,7 @@ export function RenterRegistration() {
                     draggable: true,
                     progress: undefined,
                 });
-            }
-            else {
+            } else {
                 fetch(RENTER_REGISTRATION_URL, {
                     method: "POST",
                     headers: {

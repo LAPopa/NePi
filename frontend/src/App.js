@@ -1,6 +1,6 @@
 import './App.css';
 import React, {useEffect} from "react";
-import {BrowserRouter as Router, Route, Navigate, Link, NavLink} from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import {Routes} from "react-router";
 import {ToastContainer, toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';

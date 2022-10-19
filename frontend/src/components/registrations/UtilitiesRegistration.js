@@ -3,6 +3,7 @@ import ProfilePic from '../../assets/profilePic.png';
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
+import {validateEmail} from "./EmailFormatValidator";
 
 
 export function UtilitiesRegistration() {
@@ -13,8 +14,8 @@ export function UtilitiesRegistration() {
 
         fetch(`http://localhost:8080/registration/check-companyAllocatedIds`,
             {
-                method : "GET",
-                headers : {
+                method: "GET",
+                headers: {
                     "Content-Type": "application/json"
                 }
             }
@@ -23,7 +24,7 @@ export function UtilitiesRegistration() {
             .then((response) => {
                 allAllocatedCompanyIds(response)
             })
-    },[])
+    }, [])
     const onSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -44,7 +45,17 @@ export function UtilitiesRegistration() {
                     draggable: true,
                     progress: undefined,
                 });
-            } else if (!allocatedCompanyIds.includes(formData.get('contractId')) ){
+            } else if (!validateEmail(formData.get('email'))) {
+                toast.error('Please provide a valid email !', {
+                    position: "top-center",
+                    autoClose: false,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            } else if (!allocatedCompanyIds.includes(formData.get('contractId'))) {
                 toast.error('The contract Id was not found !', {
                     position: "top-center",
                     autoClose: false,
@@ -54,8 +65,7 @@ export function UtilitiesRegistration() {
                     draggable: true,
                     progress: undefined,
                 });
-            }
-            else {
+            } else {
                 fetch(UTILITIES_REGISTRATION_URL, {
                     method: "POST",
                     headers: {

@@ -76,7 +76,7 @@ export default function AssignOperator() {
 
     return (
         <div>
-            <div className="flex h-screen overflow-hidden">
+            <div className="flex h-max overflow-hidden">
                 <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}/>
 
                 <div className="container  px-2 sm:px-8 max-w-3xl">

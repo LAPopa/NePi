@@ -11,7 +11,7 @@ import {CommunityRegistrationSelector} from "./components/registrations/Communit
 import {OwnerRegistration} from "./components/registrations/OwnerRegistration";
 import {RenterRegistration} from "./components/registrations/RenterRegistration";
 import {UtilitiesRegistration} from "./components/registrations/UtilitiesRegistration";
-import TESTDashboard from "./components/pages/Dashboard";
+import UserDashboard from "./components/pages/Dashboard";
 import PostTicket from "./components/userpages/PostTicket";
 import UserDetails from "./components/userpages/UserDetails";
 import AssignOperator from "./components/userpages/AssignOperator";
@@ -34,7 +34,7 @@ function App() {
                     <Route path={"/registration/owners"} element={<OwnerRegistration/>}/>
                     <Route path={"/registration/tenants"} element={<RenterRegistration/>}/>
                     <Route path={"/registration/utilities"} element={<UtilitiesRegistration/>}/>
-                    <Route path={"/user-dashboard"} element={<TESTDashboard/>}/>
+                    <Route path={"/user-dashboard"} element={<UserDashboard/>}/>
                     <Route path={"/tickets/show"} element={<UserTickets/>} />
                     <Route path={"/tickets/new"} element={<PostTicket/>}/>
                     <Route path={"/get-user-details"} element={<UserDetails/>}/>
